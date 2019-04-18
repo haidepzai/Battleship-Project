@@ -62,7 +62,7 @@
             <transformer
                 implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
               <manifestEntries>
-                <Main-Class>de.hdm_stuttgart.mi.sd2.App</Main-Class>
+                <Main-Class>de.hdm_stuttgart.mi.sd2.Driver</Main-Class>
               </manifestEntries>
             </transformer>
           </transformers>
