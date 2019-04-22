@@ -1,7 +1,7 @@
 package de.hdm_stuttgart.mi.sd2.Interfaces;
 
 public interface IShip {
-    public static enum ShipType{
+    public enum ShipType{
 
         DESTROYER,
         SUBMARINE,
