@@ -6,7 +6,7 @@ import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 public class ShipFactory {
     public static IShip createShip(IShip.ShipType i) throws IllegalFactoryArgument {
         switch (i) {
-            case DESTROYER: return new Destroyer();
+            case DESTROYER: return new Destroyer() ;
             case CRUISER:return new Cruiser();
             case SUBMARINE: return new Submarine();
             case BATTLESHIP: return new Battleship();

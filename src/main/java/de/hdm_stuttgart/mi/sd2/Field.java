@@ -4,16 +4,16 @@ import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 
 import java.util.Arrays;
 
-public class Map {
+public class Field {
 
     int h;
     int[][] field;
 
-    public Map() {
+    public Field() {
 
     }
 
-    public Map(int h) {
+    public Field(int h) {
         this.h = h;
         int[][] field = new int[h][h];
         int counter = 0;
@@ -44,23 +44,22 @@ public class Map {
 
         if (up == false) {
             for (int e = 0; e < size; e++) {
-                if ((pos + e) % h == 0 || (pos + e) / h != pos / h) {
-                    if ((pos + e) % h == 0 ) {
-                        field[pos / h-1][h - 1] = 0;
-                    } else if((pos + e) / h != pos / h) {
-                        field[pos / h + 1][size-e-1] = 0;
-                    }
+                if (pos % h == 0) {
+                    field[pos / h - 1][h - 1 + e] = 0;
+
+
                 } else {
-                    if (pos % h == 0) {
-                        field[pos / h - 1][h - 1 + e] = 0;
+                    int col = pos / h;
+                    int row = pos - col * h - 1;
+                    field[col][row + e] = 0;
 
-
-                    } else {
-                        int col = pos / h;
-                        int row = pos - col * h - 1;
-                        field[col][row + e] = 0;
-                    }
                 }
+            }
+
+        }
+        if (up == true) {
+            for(int e = 0; e < size; e++) {
+                field[e][pos-1] = 0;
             }
 
         }
