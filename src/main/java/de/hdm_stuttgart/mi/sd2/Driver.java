@@ -16,8 +16,12 @@ public class Driver {
 
 
     public static void main(String[] args) {
+
+
+
         int mapSize = 6;
 
+        //Creating the Map for the game depending of the mapSize
 
         Field playerMap = new Field(mapSize);
 
@@ -25,6 +29,7 @@ public class Driver {
 
         List<IShip> shipList = new ArrayList<>();
 
+        //Creating variables for the needed ships
 
         IShip Battleship;
         IShip Cruiser1;
@@ -34,6 +39,8 @@ public class Driver {
         IShip Submarine1;
         IShip Submarine2;
 
+
+        //Adding all needed ships for the game (2 Cruiser, 2 Destroyer, 2 Submarines and one Battleship)
         try {
             Cruiser1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
             Cruiser2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
@@ -59,10 +66,21 @@ public class Driver {
             System.exit(0);
         }
 
-        //Implement Attack method here
 
+        //Tests
+        playerMap.printMap();
+        playerMap.checkShip(playerMap,6);
+        playerMap.attack(playerMap,1);
+        playerMap.attack(playerMap,2);
+        playerMap.attack(playerMap,3);
+        playerMap.attack(playerMap,4);
+        playerMap.attack(playerMap,5);
+        playerMap.attack(playerMap,6);
+        playerMap.attack(playerMap,7);
         playerMap.printMap();
 
+
     }
+
 
 }
