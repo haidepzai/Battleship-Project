@@ -13,6 +13,11 @@ public class Field {
 
     }
 
+    /**
+     * Creates the game-field as a two-dimensional Array
+     *
+     * @param h Length/Width of the field
+     */
     public Field(int h) {
         this.h = h;
         int[][] field = new int[h][h];
@@ -29,19 +34,35 @@ public class Field {
     }
 
 
+    /**
+     * Print out the two-dimensional Array
+     */
     public void printMap() {
         System.out.println(Arrays.deepToString(field));
 
     }
 
+    /**
+     * @return Return game-field
+     */
     public int[][] getField() {
         return field;
     }
 
+    /**
+     * @return Return size(length/width) of the game-field
+     */
     public int getSize() {
         return h;
     }
 
+    /**
+     * Place the ship on the game-field
+     *
+     * @param i The ship-type which shall be placed
+     * @param pos Position where the ship shall be placed
+     * @param up Direction of the ship
+     */
     public void setShip(IShip i, int pos, boolean up) {
         int size = i.getLength();
 
@@ -68,6 +89,14 @@ public class Field {
         }
 
     }
+
+    /**
+     * Check a position whether there is a ship or not
+     *
+     * @param f Look at player's or computer's ships
+     * @param pos Which position shall be checked
+     * @return True if there is a ship, false if not
+     */
 
     boolean checkShip(Field f, int pos) {
         int h = f.getSize();
@@ -102,6 +131,13 @@ public class Field {
 
     }
 
+    /**
+     * Check if a position has already been shot
+     *
+     * @param f Look at player's or computer's shots
+     * @param pos Which position shall be checked
+     * @return True if the position has been shot, false if not
+     */
     boolean checkShot(Field f, int pos) {
         int h = f.getSize();
         int fa[][] = f.getField();
@@ -135,6 +171,11 @@ public class Field {
 
     }
 
+    /**
+     * Attack a position on the game-field
+     * @param f Player's or Computer's game-field
+     * @param pos Position that shall be attacked
+     */
     static void attack(Field f, int pos) {
         int h = f.getSize();
         int[][] field = f.getField();
