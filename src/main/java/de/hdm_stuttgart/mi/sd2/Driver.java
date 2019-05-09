@@ -8,7 +8,9 @@ import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
 import de.hdm_stuttgart.mi.sd2.Ships.Submarine;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Driver {
@@ -59,7 +61,37 @@ public class Driver {
             shipList.add(Submarine2);
 
 
-            playerMap.setShip(Battleship, 3, true);
+
+
+
+            //Tests
+          /*  playerMap.printMap();
+            playerMap.checkShip(playerMap,6);
+            playerMap.attack(playerMap,1);
+            playerMap.attack(playerMap,2);
+            playerMap.attack(playerMap,3);
+            playerMap.attack(playerMap,4);
+            playerMap.attack(playerMap,5);
+            playerMap.attack(playerMap,6);
+            playerMap.attack(playerMap,7);
+            playerMap.printMap();
+               playerMap.setShip(Battleship, 3, true);
+*/
+
+          /*  Scanner s = new Scanner(System.in);
+            int playerChoice = s.nextInt();
+
+            System.out.println("Setze Schiff jaaaaa");
+
+*/
+
+
+            System.out.println("Du musst noch diese Schiffe setzen: ");
+
+            for (int i=0;i<shipList.size();i++) {
+                System.out.println(shipList.get(i).getName());
+            }
+
 
         } catch (IllegalFactoryArgument i) {
             System.err.println(i);
@@ -67,17 +99,9 @@ public class Driver {
         }
 
 
-        //Tests
-        playerMap.printMap();
-        playerMap.checkShip(playerMap,6);
-        playerMap.attack(playerMap,1);
-        playerMap.attack(playerMap,2);
-        playerMap.attack(playerMap,3);
-        playerMap.attack(playerMap,4);
-        playerMap.attack(playerMap,5);
-        playerMap.attack(playerMap,6);
-        playerMap.attack(playerMap,7);
-        playerMap.printMap();
+
+
+
 
 
     }

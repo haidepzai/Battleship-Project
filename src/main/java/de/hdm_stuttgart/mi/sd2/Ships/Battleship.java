@@ -10,6 +10,6 @@ public class Battleship implements IShip {
 
     @Override
     public String getName() {
-        return "Destroyer";
+        return "Battleship";
     }
 }
