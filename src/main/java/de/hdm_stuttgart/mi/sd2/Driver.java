@@ -17,6 +17,16 @@ public class Driver {
     public static void main(String[] args) {
 
 
+        //todo setShip (with space between the ships)
+        //todo setShip (exception if ship is too big for the map)
+        //todo computer map random ship placements
+        //todo computer ai shooting
+        //todo method or class to change turns
+        //todo write JUnit test's!!!
+        //todo write logs.-
+        //todo many more.. add it here when you notice something!
+
+
         int mapSize = 9;
 
         //Creating the Map for the game depending of the mapSize
@@ -26,6 +36,7 @@ public class Driver {
         Field computerMap = new Field(mapSize);
 
         List<IShip> shipList = new ArrayList<>();
+        List<IShip> shipListAI = new ArrayList<>();
 
         //Creating variables for the needed ships
 
@@ -56,6 +67,8 @@ public class Driver {
             shipList.add(Submarine1);
             shipList.add(Submarine2);
 
+            shipListAI = shipList;
+
 
             //Tests
           /*
@@ -69,18 +82,19 @@ public class Driver {
             playerMap.attack(playerMap,6);
             playerMap.attack(playerMap,7);
             playerMap.printMap();
-               playerMap.setShip(Battleship, 3, true);
+            playerMap.setShip(Battleship, 3, true);
+            playerMap.attack(playerMap,1);
+            playerMap.setShip(Battleship, 3, true);
+            playerMap.status(playerMap,1);
 */
 
-          /*  Scanner s = new Scanner(System.in);
-            int playerChoice = s.nextInt();
 
-            System.out.println("Setze Schiff jaaaaa");
 
-*/
+
 
 
             System.out.println("Set all your ships");
+
 
 
             try (Scanner s = new Scanner(System.in)) {
@@ -88,9 +102,9 @@ public class Driver {
                 System.out.println("\nWhich ship do you want to set?");
                 while (shipList.size() != 0) {
                     System.out.println("You have to set these ships: ");
-                    for (int i = 0; i < shipList.size(); i++) {
-                        System.out.print(shipList.get(i).getName() + " ");
-                    }
+
+                    Info.shipInfo(shipList);
+
                     System.out.println();
                     String e = s.next();
 
@@ -98,39 +112,40 @@ public class Driver {
                     switch (e) {
 
                         case "Battleship":
-                            System.out.println("Where do you want to set your ship? Place it horizontal(True or False)?");
+                           Info.shipPlaceQuestion();
+
                             playerMap.setShip(Battleship, s.nextInt(), s.nextBoolean());
                             shipList.remove(Battleship);
 
 
                             break;
                         case "Cruiser":
-                            System.out.println("Where do you want to set your ship? Place it horizontal(True or False)?");
+                            Info.shipPlaceQuestion();
                             playerMap.setShip(Cruiser1, s.nextInt(), s.nextBoolean());
-                            System.out.println("Now set your second cruiser!");
+                            System.out.println("Now set your second Cruiser!");
 
-                            System.out.println("Where do you want to set your ship? Place it horizontal(True or False)?");
+                            Info.shipPlaceQuestion();
                             playerMap.setShip(Cruiser2, s.nextInt(), s.nextBoolean());
                             shipList.remove(Cruiser1);
                             shipList.remove(Cruiser2);
                             break;
                         case "Submarine":
-                            System.out.println("Where do you want to set your ship? Place it horizontal(True or False)?");
+                            Info.shipPlaceQuestion();
                             playerMap.setShip(Submarine1, s.nextInt(), s.nextBoolean());
-                            System.out.println("Now set your second cruiser!");
+                            System.out.println("Now set your second Submarine!");
 
-                            System.out.println("Where do you want to set your ship? Place it horizontal(True or False)?");
+                            Info.shipPlaceQuestion();
                             playerMap.setShip(Submarine2, s.nextInt(), s.nextBoolean());
                             shipList.remove(Submarine1);
                             shipList.remove(Submarine2);
 
                             break;
                         case "Destroyer":
-                            System.out.println("Where do you want to set your ship? Place it horizontal(True or False)?");
+                            Info.shipPlaceQuestion();
                             playerMap.setShip(Destroyer1, s.nextInt(), s.nextBoolean());
                             System.out.println("Now set your second Destroyer!");
 
-                            System.out.println("Where do you want to set your ship? Place it horizontal(True or False)?");
+                            Info.shipPlaceQuestion();
                             playerMap.setShip(Destroyer2, s.nextInt(), s.nextBoolean());
                             shipList.remove(Destroyer1);
                             shipList.remove(Destroyer2);
@@ -154,6 +169,8 @@ public class Driver {
 
 
     }
+
+
 
 
 }
