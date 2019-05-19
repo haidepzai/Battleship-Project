@@ -3,19 +3,22 @@ package de.hdm_stuttgart.mi.sd2;
 import de.hdm_stuttgart.mi.sd2.Exceptions.IllegalFactoryArgument;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 import de.hdm_stuttgart.mi.sd2.Ships.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Driver {
 
+    //Logger for Driver-class initialized
+    private static Logger log = LogManager.getLogger(Driver.class);
 
     public static void main(String[] args) {
 
+        log.debug("Program started!");
 
         //todo setShip (with space between the ships)
         //todo setShip (exception if ship is too big for the map)
@@ -50,7 +53,7 @@ public class Driver {
 
 
         //Adding all needed ships for the game (2 Cruiser, 2 Destroyer, 2 Submarines and one Battleship)
-        try {
+        try (Scanner s = new Scanner(System.in)) {
             Cruiser1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
             Cruiser2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
             Destroyer1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
@@ -71,102 +74,100 @@ public class Driver {
 
 
             //Tests
-          /*
+              /*
 
-            playerMap.checkShip(playerMap,6);
-            playerMap.attack(playerMap,1);
-            playerMap.attack(playerMap,2);
-            playerMap.attack(playerMap,3);
-            playerMap.attack(playerMap,4);
-            playerMap.attack(playerMap,5);
-            playerMap.attack(playerMap,6);
-            playerMap.attack(playerMap,7);
-            playerMap.printMap();
-            playerMap.setShip(Battleship, 3, true);
-            playerMap.attack(playerMap,1);
-            playerMap.setShip(Battleship, 3, true);
-            playerMap.status(playerMap,1);
-*/
-
-
-
-
-
-
-            System.out.println("Set all your ships");
-
-
-
-            try (Scanner s = new Scanner(System.in)) {
-
-                System.out.println("\nWhich ship do you want to set?");
-                while (shipList.size() != 0) {
-                    System.out.println("You have to set these ships: ");
-
-                    Info.shipInfo(shipList);
-
-                    System.out.println();
-                    String e = s.next();
-
-
-                    switch (e) {
-
-                        case "Battleship":
-                           Info.shipPlaceQuestion();
-
-                            playerMap.setShip(Battleship, s.nextInt(), s.nextBoolean());
-                            shipList.remove(Battleship);
-
-
-                            break;
-                        case "Cruiser":
-                            Info.shipPlaceQuestion();
-                            playerMap.setShip(Cruiser1, s.nextInt(), s.nextBoolean());
-                            System.out.println("Now set your second Cruiser!");
-
-                            Info.shipPlaceQuestion();
-                            playerMap.setShip(Cruiser2, s.nextInt(), s.nextBoolean());
-                            shipList.remove(Cruiser1);
-                            shipList.remove(Cruiser2);
-                            break;
-                        case "Submarine":
-                            Info.shipPlaceQuestion();
-                            playerMap.setShip(Submarine1, s.nextInt(), s.nextBoolean());
-                            System.out.println("Now set your second Submarine!");
-
-                            Info.shipPlaceQuestion();
-                            playerMap.setShip(Submarine2, s.nextInt(), s.nextBoolean());
-                            shipList.remove(Submarine1);
-                            shipList.remove(Submarine2);
-
-                            break;
-                        case "Destroyer":
-                            Info.shipPlaceQuestion();
-                            playerMap.setShip(Destroyer1, s.nextInt(), s.nextBoolean());
-                            System.out.println("Now set your second Destroyer!");
-
-                            Info.shipPlaceQuestion();
-                            playerMap.setShip(Destroyer2, s.nextInt(), s.nextBoolean());
-                            shipList.remove(Destroyer1);
-                            shipList.remove(Destroyer2);
-
-                            break;
-                        default:
-                            System.out.println("Wrong input!");
-
-                    }
-                }
-
+                playerMap.checkShip(playerMap,6);
+                playerMap.attack(playerMap,1);
+                playerMap.attack(playerMap,2);
+                playerMap.attack(playerMap,3);
+                playerMap.attack(playerMap,4);
+                playerMap.attack(playerMap,5);
+                playerMap.attack(playerMap,6);
+                playerMap.attack(playerMap,7);
                 playerMap.printMap();
+                playerMap.setShip(Battleship, 3, true);
+                playerMap.attack(playerMap,1);
+                playerMap.setShip(Battleship, 3, true);
+                playerMap.status(playerMap,1);
+    */
+            while(true) {
 
+                System.out.println("Set all your ships");
+
+
+                try {
+
+                    System.out.println("\nWhich ship do you want to set?");
+                    while (shipList.size() != 0) {
+                        System.out.print("You have to set these ships: ");
+
+                        Info.shipInfo(shipList);
+
+                        System.out.println();
+                        String e = s.next();
+
+
+                        switch (e) {
+
+                            case "Battleship":
+                                Info.shipPlaceQuestion();
+
+                                playerMap.setShip(Battleship, s.nextInt(), s.nextBoolean());
+                                shipList.remove(Battleship);
+
+
+                                break;
+                            case "Cruiser":
+                                Info.shipPlaceQuestion();
+                                playerMap.setShip(Cruiser1, s.nextInt(), s.nextBoolean());
+                                System.out.println("Now set your second Cruiser!");
+
+                                Info.shipPlaceQuestion();
+                                playerMap.setShip(Cruiser2, s.nextInt(), s.nextBoolean());
+                                shipList.remove(Cruiser1);
+                                shipList.remove(Cruiser2);
+                                break;
+                            case "Submarine":
+                                Info.shipPlaceQuestion();
+                                playerMap.setShip(Submarine1, s.nextInt(), s.nextBoolean());
+                                System.out.println("Now set your second Submarine!");
+
+                                Info.shipPlaceQuestion();
+                                playerMap.setShip(Submarine2, s.nextInt(), s.nextBoolean());
+                                shipList.remove(Submarine1);
+                                shipList.remove(Submarine2);
+
+                                break;
+                            case "Destroyer":
+                                Info.shipPlaceQuestion();
+                                playerMap.setShip(Destroyer1, s.nextInt(), s.nextBoolean());
+                                System.out.println("Now set your second Destroyer!");
+
+                                Info.shipPlaceQuestion();
+                                playerMap.setShip(Destroyer2, s.nextInt(), s.nextBoolean());
+                                shipList.remove(Destroyer1);
+                                shipList.remove(Destroyer2);
+
+                                break;
+                            default:
+                                System.out.println("This ship type doesn't exist! Try again!");
+
+                        }
+                    }
+
+                    playerMap.printMap();
+
+                } catch (InputMismatchException e) {
+                    log.error("Wrong input! Try again!", e);
+                    s.next();
+                }
             }
 
 
         } catch (IllegalFactoryArgument i) {
-            System.err.println(i);
+            log.error(i);
             System.exit(0);
         }
-
 
     }
 
