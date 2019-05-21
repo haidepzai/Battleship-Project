@@ -2,11 +2,12 @@ package de.hdm_stuttgart.mi.sd2;
 
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Field {
 
-    int h;
+    static int h;
     int[][] field;
 
     public Field() {
@@ -18,12 +19,27 @@ public class Field {
      *
      * @param h Length/Width of the field
      */
-    public Field(int h) {
+    /*public Field(int h) {
         this.h = h;
         int[][] field = new int[h][h];
         int counter = 0;
         for (int y = 0; y < field.length; y++) {
 
+            field[y][y] = counter;
+            for (int x = 0; x < field.length; x++) {
+                counter++;
+                field[y][x] = counter;
+            }
+        }
+        this.field = field;
+    }
+    */
+    public Field(int h) {
+        this.h = h;
+        int[][] field = new int[h][h];
+
+        for (int y = 0; y < field.length; y++) {
+            int counter = 0;
             field[y][y] = counter;
             for (int x = 0; x < field.length; x++) {
                 counter++;
@@ -56,17 +72,18 @@ public class Field {
         return h;
     }
 
-    /**
+    /*/**
      * Place the ship on the game-field
      *
      * @param i   The ship-type which shall be placed
      * @param pos Position where the ship shall be placed
      * @param up  Direction of the ship
      */
-    public void setShip(IShip i, int pos, boolean up) {
+    /*
+    public void setShip(IShip i, int pos1, String up) {
         int size = i.getLength();
 
-        if (up == false) {
+        if (up.equals("n") || up.equals("no")) {
             for (int e = 0; e < size; e++) {
                 if (pos % h == 0) {
                     field[pos / h - 1][h - 1 + e] = 0;
@@ -81,7 +98,7 @@ public class Field {
             }
 
         }
-        if (up == true) {
+        if (up.equals("y") || up.equals("yes")) {
             for (int e = 0; e < size; e++) {
                 field[e][pos - 1] = 0;
             }
@@ -89,7 +106,65 @@ public class Field {
         }
 
     }
+*/
 
+    /**
+     * Check whether on the desired location is already a ship placed
+     * @param i Ship-type
+     * @param row Selected row for ship placement
+     * @param col Selected column for ship placement
+     * @param dir Horizontal placement? True/False
+     * @return True: Already a ship placed , False: Position free
+     */
+    public boolean checkShip(IShip i, int row, int col, boolean dir) {
+        int size = i.getLength();
+
+        //Check if there is already a ship at the desired position
+        if (!dir) {
+
+            for (int f = 0; f < size; f++) {
+                if (field[row - 1 + f][col - 1] == -1) {
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            for (int f = 0; f < size; f++) {
+                if(field[row - 1][col - 1 + f] == -1) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    /**
+     * Places a ship on the game-field
+     * @param i Ship-type
+     * @param row Selected row for ship placement
+     * @param col Selected column for ship placement
+     * @param dir Horizontal placement? True/False
+     */
+    public void setShip(IShip i, int row, int col, boolean dir) {
+
+        int size = i.getLength();
+
+        if (checkShip(i, row, col, dir)) {
+            if (!dir) {
+                for (int v = 0; v < size; v++) {
+                    field[row - 1 + v][col - 1] = -1;
+                }
+            } else {
+                for (int v = 0; v < size; v++) {
+                    field[row - 1][col - 1 + v] = -1;
+                }
+            }
+            Driver.shipList.remove(i);
+        } else {
+            System.out.println("There is already a ship at the desired position!");
+        }
+    }
+/*
     /**
      * Check a position whether there is a ship or not
      *
@@ -97,7 +172,7 @@ public class Field {
      * @param pos Which position shall be checked
      * @return True if there is a ship, false if not
      */
-
+/*
     boolean checkShip(Field f, int pos) {
         int h = f.getSize();
         int fa[][] = f.getField();
@@ -129,7 +204,8 @@ public class Field {
 
         }
 
-    }
+    } */
+
 
     /**
      * Check if a position has already been shot

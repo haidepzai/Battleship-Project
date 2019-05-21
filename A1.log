@@ -1,14 +1,1 @@
 main DEBUG sd2.Driver - Program started!
-main ERROR sd2.Driver - Wrong input! Try again!
-java.util.InputMismatchException: null
-	at java.util.Scanner.throwFor(Scanner.java:939) ~[?:?]
-	at java.util.Scanner.next(Scanner.java:1594) ~[?:?]
-	at java.util.Scanner.nextBoolean(Scanner.java:1893) ~[?:?]
-	at de.hdm_stuttgart.mi.sd2.Driver.main(Driver.java:115) [classes/:?]
-main ERROR sd2.Driver - Wrong input! Try again!
-java.util.InputMismatchException: null
-	at java.util.Scanner.throwFor(Scanner.java:939) ~[?:?]
-	at java.util.Scanner.next(Scanner.java:1594) ~[?:?]
-	at java.util.Scanner.nextInt(Scanner.java:2258) ~[?:?]
-	at java.util.Scanner.nextInt(Scanner.java:2212) ~[?:?]
-	at de.hdm_stuttgart.mi.sd2.Driver.main(Driver.java:122) [classes/:?]
