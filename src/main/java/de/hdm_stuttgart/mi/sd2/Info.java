@@ -7,7 +7,7 @@ import java.util.List;
 public class Info {
    public static void shipInfo(List<IShip> s){
         for (int i = 0; i < s.size(); i++) {
-            System.out.print(s.get(i).getName() + " ");
+            System.out.print(s.get(i).getName() + " | ");
         }
     }
 

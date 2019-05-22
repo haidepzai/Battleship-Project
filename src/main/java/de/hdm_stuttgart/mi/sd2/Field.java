@@ -10,30 +10,7 @@ public class Field {
     static int h;
     int[][] field;
 
-    public Field() {
-
-    }
-
-    /**
-     * Creates the game-field as a two-dimensional Array
-     *
-     * @param h Length/Width of the field
-     */
-    /*public Field(int h) {
-        this.h = h;
-        int[][] field = new int[h][h];
-        int counter = 0;
-        for (int y = 0; y < field.length; y++) {
-
-            field[y][y] = counter;
-            for (int x = 0; x < field.length; x++) {
-                counter++;
-                field[y][x] = counter;
-            }
-        }
-        this.field = field;
-    }
-    */
+        
     public Field(int h) {
         this.h = h;
         int[][] field = new int[h][h];
@@ -72,41 +49,6 @@ public class Field {
         return h;
     }
 
-    /*/**
-     * Place the ship on the game-field
-     *
-     * @param i   The ship-type which shall be placed
-     * @param pos Position where the ship shall be placed
-     * @param up  Direction of the ship
-     */
-    /*
-    public void setShip(IShip i, int pos1, String up) {
-        int size = i.getLength();
-
-        if (up.equals("n") || up.equals("no")) {
-            for (int e = 0; e < size; e++) {
-                if (pos % h == 0) {
-                    field[pos / h - 1][h - 1 + e] = 0;
-
-
-                } else {
-                    int col = pos / h;
-                    int row = pos - col * h - 1;
-                    field[col][row + e] = 0;
-
-                }
-            }
-
-        }
-        if (up.equals("y") || up.equals("yes")) {
-            for (int e = 0; e < size; e++) {
-                field[e][pos - 1] = 0;
-            }
-
-        }
-
-    }
-*/
 
     /**
      * Check whether on the desired location is already a ship placed
@@ -164,109 +106,30 @@ public class Field {
             System.out.println("There is already a ship at the desired position!");
         }
     }
-/*
-    /**
-     * Check a position whether there is a ship or not
-     *
-     * @param f   Look at player's or computer's ships
-     * @param pos Which position shall be checked
-     * @return True if there is a ship, false if not
-     */
-/*
-    boolean checkShip(Field f, int pos) {
-        int h = f.getSize();
-        int fa[][] = f.getField();
-
-        if (pos % h == 0) {
-
-            if (field[pos / h - 1][h - 1] == 0) {
-
-                System.out.println("Here is a ship");
-                return true;
-            }
-
-            System.out.println("Here is not a ship");
-            return false;
-
-
-        } else {
-            int col = pos / h;
-            int row = pos - col * h - 1;
-
-            if (field[col][row] == 0) {
-
-                System.out.println("Here is a ship");
-                return true;
-            }
-
-            System.out.println("Here is not a ship");
-            return false;
-
-        }
-
-    } */
-
 
     /**
      * Check if a position has already been shot
-     *
-     * @param f   Look at player's or computer's shots
-     * @param pos Which position shall be checked
-     * @return True if the position has been shot, false if not
+     * @param row Row of position that shall be checked
+     * @param col Column of position that shall be checked
+     * @return True: Position has already been shot , False: Not been shot
      */
-    boolean checkShot(Field f, int pos) {
-        int h = f.getSize();
-        int fa[][] = f.getField();
+    boolean checkShot(int row, int col) {
 
-        if (pos % h == 0) {
-
-            if (field[pos / h - 1][h - 1] == 99) {
-
-                System.out.println("Shot");
-                return true;
-            }
-
-            System.out.println("Not shot");
-            return false;
-
-
-        } else {
-            int col = pos / h;
-            int row = pos - col * h - 1;
-
-            if (field[col][row] == 99) {
-
-                System.out.println("Shot");
-                return true;
-            }
-
-            System.out.println("Not shot");
-            return false;
-
-        }
-
+       if(field[row-1][col-1] == -99) {
+           return true;
+       } else {
+           return false;
+       }
     }
 
     /**
-     * Attack a position on the game-field
-     *
-     * @param f   Player's or Computer's game-field
-     * @param pos Position that shall be attacked
+     * Attack position on game-field
+     * @param row Row of position that shall be shot
+     * @param col Column of position that shall be shot
      */
-    static void attack(Field f, int pos) {
-        int h = f.getSize();
-        int[][] field = f.getField();
+    public void attack(int row, int col) {
 
-        if (pos % h == 0) {
-            field[pos / h - 1][h - 1] = 99;
-
-
-        } else {
-            int col = pos / h;
-            int row = pos - col * h - 1;
-            field[col][row] = 99;
-
-        }
+        field[row - 1][col - 1] = -99;
 
     }
 
