@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLOutput;
 import java.util.*;
-
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Driver {
 
@@ -71,29 +71,13 @@ public class Driver {
             shipListAI = shipList;
 
 
-            //Tests
-              /*
-
-                playerMap.checkShip(playerMap,6);
-                playerMap.attack(playerMap,1);
-                playerMap.attack(playerMap,2);
-                playerMap.attack(playerMap,3);
-                playerMap.attack(playerMap,4);
-                playerMap.attack(playerMap,5);
-                playerMap.attack(playerMap,6);
-                playerMap.attack(playerMap,7);
-                playerMap.printMap();
-                playerMap.setShip(Battleship, 3, true);
-                playerMap.attack(playerMap,1);
-                playerMap.setShip(Battleship, 3, true);
-                playerMap.status(playerMap,1);
-    */
 
             System.out.println("Ahoy! Set all your ships sailor!");
 
             while(true) {
 
                 try {
+
 
                     if (shipList.size() != 0) {
                         System.out.println("\nWhich ship do you want to set?");
@@ -104,9 +88,10 @@ public class Driver {
                         System.out.println();
                         String e = s.next();
 
-                        switch (e) {
 
-                            case "Battleship":
+                        switch (e.toLowerCase()) {
+
+                            case "battleship":
                                 if(shipList.contains(Battleship)) {
                                     Info.shipPlaceQuestion();
                                     playerMap.setShip(Battleship, s.nextInt(), s.nextInt(), s.nextBoolean());
@@ -115,7 +100,7 @@ public class Driver {
                                 }
                                 break;
 
-                            case "Cruiser":
+                            case "cruiser":
 
                                 if(shipList.contains(Cruiser1)) {
                                     Info.shipPlaceQuestion();
@@ -128,7 +113,7 @@ public class Driver {
                                 }
                                 break;
 
-                            case "Submarine":
+                            case "submarine":
                                 if(shipList.contains(Submarine1)) {
                                     Info.shipPlaceQuestion();
                                     playerMap.setShip(Submarine1, s.nextInt(), s.nextInt(), s.nextBoolean());
@@ -140,7 +125,7 @@ public class Driver {
                                 }
                                 break;
 
-                            case "Destroyer":
+                            case "destroyer":
                                 if(shipList.contains(Destroyer1)) {
                                     Info.shipPlaceQuestion();
                                     playerMap.setShip(Destroyer1, s.nextInt(), s.nextInt(), s.nextBoolean());
@@ -165,22 +150,27 @@ public class Driver {
                         break;
                     }
 
+
+
+
                 } catch (InputMismatchException e) {
                     log.error("Wrong input type!", e);
                     //System.out.println("Your input type was wrong! Try again!");
                     s.next();
                 } catch (ArrayIndexOutOfBoundsException a) {
-                    log.error("Entered position is too high or the ship doesn't fit at this position!", a);
+                    log.error("Entered position is to low, to high or the ship doesn't fit at this position!", a);
                     //System.out.println("Your entered position is too high or the ship doesn't fit at this position! Try again!");
                 }
             }
 
+            //todo set all ships for the AI
+            computerMap.setShip(Battleship,aiRandom.randNumber(mapSize),aiRandom.randNumber(mapSize),aiRandom.randHor());
+            computerMap.printMap()
 
         } catch (IllegalFactoryArgument i) {
             log.error(i);
             System.exit(0);
         }
-
     }
 
 
