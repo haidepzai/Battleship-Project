@@ -165,7 +165,7 @@ public class Driver {
 
             //todo set all ships for the AI
             computerMap.setShip(Battleship,aiRandom.randNumber(mapSize),aiRandom.randNumber(mapSize),aiRandom.randHor());
-            computerMap.printMap()
+            computerMap.printMap();
 
         } catch (IllegalFactoryArgument i) {
             log.error(i);

@@ -65,8 +65,28 @@ public class Field {
         if (!dir) {
 
             for (int f = 0; f < size; f++) {
-                if (field[row - 1 + f][col - 1] == -1) {
-                    return false;
+                //1. Case: Ship in the upper left corner
+                if(row == 1 && col == 1) {
+                    //todo: last condition in the if clause the same for all conditions => export?! => performance
+                    if(field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 || field[row-1+size][col-1] == -1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                //2. Case: Ship in the upper right corner
+                if(row == 1 && col == h) {
+                    if(field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1  || field[row-1+size][col-1] == -1) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                //3. Case: Ship at the top of the map but not in a corner
+                if(row == 1) {
+                    if(field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 ) {
+                        
+                    }
                 }
             }
             return true;
