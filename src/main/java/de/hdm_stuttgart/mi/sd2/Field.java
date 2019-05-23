@@ -10,7 +10,11 @@ public class Field {
     static int h;
     int[][] field;
 
-        
+    //todo: statische Zustandsvariablen korrekt? sinnvoll?
+    static final int BORDER = -42;
+    static final int WATER = 0;
+    static final int SHIP = -1;
+
     public Field(int h) {
         this.h = h;
         int[][] field = new int[h][h];
@@ -19,7 +23,7 @@ public class Field {
             int counter = 0;
             field[y][y] = counter;
             for (int x = 0; x < field.length; x++) {
-                counter++;
+                //counter++;
                 field[y][x] = counter;
             }
         }
@@ -71,47 +75,61 @@ public class Field {
         //Check if there is already a ship at the desired position
         if (!dir) {
 
-            for (int f = 0; f < size; f++) {
-                //1. Case: Ship in the upper left corner
-                if(row == 1 && col == 1) {
-                    //todo: last condition in the if clause the same for all conditions => export?! => performance
-                    if(field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 || field[row-1+size][col-1] == -1) {
+            //1. Case: Ship in the upper left corner
+            if(row == 1 && col == 1) {
+                for(int f = 0; f < size; f++) {
+                    if (field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 || field[row-1+size][col-1] == -1) {
                         return true;
-                    } else {
-                        return false;
                     }
                 }
-                //2. Case: Ship in the upper right corner
-                if(row == 1 && col == h) {
-                    if(field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1  || field[row-1+size][col-1] == -1) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-                //3. Case: Ship at the top of the map but not in a corner
-                if(row == 1) {
-                    if(field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 || field[row-1+size][col-1] == -1) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-                //4. Case: Ship at the bottom left corner
-                if(row == h-size && col == 1) {
-
-                }
+                return false;
             }
-            return true;
+            //2. Case: Ship in the upper right corner
+            if(row == 1 && col == h) {
+
+                for(int f = 0; f < size; f++) {
+                    if (field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1 || field[row-1+size][col-1] == -1) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            //3. Case: Ship at the top of the map but not in a corner
+            if(row == 1) {
+                for(int f = 0; f < size; f++) {
+                    if (field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 || field[row-1+size][col-1] == -1) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            //4. Case: Ship at the bottom left corner
+            if(row == h-size+1 && col == 1) {
+
+            }
+
+
         } else {
             for (int f = 0; f < size; f++) {
                 if(field[row - 1][col - 1 + f] == -1) {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
+       return false;
     }
+
+    //todo: getLeft/getRight/... methods to check beneath positions
+
+    //todo: Ansatz korrekt? ich weiß es nicht!
+//    public int getLeft(int col) {
+//        if(col == 1) {
+//            return BORDER;
+//        } else {
+//
+//        }
+//    }
 
     /**
      * Places a ship on the game-field
