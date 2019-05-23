@@ -31,8 +31,15 @@ public class Field {
      * Print out the two-dimensional Array
      */
     public void printMap() {
-        System.out.println(Arrays.deepToString(field));
-
+        //System.out.println(Arrays.deepToString(field));
+        for(int i = 0; i < h; i++)
+        {
+            for(int j = 0; j < h; j++)
+            {
+                System.out.printf("%3d ", field[i][j]);
+            }
+            System.out.println();
+        }
     }
 
     /**
@@ -84,9 +91,15 @@ public class Field {
                 }
                 //3. Case: Ship at the top of the map but not in a corner
                 if(row == 1) {
-                    if(field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 ) {
-                        
+                    if(field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 || field[row-1+size][col-1] == -1) {
+                        return true;
+                    } else {
+                        return false;
                     }
+                }
+                //4. Case: Ship at the bottom left corner
+                if(row == h-size && col == 1) {
+
                 }
             }
             return true;
