@@ -86,10 +86,10 @@ public class Driver {
                         Info.shipInfo(shipList);
 
                         System.out.println();
-                        String e = s.next();
+                        //String e = s.next();
 
 
-                        switch (e.toLowerCase()) {
+                        switch (s.next().toLowerCase()) {
 
                             case "battleship":
                                 if(shipList.contains(Battleship)) {

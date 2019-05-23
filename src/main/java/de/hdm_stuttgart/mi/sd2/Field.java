@@ -72,64 +72,89 @@ public class Field {
     public boolean checkShip(IShip i, int row, int col, boolean dir) {
         int size = i.getLength();
 
-        //Check if there is already a ship at the desired position
+        //Vertical
         if (!dir) {
-
-            //1. Case: Ship in the upper left corner
-            if(row == 1 && col == 1) {
-                for(int f = 0; f < size; f++) {
-                    if (field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 || field[row-1+size][col-1] == -1) {
-                        return true;
-                    }
+            for(int v = 0; v < size; v++) {
+                if (getLeft(row+v, col) == SHIP || getRight(row+v, col) == SHIP || getTop(row+v, col) == SHIP || getBot(row+v, col) == SHIP) {
+                    return true;
                 }
-                return false;
             }
-            //2. Case: Ship in the upper right corner
-            if(row == 1 && col == h) {
+            return false;
 
-                for(int f = 0; f < size; f++) {
-                    if (field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1 || field[row-1+size][col-1] == -1) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-            //3. Case: Ship at the top of the map but not in a corner
-            if(row == 1) {
-                for(int f = 0; f < size; f++) {
-                    if (field[row-1+f][col-2] == -1 || field[row-1+f][col-1] == -1 || field[row-1+f][col] == -1 || field[row-1+size][col-1] == -1) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-            //4. Case: Ship at the bottom left corner
-            if(row == h-size+1 && col == 1) {
-
-            }
-
-
+        //Horizontal
         } else {
-            for (int f = 0; f < size; f++) {
-                if(field[row - 1][col - 1 + f] == -1) {
+            for (int h = 0; h < size; h++) {
+                if (getLeft(row, col+h) == SHIP || getRight(row, col+h) == SHIP || getTop(row, col+h) == SHIP || getBot(row, col+h) == SHIP) {
                     return true;
                 }
             }
             return false;
         }
-       return false;
     }
 
-    //todo: getLeft/getRight/... methods to check beneath positions
+    /**
+     * Check the status of the position on the LEFT side of the transferred position
+     * @param row Row of passed parameters
+     * @param col Column of passed parameters
+     * @return BORDER: Left-border of the Array / SHIP: Ship on the left side / WATER: Water (no ship) on the left side
+     */
+    public int getLeft(int row, int col) {
+        if(col == 1) {
+            return BORDER;
+        } else if (field[row-1][col-2] == -1){
+            return SHIP;
+        } else {
+            return WATER; //todo: Add more states later!!
+        }
+    }
 
-    //todo: Ansatz korrekt? ich weiß es nicht!
-//    public int getLeft(int col) {
-//        if(col == 1) {
-//            return BORDER;
-//        } else {
-//
-//        }
-//    }
+    /**
+     * Check the status of the position on the RIGHT side of the transferred position
+     * @param row Row of passed parameters
+     * @param col Column of passed parameters
+     * @return BORDER: Right-border of the Array / SHIP: Ship on the right side / WATER: Water, free space on the right side
+     */
+    public int getRight(int row, int col) {
+        if(col == h) {
+            return BORDER;
+        } else if (field[row-1][col] == -1){
+            return SHIP;
+        } else {
+            return WATER; //todo: Add more states later!!
+        }
+    }
+
+    /**
+     * Check the status of the position ABOVE the transferred position
+     * @param row Row of passed parameters
+     * @param col Column of passed parameters
+     * @return BORDER: Top-border of the Array / SHIP: Ship above / WATER: Water, free space above
+     */
+    public int getTop(int row, int col) {
+        if(row == 1) {
+            return BORDER;
+        } else if (field[row-2][col-1] == -1){
+            return SHIP;
+        } else {
+            return WATER; //todo: Add more states later!!
+        }
+    }
+
+    /**
+     * Check the status of the position BENEATH the transferred position
+     * @param row Row of passed parameters
+     * @param col Column of passed parameters
+     * @return BORDER: Bottom-border of the Array / SHIP: Ship beneath / WATER: Water, free space beneath
+     */
+    public int getBot(int row, int col) {
+        if(row == h) {
+            return BORDER;
+        } else if (field[row][col-1] == -1){
+            return SHIP;
+        } else {
+            return WATER; //todo: Add more states later!!
+        }
+    }
 
     /**
      * Places a ship on the game-field
@@ -142,7 +167,7 @@ public class Field {
 
         int size = i.getLength();
 
-        if (checkShip(i, row, col, dir)) {
+        if (!checkShip(i, row, col, dir)) {
             if (!dir) {
                 for (int v = 0; v < size; v++) {
                     field[row - 1 + v][col - 1] = -1;
@@ -154,7 +179,7 @@ public class Field {
             }
             Driver.shipList.remove(i);
         } else {
-            System.out.println("There is already a ship at the desired position!");
+            System.out.println("No ship-placement at this position possible! Try again!");
         }
     }
 
