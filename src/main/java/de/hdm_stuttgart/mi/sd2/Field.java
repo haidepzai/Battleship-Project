@@ -15,6 +15,7 @@ public class Field {
     static final int WATER = 0;
     static final int SHIP = -1;
     static final int SHOT = -99;
+    static final int HIT = -100;
 
     public Field(int h) {
         this.h = h;
@@ -41,7 +42,7 @@ public class Field {
         {
             for(int j = 0; j < h; j++)
             {
-                System.out.printf("%3d ", field[i][j]);
+                System.out.printf("%4d ", field[i][j]);
             }
             System.out.println();
         }
@@ -67,6 +68,8 @@ public class Field {
             return SHIP;
         } else if(field[row-1][col-1] == -99) {
             return SHOT;
+        } else if(field[row-1][col-1] == -100) {
+            return HIT;
         } else {
             return WATER;
         }
@@ -175,6 +178,19 @@ public class Field {
         }
     }
 
+    public void setCore(IShip i, int row, int col, boolean dir) {
+        int size = i.getLength();
+
+        if (!dir) {
+            for (int v = 0; v < size; v++) {
+                field[row - 1 + v][col - 1] = -1;
+            }
+        } else {
+            for (int v = 0; v < size; v++) {
+                field[row - 1][col - 1 + v] = -1;
+            }
+        }
+    }
     /**
      * Places a ship on the game-field
      * @param i Ship-type
@@ -184,21 +200,20 @@ public class Field {
      */
     public void setShip(IShip i, int row, int col, boolean dir) {
 
-        int size = i.getLength();
-
         if (!checkShip(i, row, col, dir)) {
-            if (!dir) {
-                for (int v = 0; v < size; v++) {
-                    field[row - 1 + v][col - 1] = -1;
-                }
-            } else {
-                for (int v = 0; v < size; v++) {
-                    field[row - 1][col - 1 + v] = -1;
-                }
-            }
+            setCore(i, row, col, dir);
             Driver.shipList.remove(i);
         } else {
             System.out.println("\nFAILURE: No ship-placement at this position possible! Try again!\n");
+        }
+    }
+
+    public void setShipAI(IShip i, int row, int col, boolean dir) {
+
+        if(!checkShip(i, row, col, dir)) {
+            setCore(i, row, col, dir);
+        } else {
+            setShipAI(i, aiRandom.randNumber(h), aiRandom.randNumber(h), aiRandom.randDir());
         }
     }
 
@@ -224,8 +239,22 @@ public class Field {
      */
     public void attack(int row, int col) {
 
-        field[row - 1][col - 1] = -99;
+        if(getStatus(row, col) == SHIP) {
+            field[row-1][col-1] = HIT;
+        } else {
+            field[row - 1][col - 1] = -99;
+        }
 
     }
 
+    public int checkShipState(int row, int col) {
+
+        if (getLeft(row, col) != SHIP && getRight(row, col) != SHIP && getTop(row, col) != SHIP && getBot(row, col) != SHIP) {
+            System.out.println("You have destroyed a ship!");
+            return 1;
+        } else {
+            System.out.println("You hit a ship, but it still swims");
+            return 0;
+        }
+    }
 }

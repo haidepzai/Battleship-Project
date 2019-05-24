@@ -71,8 +71,8 @@ public class Driver {
             shipListAI.add(Submarine1);
             shipListAI.add(Submarine2);
 
-
-            //shipListAI = shipList;
+            final int PLAYERSHIPNUMBER = shipList.size();
+            final int AISHIPNUMBER = shipListAI.size();
 
 
             System.out.println("Ahoy! Set all your ships sailor!");
@@ -166,20 +166,19 @@ public class Driver {
                 }
             }*/
 
-            //Computer's ship placement
-            Info.shipInfo(shipListAI);
-            while(true) {
-                try {
-                    //todo -------- handle ship crossings?
-                    // handle exceptions?
-                    // delete shipSetPositions/surrounding positions from randomnumgenerator?
-                    // just try as often as needed to place all ships? disable outputs that should become the user by using these methods (like setShip) ------------
 
-                    for (int c = 0; c < shipListAI.size() ; c++) {
-                        //do {
-                            computerMap.setShip(shipListAI.get(c), aiRandom.randNumber(mapSize), aiRandom.randNumber(mapSize), aiRandom.randDir());
-                            shipListAI.remove(shipListAI.get(c));
-                        //} while (   //todo: hard to handle cases when ship isn't set correctly -> don't delete from list, try again AI !
+            //Computer's ship placement
+
+            while(true) {
+
+                try {
+
+                    while(shipListAI.size() > 0) {
+
+                        computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(mapSize), aiRandom.randNumber(mapSize), aiRandom.randDir());
+                        System.out.println();
+                        shipListAI.remove(shipListAI.get(0));
+
                     }
                     log.debug("Computer's map created. All ships set.");
                     computerMap.printMap();
@@ -188,11 +187,72 @@ public class Driver {
                 } catch (ArrayIndexOutOfBoundsException ignore) { } //catches Exception but ignores it to continue uninterrupted
             }
 
+            //Info.shipInfo(shipListAI);
+
+            int shipNumberPlayer = PLAYERSHIPNUMBER;
+            int shipNumberAI = AISHIPNUMBER;
+
+            //todo: 1) Problem: check if a ship is destroyed => look left/right or top/bot until you face WATER/HIT => Switch?/if?
+
+            while(shipNumberPlayer != 0 || shipNumberAI != 0) {
+
+                log.debug("Player's attack phase");
+                while (true) {
+                    System.out.println("Your turn. Enter a position you want to shoot" +
+                            "\na) row" +
+                            "\nb) col");
+                    int row = s.nextInt();
+                    int col = s.nextInt();
+                    if (computerMap.checkShot(row, col) || computerMap.getStatus(row, col) == Field.HIT) {
+                        System.out.println("Position has already been shot! Try again!");
+                    } else {
+                        computerMap.attack(row, col);
+                        if (computerMap.field[row - 1][col - 1] == Field.HIT) {
+                            System.out.println("You hit a ship! You have another try!");
+                            shipNumberAI -= computerMap.checkShipState(row, col);
+                        } else {
+                            System.out.println("Missed! Your turn is finished.");
+                            break;
+                        }
+                    }
+                }
+                //computerMap.printMap();
+                log.debug("Computer's attack phase");
+
+                while (true) {
+                    int ranRow = aiRandom.randNumber(mapSize);
+                    int ranCol = aiRandom.randNumber(mapSize);
+                    if (playerMap.checkShot(ranRow, ranCol) || computerMap.getStatus(ranRow, ranCol) == Field.HIT) {
+                        log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ")");
+                    } else {
+                        playerMap.attack(ranRow, ranCol);
+                        if (playerMap.field[ranRow - 1][ranCol - 1] == Field.HIT) {
+                            log.trace("Computer has hit a ship at (" + ranRow + ", " + ranCol + ")");
+                            shipNumberPlayer -= playerMap.checkShipState(ranRow, ranCol);
+                        } else {
+                            log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Check who has won
+            if(shipNumberPlayer == 0) {
+                System.out.println("Computer has won the game!");
+                log.debug("Computer won the game.");
+            } else {
+                System.out.println("You won the game! Congratulations sailor! Ahoy!");
+                log.debug("Player won the game.");
+            }
+
 
         } catch (IllegalFactoryArgument i) {
             log.error(i);
             System.exit(0);
         }
+
+        log.debug("Exit program.");
     }
 
 
