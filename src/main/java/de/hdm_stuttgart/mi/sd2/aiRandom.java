@@ -6,18 +6,17 @@ import java.util.concurrent.ThreadLocalRandom;
 public class aiRandom {
     public static int randNumber(int mapSize) {
 
-        int randNum = ThreadLocalRandom.current().nextInt(1,  mapSize+1);
-
-        return randNum;
+        return ThreadLocalRandom.current().nextInt(1,  mapSize+1);
 
     }
-    public static boolean randHor() {
+
+    public static boolean randDir() {
 
         Random random = new Random();
 
-        boolean dirBool = random.nextBoolean();
-
-        return dirBool;
+        return random.nextBoolean();
 
     }
+
+
 }

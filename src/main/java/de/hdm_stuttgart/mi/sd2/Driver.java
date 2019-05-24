@@ -7,9 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-import java.sql.SQLOutput;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Driver {
 
@@ -28,9 +26,6 @@ public class Driver {
         //todo write JUnit test's!!!
         //todo write logs , how many? where? when?
         //todo many more.. add it here when you notice something!
-
-        //todo BUG: after ship placement and deletion out of list, still possible to set this ship again WTF?
-        //          -> temporary fixed by many if-clauses => also this is easier to handle -> export to Info-class
 
         int mapSize = 9;
 
@@ -68,13 +63,23 @@ public class Driver {
             shipList.add(Submarine1);
             shipList.add(Submarine2);
 
-            shipListAI = shipList;
+            shipListAI.add(Battleship);
+            shipListAI.add(Cruiser1);
+            shipListAI.add(Cruiser2);
+            shipListAI.add(Destroyer1);
+            shipListAI.add(Destroyer2);
+            shipListAI.add(Submarine1);
+            shipListAI.add(Submarine2);
 
+
+            //shipListAI = shipList;
 
 
             System.out.println("Ahoy! Set all your ships sailor!");
 
-            while(true) {
+            //TODO: Commented complete user-action to test Computer-AI faster (look below)
+
+            /*while(true) {
 
                 try {
 
@@ -145,27 +150,44 @@ public class Driver {
                         playerMap.printMap(); //Check current placement status
 
                     } else {
+                        log.debug("Player's map created. All ships set.");
                         System.out.println("All ships set. Map is being created.");
                         playerMap.printMap();
                         break;
                     }
-
-
-
 
                 } catch (InputMismatchException e) {
                     log.error("Wrong input type!", e);
                     //System.out.println("Your input type was wrong! Try again!");
                     s.next();
                 } catch (ArrayIndexOutOfBoundsException a) {
-                    log.error("Entered position is to low, to high or the ship doesn't fit at this position!", a);
+                    log.error("Entered position is too low, too high or the ship doesn't fit at this position!", a);
                     //System.out.println("Your entered position is too high or the ship doesn't fit at this position! Try again!");
                 }
+            }*/
+
+            //Computer's ship placement
+            Info.shipInfo(shipListAI);
+            while(true) {
+                try {
+                    //todo -------- handle ship crossings?
+                    // handle exceptions?
+                    // delete shipSetPositions/surrounding positions from randomnumgenerator?
+                    // just try as often as needed to place all ships? disable outputs that should become the user by using these methods (like setShip) ------------
+
+                    for (int c = 0; c < shipListAI.size() ; c++) {
+                        //do {
+                            computerMap.setShip(shipListAI.get(c), aiRandom.randNumber(mapSize), aiRandom.randNumber(mapSize), aiRandom.randDir());
+                            shipListAI.remove(shipListAI.get(c));
+                        //} while (   //todo: hard to handle cases when ship isn't set correctly -> don't delete from list, try again AI !
+                    }
+                    log.debug("Computer's map created. All ships set.");
+                    computerMap.printMap();
+                    break;
+
+                } catch (ArrayIndexOutOfBoundsException ignore) { } //catches Exception but ignores it to continue uninterrupted
             }
 
-            //todo set all ships for the AI
-            computerMap.setShip(Battleship,aiRandom.randNumber(mapSize),aiRandom.randNumber(mapSize),aiRandom.randHor());
-            computerMap.printMap();
 
         } catch (IllegalFactoryArgument i) {
             log.error(i);
