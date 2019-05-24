@@ -14,6 +14,7 @@ public class Field {
     static final int BORDER = -42;
     static final int WATER = 0;
     static final int SHIP = -1;
+    static final int SHOT = -99;
 
     public Field(int h) {
         this.h = h;
@@ -61,34 +62,13 @@ public class Field {
     }
 
 
-    /**
-     * Check whether on the desired location is already a ship placed
-     * @param i Ship-type
-     * @param row Selected row for ship placement
-     * @param col Selected column for ship placement
-     * @param dir Horizontal placement? True/False
-     * @return True: Already a ship placed , False: Position free
-     */
-    public boolean checkShip(IShip i, int row, int col, boolean dir) {
-        int size = i.getLength();
-
-        //Vertical
-        if (!dir) {
-            for(int v = 0; v < size; v++) {
-                if (getLeft(row+v, col) == SHIP || getRight(row+v, col) == SHIP || getTop(row+v, col) == SHIP || getBot(row+v, col) == SHIP) {
-                    return true;
-                }
-            }
-            return false;
-
-        //Horizontal
+    public int getStatus(int row, int col) {
+        if(field[row-1][col-1] == -1) {
+            return SHIP;
+        } else if(field[row-1][col-1] == -99) {
+            return SHOT;
         } else {
-            for (int h = 0; h < size; h++) {
-                if (getLeft(row, col+h) == SHIP || getRight(row, col+h) == SHIP || getTop(row, col+h) == SHIP || getBot(row, col+h) == SHIP) {
-                    return true;
-                }
-            }
-            return false;
+            return WATER;
         }
     }
 
@@ -101,8 +81,10 @@ public class Field {
     public int getLeft(int row, int col) {
         if(col == 1) {
             return BORDER;
-        } else if (field[row-1][col-2] == -1){
+        } else if (field[row-1][col-2] == -1) {
             return SHIP;
+        } else if (field[row-1][col-2] == -99) {
+            return SHOT;
         } else {
             return WATER; //todo: Add more states later!!
         }
@@ -117,8 +99,10 @@ public class Field {
     public int getRight(int row, int col) {
         if(col == h) {
             return BORDER;
-        } else if (field[row-1][col] == -1){
+        } else if (field[row-1][col] == -1) {
             return SHIP;
+        } else if(field[row-1][col] == -99) {
+            return SHOT;
         } else {
             return WATER; //todo: Add more states later!!
         }
@@ -133,8 +117,10 @@ public class Field {
     public int getTop(int row, int col) {
         if(row == 1) {
             return BORDER;
-        } else if (field[row-2][col-1] == -1){
+        } else if (field[row-2][col-1] == -1) {
             return SHIP;
+        } else if(field[row-2][col-1] == -99) {
+            return SHOT;
         } else {
             return WATER; //todo: Add more states later!!
         }
@@ -149,10 +135,43 @@ public class Field {
     public int getBot(int row, int col) {
         if(row == h) {
             return BORDER;
-        } else if (field[row][col-1] == -1){
+        } else if (field[row][col-1] == -1) {
             return SHIP;
+        } else if(field[row][col-1] == -99) {
+            return SHOT;
         } else {
             return WATER; //todo: Add more states later!!
+        }
+    }
+
+    /**
+     * Check whether on the desired location is already a ship placed
+     * @param i Ship-type
+     * @param row Selected row for ship placement
+     * @param col Selected column for ship placement
+     * @param dir Horizontal placement? True/False
+     * @return True: Already a ship placed , False: Position free
+     */
+    public boolean checkShip(IShip i, int row, int col, boolean dir) {
+        int size = i.getLength();
+
+        //Vertical
+        if (!dir) {
+            for(int v = 0; v < size; v++) {
+                if (getStatus(row+v, col) == SHIP || getLeft(row+v, col) == SHIP || getRight(row+v, col) == SHIP || getTop(row+v, col) == SHIP || getBot(row+v, col) == SHIP) {
+                    return true;
+                }
+            }
+            return false;
+
+        //Horizontal
+        } else {
+            for (int h = 0; h < size; h++) {
+                if (getStatus(row, col+h) == SHIP || getLeft(row, col+h) == SHIP || getRight(row, col+h) == SHIP || getTop(row, col+h) == SHIP || getBot(row, col+h) == SHIP) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
@@ -179,7 +198,7 @@ public class Field {
             }
             Driver.shipList.remove(i);
         } else {
-            System.out.println("No ship-placement at this position possible! Try again!");
+            System.out.println("\nFAILURE: No ship-placement at this position possible! Try again!\n");
         }
     }
 
@@ -207,49 +226,6 @@ public class Field {
 
         field[row - 1][col - 1] = -99;
 
-    }
-
-    /**
-     * @param f     Player's or Computer's game-field
-     * @param pos   Position which is gonna be checked
-     * @return the current status of "pos" in "field f"
-     */
-    public int status(Field f, int pos) {
-        int h = f.getSize();
-        int fa[][] = f.getField();
-
-        if (pos % h == 0) {
-
-            if (field[pos / h - 1][h - 1] == 99) {
-
-                System.out.println("Shot");
-                return 99;
-            } else if (field[pos / h - 1][h - 1] == 0) {
-                System.out.println("Ship set here");
-                return 0;
-            } else if (field[pos / h - 1][h - 1] != 0 && field[pos / h - 1][h - 1] != 99) {
-                System.out.println("Water");
-                return 1;
-            }
-
-
-        } else {
-            int col = pos / h;
-            int row = pos - col * h - 1;
-
-            if (field[col][row] == 99) {
-
-                System.out.println("Shot");
-                return 99;
-            } else if (field[col][row] == 0) {
-                System.out.println("Ship set here");
-                return 0;
-            }
-                System.out.println("Water");
-                return 1;
-
-        }
-        return 1;
     }
 
 }
