@@ -71,8 +71,8 @@ public class Driver {
             shipListAI.add(Submarine1);
             shipListAI.add(Submarine2);
 
-            final int PLAYERSHIPNUMBER = shipList.size();
-            final int AISHIPNUMBER = shipListAI.size();
+            int playerFleet = shipList.size();
+            int computerFleet = shipListAI.size();
 
 
             System.out.println("Ahoy! Set all your ships sailor!");
@@ -189,15 +189,15 @@ public class Driver {
 
             //Info.shipInfo(shipListAI);
 
-            int shipNumberPlayer = PLAYERSHIPNUMBER;
-            int shipNumberAI = AISHIPNUMBER;
+            shipList.remove(Battleship);
+            System.out.println(playerFleet + ", " + computerFleet);
 
             //todo: 1) Problem: check if a ship is destroyed => look left/right or top/bot until you face WATER/HIT => Switch?/if?
 
-            while(shipNumberPlayer != 0 || shipNumberAI != 0) {
+            while(playerFleet != 0 && computerFleet != 0) {
 
-                log.debug("Player's attack phase");
-                while (true) {
+                while (playerFleet != 0 && computerFleet != 0) {
+                    log.debug("Player's attack phase");
                     System.out.println("Your turn. Enter a position you want to shoot" +
                             "\na) row" +
                             "\nb) col");
@@ -209,17 +209,18 @@ public class Driver {
                         computerMap.attack(row, col);
                         if (computerMap.field[row - 1][col - 1] == Field.HIT) {
                             System.out.println("You hit a ship! You have another try!");
-                            shipNumberAI -= computerMap.checkShipState(row, col);
+                            computerFleet -= computerMap.checkShipState(row, col);
+                            System.out.println("Computer has " + computerFleet + " left.");
                         } else {
                             System.out.println("Missed! Your turn is finished.");
                             break;
                         }
                     }
                 }
-                //computerMap.printMap();
-                log.debug("Computer's attack phase");
+                computerMap.printMap();
 
-                while (true) {
+                while (playerFleet != 0 && computerFleet != 0) {
+                    log.debug("Computer's attack phase");
                     int ranRow = aiRandom.randNumber(mapSize);
                     int ranCol = aiRandom.randNumber(mapSize);
                     if (playerMap.checkShot(ranRow, ranCol) || computerMap.getStatus(ranRow, ranCol) == Field.HIT) {
@@ -228,17 +229,19 @@ public class Driver {
                         playerMap.attack(ranRow, ranCol);
                         if (playerMap.field[ranRow - 1][ranCol - 1] == Field.HIT) {
                             log.trace("Computer has hit a ship at (" + ranRow + ", " + ranCol + ")");
-                            shipNumberPlayer -= playerMap.checkShipState(ranRow, ranCol);
+                            playerFleet -= playerMap.checkShipState(ranRow, ranCol);
+                            System.out.println("You have " + playerFleet + " left.");
                         } else {
                             log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");
                             break;
                         }
                     }
                 }
+                playerMap.printMap();
             }
 
             //Check who has won
-            if(shipNumberPlayer == 0) {
+            if(playerFleet == 0) {
                 System.out.println("Computer has won the game!");
                 log.debug("Computer won the game.");
             } else {
