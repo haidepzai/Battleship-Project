@@ -20,11 +20,12 @@ public class Driver {
 
         log.debug("Program started!");
 
-        //todo computer map random ship placements
-        //todo computer ai shooting
-        //todo method or class to change turns
+
+
+
         //todo write JUnit test's!!!
         //todo write logs , how many? where? when?
+        //todo GUI Scenes
         //todo many more.. add it here when you notice something!
 
         int mapSize = 9;
@@ -253,6 +254,8 @@ public class Driver {
         } catch (IllegalFactoryArgument i) {
             log.error(i);
             System.exit(0);
+        } catch (ArrayIndexOutOfBoundsException a) {
+            log.error("Entered position is too low, too high or the ship doesn't fit at this position!", a);
         }
 
         log.debug("Exit program.");
