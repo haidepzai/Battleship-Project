@@ -15,6 +15,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <javafx.base.version>12.0.1</javafx.base.version>
   </properties>
 
@@ -52,10 +54,9 @@
       <plugin>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
-        <version>0.0.2</version>
+        <version>0.0.1</version>
         <configuration>
-          <launcher>GuiDriver</launcher>
-          <mainClass>de.hdm_stuttgart.sd2.fxml.GuiDriver</mainClass>
+          <mainClass>GuiDriver</mainClass>
         </configuration>
       </plugin>
 
