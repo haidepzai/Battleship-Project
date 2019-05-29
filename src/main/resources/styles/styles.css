@@ -10,3 +10,16 @@
    -fx-font-size: 18pt;
    -fx-padding: 0px 0px 0px 16px;
 }
+#backPane{
+   -fx-background-image: url("water.jpg");
+}
+#playerGrid{
+   -fx-background-color: white;
+}
+#enemyGrid{
+   -fx-background-color: white;
+}
+#water{
+   -fx-background-color: #008ae6;
+   -fx-border-color: white;
+}

@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.sd2;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,9 +14,10 @@ public class GuiController {
     private GridPane playerGrid;
     @FXML
     private GridPane enemyGrid;
-
+    @FXML
     private Button b = new Button();
-    private Button b2 = new Button();
+    @FXML
+    private Button b2= new Button();
 
     @FXML
     public void initialize() {
@@ -64,22 +66,21 @@ public class GuiController {
 
             for (int j = 1; j <= 9; j++) {
 
+Button b = new Button();
                 b.setMaxSize(100, 100);
-                playerGrid.add(b, i, j);
-
                 b.setId("water");
-                b2.setId("water");
+                playerGrid.add(b, i, j);
+                Button b2 = new Button();
 
                 b2.setMaxSize(100, 100);
-                b2.setId(Integer.toBinaryString(i + j));
+                b2.setId("water");
                 enemyGrid.add(b2, i, j);
             }
         }
     }
 
-    public void changeColorShot(ActionEvent event) {
-        event.getSource();
 
 
-    }
+
+
 }
