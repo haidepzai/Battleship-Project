@@ -3,14 +3,10 @@ package de.hdm_stuttgart.mi.sd2;
 
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,8 +29,9 @@ public class GuiDriver extends Application {
         final Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
 
         log.debug("Showing JFX scene");
-        final Scene scene = new Scene(rootNode, 400, 200);
-        //scene.getStylesheets().add("/styles/styles.css");
+        final Scene scene = new Scene(rootNode, 1001, 559);
+
+        scene.getStylesheets().add("/styles/styles.css");
 
         stage.setTitle("Hello JavaFX and Maven");
         stage.setScene(scene);
