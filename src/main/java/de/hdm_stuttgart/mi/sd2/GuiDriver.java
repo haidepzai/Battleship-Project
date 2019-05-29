@@ -31,7 +31,8 @@ public class GuiDriver extends Application {
         log.debug("Showing JFX scene");
         final Scene scene = new Scene(rootNode, 1001, 559);
 
-        scene.getStylesheets().add("/styles/styles.css");
+        scene.getStylesheets().add(GuiDriver.class.getResource("/styles/styles.css").toExternalForm());
+
 
         stage.setTitle("Hello JavaFX and Maven");
         stage.setScene(scene);

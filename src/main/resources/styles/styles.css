@@ -1,3 +1,12 @@
-#butt {
-   fx-color: red;
+#oneToNine{
+   -fx-font-size: 18pt;
+   -fx-padding: 0px 0px 0px 11px;
+}
+#aToI{
+   -fx-font-size: 18pt;
+   -fx-padding: 0px 0px 0px 11px;
+}
+#aToIjustI{
+   -fx-font-size: 18pt;
+   -fx-padding: 0px 0px 0px 16px;
 }
