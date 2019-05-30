@@ -7,17 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-
-public class GuiController {
+@SuppressWarnings("Duplicates")
+public class BattlePhaseController {
 
     @FXML
     private GridPane playerGrid;
     @FXML
     private GridPane enemyGrid;
-    @FXML
-    private Button b = new Button();
-    @FXML
-    private Button b2= new Button();
+
 
     @FXML
     public void initialize() {
@@ -35,21 +32,19 @@ public class GuiController {
         }
 
 
-
-
         //filling the tables at a to i
-            int e = 65;
-            for (int i = 1; i <= 9; i++) {
-                if(e == 73) {
-                    Label l = new Label();
-                    l.setId("aToIjustI");
-                    l.setText(Character.toString((char) e));
-                    playerGrid.add(l, i, 0);
-                    Label l2 = new Label();
-                    l2.setId("aToIjustI");
-                    l2.setText(Character.toString((char) e));
-                    enemyGrid.add(l2, i, 0);
-                } else {
+        int e = 65;
+        for (int i = 1; i <= 9; i++) {
+            if (e == 73) {
+                Label l = new Label();
+                l.setId("aToIjustI");
+                l.setText(Character.toString((char) e));
+                playerGrid.add(l, i, 0);
+                Label l2 = new Label();
+                l2.setId("aToIjustI");
+                l2.setText(Character.toString((char) e));
+                enemyGrid.add(l2, i, 0);
+            } else {
                 Label l = new Label();
                 Label l2 = new Label();
                 l.setId("aToI");
@@ -59,14 +54,14 @@ public class GuiController {
                 playerGrid.add(l, i, 0);
                 enemyGrid.add(l2, i, 0);
                 e++;
-                }
             }
+        }
 
         for (int i = 1; i <= 9; i++) {
 
             for (int j = 1; j <= 9; j++) {
 
-Button b = new Button();
+                Button b = new Button();
                 b.setMaxSize(100, 100);
                 b.setId("water");
                 playerGrid.add(b, i, j);
@@ -77,8 +72,11 @@ Button b = new Button();
                 enemyGrid.add(b2, i, j);
             }
         }
-    }
 
+        //todo: next steps => copied out from Driver-class
+
+
+    }
 
 
 

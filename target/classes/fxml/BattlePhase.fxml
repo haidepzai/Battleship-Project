@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane id="backPane" fx:id="backPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="1001.0" styleClass="/styles/style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.sd2.GuiController">
+<Pane id="backPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="1001.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.sd2.BattlePhaseController">
    <children>
       <GridPane fx:id="playerGrid" gridLinesVisible="true" layoutX="79.0" layoutY="73.0" prefHeight="400.0" prefWidth="400.0">
          <columnConstraints>

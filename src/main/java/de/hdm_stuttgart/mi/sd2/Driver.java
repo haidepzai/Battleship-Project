@@ -16,6 +16,8 @@ public class Driver {
     static List<IShip> shipList = new ArrayList<>();
     static List<IShip> shipListAI = new ArrayList<>();
 
+    final static int mapSize = 9;
+
     public static void main(String[] args) {
 
         log.debug("Program started!");
@@ -27,8 +29,6 @@ public class Driver {
         //todo write logs , how many? where? when?
         //todo GUI Scenes
         //todo many more.. add it here when you notice something!
-
-        int mapSize = 9;
 
         //Creating the Map for the game depending of the mapSize
 
@@ -78,9 +78,9 @@ public class Driver {
 
             System.out.println("Ahoy! Set all your ships sailor!");
 
-            //TODO: Commented complete user-action to test Computer-AI faster (look below)
 
-            /*while(true) {
+
+            while(true) {
 
                 try {
 
@@ -165,7 +165,7 @@ public class Driver {
                     log.error("Entered position is too low, too high or the ship doesn't fit at this position!", a);
                     //System.out.println("Your entered position is too high or the ship doesn't fit at this position! Try again!");
                 }
-            }*/
+            }
 
 
             //Computer's ship placement

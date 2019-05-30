@@ -1,0 +1,52 @@
+#oneToNine{
+   -fx-font-size: 18pt;
+   -fx-padding: 0px 0px 0px 11px;
+}
+#aToI{
+   -fx-font-size: 18pt;
+   -fx-padding: 0px 0px 0px 11px;
+}
+#aToIjustI{
+   -fx-font-size: 18pt;
+   -fx-padding: 0px 0px 0px 16px;
+}
+#backPane{
+   -fx-background-image: url("../pictures/water.png");
+}
+#menuPane{
+   -fx-background-image: url("../pictures/battleship.png");
+}
+#playerGrid{
+   -fx-background-color: white;
+}
+#enemyGrid{
+   -fx-background-color: white;
+}
+#water{
+   -fx-background-color: #008ae6;
+   -fx-border-color: white;
+}
+.menuButton{
+   -fx-background-color: white;
+   -fx-effect: none;
+}
+#playButton:hover {
+   -fx-background-color: #008ae6;
+   -fx-text-fill: white;
+   -fx-border: solid;
+   -fx-border-color: white;
+}
+#exitButton:hover {
+   -fx-background-color: red;
+   -fx-text-fill: white;
+   -fx-border: solid;
+   -fx-border-color: white;
+}
+#infoLabel {
+   -fx-text-fill: red;
+}
+.menuLabel{
+   -fx-border-width: 2px;
+   -fx-background-color: white;
+   -fx-border-color: black;
+}
