@@ -22,7 +22,7 @@
 #enemyGrid{
    -fx-background-color: white;
 }
-#water{
+.waterButton{
    -fx-background-color: #008ae6;
    -fx-border-color: white;
 }

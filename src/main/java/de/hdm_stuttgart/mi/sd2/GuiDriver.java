@@ -19,7 +19,7 @@ public class GuiDriver extends Application {
 
     private static Stage stage = null;
 
-    private static final Logger log = LogManager.getLogger(GuiDriver.class);
+    static final Logger log = LogManager.getLogger(GuiDriver.class);
 
     public static GuiDriver getApplication() {
         return application;

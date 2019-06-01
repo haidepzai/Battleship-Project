@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -35,10 +37,16 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="68.0" layoutY="387.0" prefHeight="42.0" prefWidth="464.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER">
+      <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="68.0" layoutY="387.0" prefHeight="42.0" prefWidth="330.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <Pane layoutX="413.0" layoutY="374.0" prefHeight="68.0" prefWidth="119.0" style="-fx-background-color: white;">
+         <children>
+            <RadioButton fx:id="horizontal" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Horizontal" />
+            <RadioButton fx:id="vertical" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="91.0" style="-fx-background-color: white;" text="Vertical" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

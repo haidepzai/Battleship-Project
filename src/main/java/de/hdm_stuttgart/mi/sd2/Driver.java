@@ -16,7 +16,7 @@ public class Driver {
     static List<IShip> shipList = new ArrayList<>();
     static List<IShip> shipListAI = new ArrayList<>();
 
-    final static int mapSize = 9;
+    final static int MAPSIZE = 9;
 
     public static void main(String[] args) {
 
@@ -30,10 +30,10 @@ public class Driver {
         //todo GUI Scenes
         //todo many more.. add it here when you notice something!
 
-        //Creating the Map for the game depending of the mapSize
+        //Creating the Map for the game depending of the MAPSIZE
 
-        Field playerMap = new Field(mapSize);
-        Field computerMap = new Field(mapSize);
+        Field playerMap = new Field(MAPSIZE);
+        Field computerMap = new Field(MAPSIZE);
 
         //Creating variables for the needed ships
 
@@ -176,7 +176,7 @@ public class Driver {
 
                     while(shipListAI.size() > 0) {
 
-                        computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(mapSize), aiRandom.randNumber(mapSize), aiRandom.randDir());
+                        computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir());
                         System.out.println();
                         shipListAI.remove(shipListAI.get(0));
 
@@ -222,8 +222,8 @@ public class Driver {
 
                 while (playerFleet != 0 && computerFleet != 0) {
                     log.debug("Computer's attack phase");
-                    int ranRow = aiRandom.randNumber(mapSize);
-                    int ranCol = aiRandom.randNumber(mapSize);
+                    int ranRow = aiRandom.randNumber(MAPSIZE);
+                    int ranCol = aiRandom.randNumber(MAPSIZE);
                     if (playerMap.checkShot(ranRow, ranCol) || computerMap.getStatus(ranRow, ranCol) == Field.HIT) {
                         log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ")");
                     } else {
