@@ -1,19 +1,19 @@
 package de.hdm_stuttgart.mi.sd2.Interfaces;
 
 public interface IShip {
-    public enum ShipType{
+    enum ShipType{
 
         DESTROYER,
         SUBMARINE,
         CRUISER,
         BATTLESHIP;
 
-        private ShipType() {
+        ShipType() {
         }
     }
 
-    public int getLength();
-    public String getName();
+    int getLength();
+    String getName();
 }
 
 

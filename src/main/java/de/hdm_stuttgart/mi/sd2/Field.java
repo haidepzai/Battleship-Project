@@ -19,17 +19,7 @@ public class Field {
 
     public Field(int h) {
         this.h = h;
-        int[][] field = new int[h][h];
-
-        for (int y = 0; y < field.length; y++) {
-            int counter = 0;
-            field[y][y] = counter;
-            for (int x = 0; x < field.length; x++) {
-                //counter++;
-                field[y][x] = counter;
-            }
-        }
-        this.field = field;
+        this.field = new int[h][h];
     }
 
 
