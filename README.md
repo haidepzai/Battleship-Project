@@ -6,9 +6,9 @@
 
 ## Detailed Function
 
-> Each player has to set their ships. You have five ships to set:
+Each player has to set their ships. You have five ships to set:
 - 1 Battleship
 - 2 Cruisers
 - 2 Destroyers
 - 2 Submarines
-> Players take turns firing shots to attack enemy ships.
+Players take turns firing shots to attack enemy ships.
