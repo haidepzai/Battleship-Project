@@ -26,6 +26,9 @@
    -fx-background-color: #008ae6;
    -fx-border-color: white;
 }
+.blur{
+   -fx-opacity: 0.3 !important;
+}
 .menuButton{
    -fx-background-color: white;
    -fx-effect: none;

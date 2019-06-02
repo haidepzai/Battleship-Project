@@ -18,6 +18,9 @@ public class BattlePhaseController {
 
     @FXML
     public void initialize() {
+
+        ShipPlacementController spc = new ShipPlacementController();
+
         //Filling the tables at one to nine
         for (int i = 1; i <= 9; i++) {
             Label l = new Label();
@@ -73,7 +76,6 @@ public class BattlePhaseController {
             }
         }
 
-        //todo: next steps => copied out from Driver-class
 
 
     }

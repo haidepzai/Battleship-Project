@@ -35,6 +35,9 @@ public class ShipPlacementController {
     GridPane playerGrid;
 
     @FXML
+    GridPane enemyGrid;
+
+    @FXML
     Label infoLabel;
 
     @FXML
@@ -42,6 +45,9 @@ public class ShipPlacementController {
 
     @FXML
     RadioButton vertical;
+
+    @FXML
+    Pane popUp;
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -151,16 +157,21 @@ public class ShipPlacementController {
             //System.out.println(children);
 
             if (shipList.size() > 1) {
-                playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir);
-                //todo: Bug bei fehlerhaftem ship-placement (Bsp angrenzende Schiffe) + erst färben wenn korrekt!!
-                colorShipCells(shipLength, rowIndex, colIndex, dir);
-                //shipList.remove(0);
-                infoLabel.setText("Now set your " + shipList.get(0).getName().toUpperCase());
+
+                if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
+                    //todo: Bug bei fehlerhaftem ship-placement (Bsp angrenzende Schiffe) + erst färben wenn korrekt!!
+                    colorShipCells(shipLength, rowIndex, colIndex, dir, playerGrid);
+                    //shipList.remove(0);
+                    infoLabel.setText("Now set your " + shipList.get(0).getName().toUpperCase());
+                } else {
+                    infoLabel.setText("FAIL: There is another ship. Try again!");
+                }
 
             } else {
 
-                playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir);
-                colorShipCells(shipLength, rowIndex, colIndex, dir);
+                if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
+                    colorShipCells(shipLength, rowIndex, colIndex, dir, playerGrid);
+                }
                 //shipList.remove(0);
                 GuiDriver.log.debug("Player's map created. All ships set.");
                 infoLabel.setText("All ships set. Computer is setting..");
@@ -171,8 +182,10 @@ public class ShipPlacementController {
 
                         while (shipListAI.size() > 0) {
 
-                            computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir());
-                            //shipListAI.remove(0);
+                            if(computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir())) {
+                                colorShipCells(shipLength, rowIndex, colIndex, dir, enemyGrid);
+                                //shipListAI.remove(0);
+                            }
 
                         }
                         GuiDriver.log.debug("Computer's map created. All ships set.");
@@ -182,6 +195,15 @@ public class ShipPlacementController {
                         //catches Exception but ignores it to continue uninterrupted
                     }
                 }
+
+                infoLabel.getStyleClass().add("blur");
+                infoLabel.getStyleClass().add("blur");
+
+
+                popUp.setDisable(false);
+                popUp.setVisible(true);
+
+
             }
 
         } catch (ArrayIndexOutOfBoundsException err) {
@@ -192,10 +214,10 @@ public class ShipPlacementController {
     }
 
     @FXML
-    public void colorShipCells (int shipLength, int row, int column, boolean dir) {
+    public void colorShipCells (int shipLength, int row, int column, boolean dir, GridPane peterPane) {
 
         //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
-        ObservableList<Node> children = playerGrid.getChildren();
+        ObservableList<Node> children = peterPane.getChildren();
         //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
         for (int i = 1; i < children.size(); i++) {
             for(int l = 0; l < shipLength; l++) {
@@ -210,6 +232,11 @@ public class ShipPlacementController {
                 }
             }
         }
+    }
+
+    @FXML
+    public void goToBattlePhase (ActionEvent event) throws IOException{
+        GuiDriver.getApplication().setScene("/fxml/BattlePhase.fxml", "Battle-Phase", 1001, 559);
     }
 }
 

@@ -193,23 +193,26 @@ public class Field {
      * @param col Selected column for ship placement
      * @param dir Horizontal placement? True/False
      */
-    public void setShip(IShip i, int row, int col, boolean dir) {
+    public boolean setShip(IShip i, int row, int col, boolean dir) {
 
         if (!checkShip(i, row, col, dir)) {
             setCore(i, row, col, dir);
             ShipPlacementController.shipList.remove(i);
+            return true;
         } else {
-            System.out.println("\nFAILURE: No ship-placement at this position possible! Try again!\n");
+            return false;
         }
     }
 
-    public void setShipAI(IShip i, int row, int col, boolean dir) {
+    public boolean setShipAI(IShip i, int row, int col, boolean dir) {
 
         if (!checkShip(i, row, col, dir)) {
             setCore(i, row, col, dir);
             ShipPlacementController.shipListAI.remove(i);
+            return true;
         } else {
-            setShipAI(i, aiRandom.randNumber(h), aiRandom.randNumber(h), aiRandom.randDir());
+            //setShipAI(i, aiRandom.randNumber(h), aiRandom.randNumber(h), aiRandom.randDir());
+            return false;
         }
     }
 
