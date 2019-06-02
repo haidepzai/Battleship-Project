@@ -197,7 +197,7 @@ public class Field {
 
         if (!checkShip(i, row, col, dir)) {
             setCore(i, row, col, dir);
-            Driver.shipList.remove(i);
+            ShipPlacementController.shipList.remove(i);
         } else {
             System.out.println("\nFAILURE: No ship-placement at this position possible! Try again!\n");
         }
@@ -207,6 +207,7 @@ public class Field {
 
         if (!checkShip(i, row, col, dir)) {
             setCore(i, row, col, dir);
+            ShipPlacementController.shipListAI.remove(i);
         } else {
             setShipAI(i, aiRandom.randNumber(h), aiRandom.randNumber(h), aiRandom.randDir());
         }

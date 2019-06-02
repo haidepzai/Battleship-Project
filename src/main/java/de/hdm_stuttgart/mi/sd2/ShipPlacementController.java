@@ -24,8 +24,8 @@ import java.util.function.Predicate;
 @SuppressWarnings("Duplicates")
 public class ShipPlacementController {
 
-    List<IShip> shipList = new ArrayList<>();
-    List<IShip> shipListAI = new ArrayList<>();
+    static List<IShip> shipList = new ArrayList<>();
+    static List<IShip> shipListAI = new ArrayList<>();
     final int MAPSIZE = 9;
 
     Field playerMap = new Field(MAPSIZE);
@@ -47,6 +47,46 @@ public class ShipPlacementController {
 
     @FXML
     public void initialize() throws IOException {
+
+        IShip Battleship;
+        IShip Cruiser1;
+        IShip Cruiser2;
+        IShip Destroyer1;
+        IShip Destroyer2;
+        IShip Submarine1;
+        IShip Submarine2;
+
+
+        //Adding all needed ships for the game (2 Cruiser, 2 Destroyer, 2 Submarines and one Battleship)
+        try {
+            Cruiser1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
+            Cruiser2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
+            Destroyer1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
+            Destroyer2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
+            Submarine1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
+            Submarine2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
+            Battleship = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
+
+            shipList.add(Battleship);
+            shipList.add(Cruiser1);
+            shipList.add(Cruiser2);
+            shipList.add(Destroyer1);
+            shipList.add(Destroyer2);
+            shipList.add(Submarine1);
+            shipList.add(Submarine2);
+
+            shipListAI.add(Battleship);
+            shipListAI.add(Cruiser1);
+            shipListAI.add(Cruiser2);
+            shipListAI.add(Destroyer1);
+            shipListAI.add(Destroyer2);
+            shipListAI.add(Submarine1);
+            shipListAI.add(Submarine2);
+
+        } catch (IllegalFactoryArgument i) {
+            GuiDriver.log.error(i);
+            System.exit(0);
+        }
 
         horizontal.setToggleGroup(group);
         vertical.setToggleGroup(group);
@@ -96,49 +136,6 @@ public class ShipPlacementController {
             }
         }
 
-
-        //Creating variables for the needed ships
-
-        IShip Battleship;
-        IShip Cruiser1;
-        IShip Cruiser2;
-        IShip Destroyer1;
-        IShip Destroyer2;
-        IShip Submarine1;
-        IShip Submarine2;
-
-
-        //Adding all needed ships for the game (2 Cruiser, 2 Destroyer, 2 Submarines and one Battleship)
-        try {
-            Cruiser1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            Cruiser2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            Destroyer1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            Destroyer2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            Submarine1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            Submarine2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            Battleship = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
-
-            shipList.add(Battleship);
-            shipList.add(Cruiser1);
-            shipList.add(Cruiser2);
-            shipList.add(Destroyer1);
-            shipList.add(Destroyer2);
-            shipList.add(Submarine1);
-            shipList.add(Submarine2);
-
-            shipListAI.add(Battleship);
-            shipListAI.add(Cruiser1);
-            shipListAI.add(Cruiser2);
-            shipListAI.add(Destroyer1);
-            shipListAI.add(Destroyer2);
-            shipListAI.add(Submarine1);
-            shipListAI.add(Submarine2);
-
-        } catch (IllegalFactoryArgument i) {
-            GuiDriver.log.error(i);
-            System.exit(0);
-        }
-
         infoLabel.setText("Set your " + shipList.get(0).getName().toUpperCase());
     }
 
@@ -155,15 +152,16 @@ public class ShipPlacementController {
 
             if (shipList.size() > 1) {
                 playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir);
+                //todo: Bug bei fehlerhaftem ship-placement (Bsp angrenzende Schiffe) + erst färben wenn korrekt!!
                 colorShipCells(shipLength, rowIndex, colIndex, dir);
-                shipList.remove(0);
+                //shipList.remove(0);
                 infoLabel.setText("Now set your " + shipList.get(0).getName().toUpperCase());
 
             } else {
 
                 playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir);
                 colorShipCells(shipLength, rowIndex, colIndex, dir);
-                shipList.remove(0);
+                //shipList.remove(0);
                 GuiDriver.log.debug("Player's map created. All ships set.");
                 infoLabel.setText("All ships set. Computer is setting..");
 
@@ -174,7 +172,7 @@ public class ShipPlacementController {
                         while (shipListAI.size() > 0) {
 
                             computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir());
-                            shipListAI.remove(0);
+                            //shipListAI.remove(0);
 
                         }
                         GuiDriver.log.debug("Computer's map created. All ships set.");
