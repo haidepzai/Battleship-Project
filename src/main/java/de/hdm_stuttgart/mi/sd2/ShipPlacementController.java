@@ -159,7 +159,6 @@ public class ShipPlacementController {
                 String second = "second ";
 
                 if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
-                    //todo: Bug bei fehlerhaftem ship-placement (Bsp angrenzende Schiffe) + erst färben wenn korrekt!!
                     colorShipCells(shipLength, rowIndex, colIndex, dir, playerGrid);
                     //shipList.remove(0);
                     int counter = 0;

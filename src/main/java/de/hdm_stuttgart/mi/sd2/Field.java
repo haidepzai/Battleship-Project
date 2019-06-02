@@ -10,7 +10,6 @@ public class Field {
     static int h;
     int[][] field;
 
-    //todo: statische Zustandsvariablen korrekt? sinnvoll?
     static final int BORDER = -42;
     static final int WATER = 0;
     static final int SHIP = -1;
@@ -78,7 +77,7 @@ public class Field {
         } else if (field[row - 1][col - 2] == -99) {
             return SHOT;
         } else {
-            return WATER; //todo: Add more states later!!
+            return WATER;
         }
     }
 
@@ -97,7 +96,7 @@ public class Field {
         } else if (field[row - 1][col] == -99) {
             return SHOT;
         } else {
-            return WATER; //todo: Add more states later!!
+            return WATER;
         }
     }
 
@@ -116,7 +115,7 @@ public class Field {
         } else if (field[row - 2][col - 1] == -99) {
             return SHOT;
         } else {
-            return WATER; //todo: Add more states later!!
+            return WATER;
         }
     }
 
@@ -135,7 +134,7 @@ public class Field {
         } else if (field[row][col - 1] == -99) {
             return SHOT;
         } else {
-            return WATER; //todo: Add more states later!!
+            return WATER;
         }
     }
 
@@ -262,7 +261,7 @@ public class Field {
     public boolean checkHorizontal(int row, int col) {
 
         //Check left side
-        for(int l = 0; getLeft(row, col-l) != WATER && getLeft(row, col-l) != SHOT && getLeft(row, col-l) != BORDER; l++) {   //todo: bis auf SHOT/BORDER/WATER trifft!
+        for(int l = 0; getLeft(row, col-l) != WATER && getLeft(row, col-l) != SHOT && getLeft(row, col-l) != BORDER; l++) {
             if(getLeft(row, col-l) == SHIP) {
                 return false;
             }
@@ -279,7 +278,7 @@ public class Field {
     public boolean checkVertical(int row, int col) {
 
         //Check top side
-        for(int t = 0; getTop(row-t, col) != WATER && getTop(row-t, col) != SHOT && getTop(row-t, col) != BORDER; t++) {   //todo: bis auf SHOT/BORDER/WATER trifft!
+        for(int t = 0; getTop(row-t, col) != WATER && getTop(row-t, col) != SHOT && getTop(row-t, col) != BORDER; t++) {
             if(getTop(row-t, col) == SHIP) {
                 return false;
             }

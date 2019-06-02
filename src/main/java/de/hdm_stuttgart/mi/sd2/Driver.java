@@ -27,8 +27,6 @@ public class Driver {
 
         //todo write JUnit test's!!!
         //todo write logs , how many? where? when?
-        //todo GUI Scenes
-        //todo many more.. add it here when you notice something!
 
         //Creating the Map for the game depending of the MAPSIZE
 
@@ -193,7 +191,8 @@ public class Driver {
             shipList.remove(Battleship);
             System.out.println(playerFleet + ", " + computerFleet);
 
-            //todo: 1) Problem: check if a ship is destroyed => look left/right or top/bot until you face WATER/HIT => Switch?/if?
+            //todo: -----------------------------------------------
+            //todo: From here starts the battle-phase => STRG+C !!
 
             while(playerFleet != 0 && computerFleet != 0) {
 
