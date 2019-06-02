@@ -155,11 +155,25 @@ public class ShipPlacementController {
 
             if (shipList.size() > 1) {
 
+                String first = "first ";
+                String second = "second ";
+
                 if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     //todo: Bug bei fehlerhaftem ship-placement (Bsp angrenzende Schiffe) + erst färben wenn korrekt!!
                     colorShipCells(shipLength, rowIndex, colIndex, dir, playerGrid);
                     //shipList.remove(0);
-                    infoLabel.setText("Now set your " + shipList.get(0).getName().toUpperCase());
+                    int counter = 0;
+                    for(IShip ship : shipList) {
+                        if (shipList.get(0).getName().equals(ship.getName())) {
+                            counter++;
+                        }
+                    }
+                    if(counter == 2) {
+                        infoLabel.setText("Now set your " + first + shipList.get(0).getName().toUpperCase());
+                    } else {
+                        infoLabel.setText("Now set your " + second + shipList.get(0).getName().toUpperCase());
+                    }
+
                 } else {
                     infoLabel.setText("FAIL: There is another ship. Try again!");
                 }
@@ -194,6 +208,9 @@ public class ShipPlacementController {
 
                     popUp.setDisable(false);
                     popUp.setVisible(true);
+
+                } else {
+                    infoLabel.setText("FAIL: There is another ship. Try again!");
                 }
 
             }
