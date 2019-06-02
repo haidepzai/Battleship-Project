@@ -26,16 +26,13 @@ public class ShipPlacementController {
 
     static List<IShip> shipList = new ArrayList<>();
     static List<IShip> shipListAI = new ArrayList<>();
-    final int MAPSIZE = 9;
+    static final int MAPSIZE = 9;
 
-    Field playerMap = new Field(MAPSIZE);
+    static Field playerMap = new Field(MAPSIZE);
     Field computerMap = new Field(MAPSIZE);
 
     @FXML
     GridPane playerGrid;
-
-    @FXML
-    GridPane enemyGrid;
 
     @FXML
     Label infoLabel;
@@ -171,38 +168,33 @@ public class ShipPlacementController {
 
                 if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorShipCells(shipLength, rowIndex, colIndex, dir, playerGrid);
-                }
-                //shipList.remove(0);
-                GuiDriver.log.debug("Player's map created. All ships set.");
-                infoLabel.setText("All ships set. Computer is setting..");
 
-                while (true) {
+                    //shipList.remove(0);
+                    GuiDriver.log.debug("Player's map created. All ships set.");
+                    infoLabel.setText("All ships set. Computer is setting..");
 
-                    try {
+                    while (true) {
 
-                        while (shipListAI.size() > 0) {
+                        try {
 
-                            if(computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir())) {
-                                colorShipCells(shipLength, rowIndex, colIndex, dir, enemyGrid);
-                                //shipListAI.remove(0);
+                            while (shipListAI.size() > 0) {
+
+                                computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir());
+
                             }
 
+                            GuiDriver.log.debug("Computer's map created. All ships set.");
+                            break;
+
+                        } catch (ArrayIndexOutOfBoundsException ignore) {
+                            //catches Exception but ignores it to continue uninterrupted
                         }
-                        GuiDriver.log.debug("Computer's map created. All ships set.");
-                        break;
-
-                    } catch (ArrayIndexOutOfBoundsException ignore) {
-                        //catches Exception but ignores it to continue uninterrupted
                     }
+
+
+                    popUp.setDisable(false);
+                    popUp.setVisible(true);
                 }
-
-                infoLabel.getStyleClass().add("blur");
-                infoLabel.getStyleClass().add("blur");
-
-
-                popUp.setDisable(false);
-                popUp.setVisible(true);
-
 
             }
 
