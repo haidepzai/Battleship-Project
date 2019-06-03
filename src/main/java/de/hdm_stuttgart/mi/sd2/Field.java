@@ -222,14 +222,14 @@ public class Field {
      * @param col Column of position that shall be checked
      * @return True: Position has already been shot , False: Not been shot
      */
-    boolean checkShot(int row, int col) {
-
-        if (field[row - 1][col - 1] == -99) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    boolean checkShot(int row, int col) {
+//
+//        if (field[row - 1][col - 1] == -99) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     /**
      * Attack position on game-field
@@ -247,13 +247,12 @@ public class Field {
 
     }
 
-    public int checkShipState(int row, int col) {
+    public boolean checkShipState(int row, int col) {
 
         if(checkVertical(row, col) && checkHorizontal(row, col)) {
-            System.out.println("You have destroyed a ship.");
-            return 1;
+            return true;
         } else {
-            return 0;
+            return false;
         }
 
     }

@@ -203,13 +203,13 @@ public class Driver {
                             "\nb) col");
                     int row = s.nextInt();
                     int col = s.nextInt();
-                    if (computerMap.checkShot(row, col) || computerMap.getStatus(row, col) == Field.HIT) {
+                    if (computerMap.getStatus(row, col) == Field.SHOT || computerMap.getStatus(row, col) == Field.HIT) {
                         System.out.println("Position has already been shot! Try again!");
                     } else {
                         computerMap.attack(row, col);
                         if (computerMap.field[row - 1][col - 1] == Field.HIT) {
                             System.out.println("You hit a ship! You have another try!");
-                            computerFleet -= computerMap.checkShipState(row, col);
+                            //computerFleet -= computerMap.checkShipState(row, col);
                             System.out.println("Computer has " + computerFleet + " left.");
                         } else {
                             System.out.println("Missed! Your turn is finished.");
@@ -223,13 +223,13 @@ public class Driver {
                     log.debug("Computer's attack phase");
                     int ranRow = aiRandom.randNumber(MAPSIZE);
                     int ranCol = aiRandom.randNumber(MAPSIZE);
-                    if (playerMap.checkShot(ranRow, ranCol) || computerMap.getStatus(ranRow, ranCol) == Field.HIT) {
+                    if (playerMap.getStatus(ranRow, ranCol) == Field.SHOT || computerMap.getStatus(ranRow, ranCol) == Field.HIT) {
                         log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ")");
                     } else {
                         playerMap.attack(ranRow, ranCol);
                         if (playerMap.field[ranRow - 1][ranCol - 1] == Field.HIT) {
                             log.trace("Computer has hit a ship at (" + ranRow + ", " + ranCol + ")");
-                            playerFleet -= playerMap.checkShipState(ranRow, ranCol);
+                            //playerFleet -= playerMap.checkShipState(ranRow, ranCol);
                             System.out.println("You have " + playerFleet + " left.");
                         } else {
                             log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");

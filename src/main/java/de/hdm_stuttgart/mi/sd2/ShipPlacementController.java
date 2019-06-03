@@ -28,6 +28,9 @@ public class ShipPlacementController {
     static List<IShip> shipListAI = new ArrayList<>();
     static final int MAPSIZE = 9;
 
+    static int playerFleet;
+    static int computerFleet;
+
     static Field playerMap = new Field(MAPSIZE);
     static Field computerMap = new Field(MAPSIZE);
 
@@ -85,6 +88,9 @@ public class ShipPlacementController {
             shipListAI.add(Destroyer2);
             shipListAI.add(Submarine1);
             shipListAI.add(Submarine2);
+
+            playerFleet = shipList.size();
+            computerFleet = shipListAI.size();
 
         } catch (IllegalFactoryArgument i) {
             GuiDriver.log.error(i);

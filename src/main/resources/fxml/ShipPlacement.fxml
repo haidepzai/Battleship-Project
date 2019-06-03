@@ -40,7 +40,7 @@
       </GridPane>
       <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="68.0" layoutY="387.0" prefHeight="42.0" prefWidth="330.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
       </Label>
       <Pane layoutX="413.0" layoutY="374.0" prefHeight="68.0" prefWidth="119.0" style="-fx-background-color: white;">
