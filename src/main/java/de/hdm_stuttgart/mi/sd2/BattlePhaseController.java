@@ -149,9 +149,10 @@ public class BattlePhaseController {
     public void setAIShoot() {
         //Computer's turn
         GuiDriver.log.debug("Computer's attack phase");
-        int ranRow = aiRandom.randNumber(MAPSIZE);
-        int ranCol = aiRandom.randNumber(MAPSIZE);
+
         while(true) {
+            int ranRow = aiRandom.randNumber(MAPSIZE);
+            int ranCol = aiRandom.randNumber(MAPSIZE);
             if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.SHOT || ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
                 GuiDriver.log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ")");
             } else {
