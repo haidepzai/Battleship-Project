@@ -16,6 +16,9 @@ public class BattlePhaseController {
 
     final int MAPSIZE = ShipPlacementController.MAPSIZE;
 
+    int playerFleet = ShipPlacementController.shipList.size();
+    int computerFleet = ShipPlacementController.shipListAI.size();
+
     @FXML
     GridPane playerGrid;
     @FXML
@@ -79,10 +82,15 @@ public class BattlePhaseController {
                 b2.setMaxSize(100, 100);
                 b2.getStyleClass().add("waterButton");
                 enemyGrid.add(b2, i, j);
+                b2.setOnAction(event -> {
+                    int rowIndex = GridPane.getRowIndex(b);
+                    int colIndex = GridPane.getColumnIndex(b);
+                    shoot(event, rowIndex, colIndex);
+                });
             }
         }
 
-
+        //Color ships from ShipPlacementController
         for (int r = 1; r <= MAPSIZE; r++) {
             for (int c = 1; c <= MAPSIZE; c++) {
                 //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
@@ -100,8 +108,49 @@ public class BattlePhaseController {
 
         }
 
-        //TODO:
+        //Color ships from AI
+        for (int r = 1; r <= MAPSIZE; r++) {
+            for (int c = 1; c <= MAPSIZE; c++) {
+                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
+                ObservableList<Node> children = enemyGrid.getChildren();
+                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+                for (int i = 1; i < children.size(); i++) {
+
+                    if (ShipPlacementController.computerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
+                        children.get(i).setStyle("-fx-background-color: black");
+                    }
+
+
+                }
+            }
+
+        }
     }
+
+        @FXML
+        public void shoot (ActionEvent event, int row, int col) {
+
+            if (ShipPlacementController.computerMap.checkShot(row, col) || ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
+                System.out.println("Position has already been shot! Try again!");
+            } else {
+                computerMap.attack(row, col);
+                if (computerMap.field[row - 1][col - 1] == Field.HIT) {
+                    System.out.println("You hit a ship! You have another try!");
+                    computerFleet -= computerMap.checkShipState(row, col);
+                    System.out.println("Computer has " + computerFleet + " left.");
+                } else {
+                    System.out.println("Missed! Your turn is finished.");
+                }
+            }
+
+            ObservableList<Node> children = enemyGrid.getChildren();
+            for (int i = 1; i < children.size(); i++) {
+                if (ShipPlacementController.computerMap.getStatus(rowIndex, colIndex) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == rowIndex && GridPane.getColumnIndex(children.get(i)) == colIndex) {
+                    children.get(i).setStyle("-fx-background-color: black");
+                }
+            }
+        }
+
 
 
 

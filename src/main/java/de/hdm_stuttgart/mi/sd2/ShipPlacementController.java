@@ -29,7 +29,7 @@ public class ShipPlacementController {
     static final int MAPSIZE = 9;
 
     static Field playerMap = new Field(MAPSIZE);
-    Field computerMap = new Field(MAPSIZE);
+    static Field computerMap = new Field(MAPSIZE);
 
     @FXML
     GridPane playerGrid;
