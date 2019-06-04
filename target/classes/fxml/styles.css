@@ -29,6 +29,18 @@
 #playButton{
    -fx-background-color: white;
    -fx-effect: none;
+   -fx-border: solid;
+   -fx-border-width: 2px;
+   -fx-border-radius: 0;
+   -fx-border-color: #008ae6;
+}
+#exitButton{
+   -fx-background-color: white;
+   -fx-effect: none;
+   -fx-border: solid;
+   -fx-border-radius: 0;
+   -fx-border-width: 2px;
+   -fx-border-color: red;
 }
 #playButton:hover {
    -fx-background-color: #008ae6;
@@ -61,6 +73,7 @@
    -fx-border-color: black;
 }
 #popUp{
-   -fx-border-color: red;
+   -fx-border-color: green;
    -fx-border: solid;
+   -fx-border-width: 2px;
 }

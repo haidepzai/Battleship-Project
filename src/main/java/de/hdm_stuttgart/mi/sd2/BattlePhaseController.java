@@ -9,6 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.util.concurrent.TimeUnit;
 
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
@@ -118,8 +121,9 @@ public class BattlePhaseController {
                             }
                         } else {
                             bC.setStyle("-fx-background-color: red");
-                            infoLabel.setText("Missed! Your turn is finished.");
+                            infoLabel.setText("Missed! Your turn is finished. Computer's turn..");
                             setAIShoot();
+                            infoLabel.setText("It's your turn! Set your shot!");
                         }
                     }
                 });
@@ -187,7 +191,7 @@ public class BattlePhaseController {
                     if (ShipPlacementController.playerMap.checkShipState(ranRow, ranCol)) {
 
                         if (ShipPlacementController.playerFleet == 0) {
-                            infoLabel.setText("The computer destroyed every ship you!!!");
+                            infoLabel.setText("The computer destroyed all of your ships!!!");
                             gameWin.setText("The computer won the game!");
                             playerGrid.setDisable(true);
                             enemyGrid.setDisable(true);
@@ -200,7 +204,7 @@ public class BattlePhaseController {
                         }
                         ShipPlacementController.playerFleet--;
                     } else {
-                        infoLabel.setText("Computer hit a ship and gets another shoot!");
+                        infoLabel.setText("Computer hit a ship and gets another shot!");
                     }
                 } else {
                     GuiDriver.log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");
