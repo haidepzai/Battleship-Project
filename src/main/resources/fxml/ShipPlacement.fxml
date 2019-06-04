@@ -21,7 +21,7 @@
                   <RadioButton fx:id="vertical" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="91.0" style="-fx-background-color: white;" text="Vertical" />
                </children>
             </Pane>
-            <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="68.0" layoutY="386.0" prefHeight="42.0" prefWidth="330.0" style="-fx-background-color: white;" text="Label" textAlignment="CENTER">
+            <Label fx:id="infoLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="68.0" layoutY="386.0" prefHeight="42.0" prefWidth="330.0" style="-fx-background-color: white;" styleClass="infoLabel" text="Label" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>

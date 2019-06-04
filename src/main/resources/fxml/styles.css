@@ -29,42 +29,52 @@
 #playButton{
    -fx-background-color: white;
    -fx-effect: none;
-   -fx-border: solid;
    -fx-border-width: 2px;
+   -fx-border: solid;
    -fx-border-radius: 0;
    -fx-border-color: #008ae6;
 }
 #exitButton{
    -fx-background-color: white;
    -fx-effect: none;
-   -fx-border: solid;
    -fx-border-radius: 0;
+   -fx-border: solid;
    -fx-border-width: 2px;
    -fx-border-color: red;
 }
 #playButton:hover {
    -fx-background-color: #008ae6;
    -fx-text-fill: white;
-   -fx-border: solid;
    -fx-border-color: white;
+   -fx-border: solid;
+   -fx-border-radius: 0;
+   -fx-border-width: 2px;
 }
 #exitButton:hover {
    -fx-background-color: red;
    -fx-text-fill: white;
+   -fx-border-radius: 0;
    -fx-border: solid;
+   -fx-border-width: 2px;
    -fx-border-color: white;
 }
 .nextButton{
-   -fx-background-color: #a6a6a6;
+   -fx-background-color: #e6e6e6;
+   -fx-border-radius: 0;
+   -fx-border-width: 2px;
    -fx-effect: none;
+   -fx-border: solid;
+   -fx-border-color: #008ae6;
 }
 .nextButton:hover{
    -fx-background-color: #008ae6;
    -fx-text-fill: white;
    -fx-border: solid;
-   -fx-border-color: #a6a6a6;
+   -fx-border-radius: 0;
+   -fx-border-width: 2px;
+   -fx-border-color: #e6e6e6;
 }
-#infoLabel {
+.infoLabel {
    -fx-text-fill: red;
 }
 .menuLabel{
@@ -77,3 +87,5 @@
    -fx-border: solid;
    -fx-border-width: 2px;
 }
+
+

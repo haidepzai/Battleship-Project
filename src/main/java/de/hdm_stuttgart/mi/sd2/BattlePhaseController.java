@@ -25,15 +25,17 @@ public class BattlePhaseController {
     @FXML
     GridPane enemyGrid;
     @FXML
-    Label infoLabel;
+    Label infoLabelCF;
     @FXML
-    Button toMenu;
+    Label infoLabelPF;
     @FXML
     Pane popUp;
     @FXML
     Label gameWin;
     @FXML
     Pane backPane;
+    @FXML
+    Button nextTurnB;
 
 //todo: easier way to transfer playerGrid from ShipPlacementController??!?!?!?!?!?!?
 
@@ -99,31 +101,30 @@ public class BattlePhaseController {
                     //Player's turn
                     GuiDriver.log.debug("Player's attack phase");
                     if (ShipPlacementController.computerMap.getStatus(row, col) == Field.SHOT || ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
-                        infoLabel.setText("Position has already been shot! Try again!");
+                        infoLabelCF.setText("Position has already been shot! Try again!");
                     } else {
                         ShipPlacementController.computerMap.attack(row, col);
                         if (ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
                             bC.setStyle("-fx-background-color: green");
                             if (ShipPlacementController.computerMap.checkShipState(row, col)) {
                                 if (ShipPlacementController.computerFleet == 1) {
-                                    infoLabel.setText("You destroyed every ship of the enemy!!!");
+                                    infoLabelPF.setText("You destroyed every ship of the enemy!!!");
                                     playerGrid.setDisable(true);
                                     enemyGrid.setDisable(true);
 
                                     popUp.setDisable(false);
                                     popUp.setVisible(true);
                                 } else {
-                                    infoLabel.setText("You have destroyed a ship! Computer has " + (ShipPlacementController.computerFleet - 1) + " left.");
+                                    infoLabelCF.setText("You have destroyed a ship! Computer has " + (ShipPlacementController.computerFleet - 1) + " left.");
                                     ShipPlacementController.computerFleet--;
                                 }
                             } else {
-                                infoLabel.setText("You hit a ship! You have another shoot!");
+                                infoLabelCF.setText("You hit a ship! You have another shot!");
                             }
                         } else {
                             bC.setStyle("-fx-background-color: red");
-                            infoLabel.setText("Missed! Your turn is finished. Computer's turn..");
+                            infoLabelCF.setText("Missed! Your turn is finished.");
                             setAIShoot();
-                            infoLabel.setText("It's your turn! Set your shot!");
                         }
                     }
                 });
@@ -169,9 +170,9 @@ public class BattlePhaseController {
 
     @FXML
     public void setAIShoot(){
+        int count = 1;
         //Computer's turn
         GuiDriver.log.debug("Computer's attack phase");
-
         while (true) {
             int ranRow = aiRandom.randNumber(MAPSIZE);
             int ranCol = aiRandom.randNumber(MAPSIZE);
@@ -191,7 +192,7 @@ public class BattlePhaseController {
                     if (ShipPlacementController.playerMap.checkShipState(ranRow, ranCol)) {
 
                         if (ShipPlacementController.playerFleet == 0) {
-                            infoLabel.setText("The computer destroyed all of your ships!!!");
+                            infoLabelPF.setText("The computer destroyed all of your ships!!!");
                             gameWin.setText("The computer won the game!");
                             playerGrid.setDisable(true);
                             enemyGrid.setDisable(true);
@@ -199,28 +200,56 @@ public class BattlePhaseController {
                             popUp.setDisable(false);
                             popUp.setVisible(true);
                         } else {
-                            infoLabel.setText("Computer has destroyed a ship! You have " + ShipPlacementController.playerFleet + " left.");
+                            infoLabelPF.setText("Computer has destroyed a ship! You have " + ShipPlacementController.playerFleet + " left.");
 
                         }
                         ShipPlacementController.playerFleet--;
                     } else {
-                        infoLabel.setText("Computer hit a ship and gets another shot!");
+                        infoLabelPF.setText("Computer hit a ship and could shoot again!");
+                        count++;
                     }
                 } else {
                     GuiDriver.log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");
-                    ObservableList<Node> children = playerGrid.getChildren();
-                    //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
-                    for (int i = 1; i < children.size(); i++) {
+                    if(count > 1) {
+                        infoLabelPF.setText("Computer hit a ship and shot " + count + " times! Round finished!");
+                        ObservableList<Node> children = playerGrid.getChildren();
+                        //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+                        for (int i = 1; i < children.size(); i++) {
 
-                        if (GridPane.getRowIndex(children.get(i)) == ranRow && GridPane.getColumnIndex(children.get(i)) == ranCol) {
-                            children.get(i).setStyle("-fx-background-color: red");
+                            if (GridPane.getRowIndex(children.get(i)) == ranRow && GridPane.getColumnIndex(children.get(i)) == ranCol) {
+                                children.get(i).setStyle("-fx-background-color: red");
+                            }
+
                         }
+                        break;
+                    } else {
+                        infoLabelPF.setText("Computer missed! Round finished!");
+                        ObservableList<Node> children = playerGrid.getChildren();
+                        //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+                        for (int i = 1; i < children.size(); i++) {
 
+                            if (GridPane.getRowIndex(children.get(i)) == ranRow && GridPane.getColumnIndex(children.get(i)) == ranCol) {
+                                children.get(i).setStyle("-fx-background-color: red");
+                            }
+
+                        }
+                        break;
                     }
-                    break;
                 }
             }
         }
+        nextTurnB.setDisable(false);
+        playerGrid.setDisable(true);
+        enemyGrid.setDisable(true);
+    }
+
+    @FXML
+    public void nextTurn(ActionEvent event) {
+        nextTurnB.setDisable(true);
+        playerGrid.setDisable(false);
+        enemyGrid.setDisable(false);
+        infoLabelPF.setText("");
+        infoLabelCF.setText("It's your turn! Set your shot!");
     }
 
     @FXML
