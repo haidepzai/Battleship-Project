@@ -26,10 +26,7 @@
    -fx-background-color: #008ae6;
    -fx-border-color: white;
 }
-.blur{
-   -fx-opacity: 0.3 !important;
-}
-.menuButton{
+#playButton{
    -fx-background-color: white;
    -fx-effect: none;
 }
@@ -45,6 +42,16 @@
    -fx-border: solid;
    -fx-border-color: white;
 }
+.nextButton{
+   -fx-background-color: #a6a6a6;
+   -fx-effect: none;
+}
+.nextButton:hover{
+   -fx-background-color: #008ae6;
+   -fx-text-fill: white;
+   -fx-border: solid;
+   -fx-border-color: #a6a6a6;
+}
 #infoLabel {
    -fx-text-fill: red;
 }
@@ -52,4 +59,8 @@
    -fx-border-width: 2px;
    -fx-background-color: white;
    -fx-border-color: black;
+}
+#popUp{
+   -fx-border-color: red;
+   -fx-border: solid;
 }

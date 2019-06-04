@@ -50,6 +50,8 @@ public class ShipPlacementController {
     Pane popUp;
     @FXML
     Pane radioPane;
+    @FXML
+    Pane backPane;
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -214,8 +216,10 @@ public class ShipPlacementController {
 
                     playerGrid.setDisable(true);
                     radioPane.setDisable(true);
+                    backPane.setStyle("-fx-opacity: 0.3");
                     popUp.setDisable(false);
                     popUp.setVisible(true);
+
 
                 } else {
                     infoLabel.setText("FAIL: There is another ship. Try again!");

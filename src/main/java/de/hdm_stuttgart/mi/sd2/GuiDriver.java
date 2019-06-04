@@ -57,6 +57,4 @@ public class GuiDriver extends Application {
         stage.setTitle(title);
     }
 
-
-
 }
