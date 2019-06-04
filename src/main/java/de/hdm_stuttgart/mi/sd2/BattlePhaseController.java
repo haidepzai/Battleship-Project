@@ -221,7 +221,9 @@ public class BattlePhaseController {
 
     @FXML
     public void goToMenu(ActionEvent event) throws Exception {
-        //todo: implement pls
+        ShipPlacementController.playerMap.clearField();
+        ShipPlacementController.computerMap.clearField();
+        GuiDriver.getApplication().setScene("/fxml/Menu.fxml", "Menu", 600, 400);
     }
 
 

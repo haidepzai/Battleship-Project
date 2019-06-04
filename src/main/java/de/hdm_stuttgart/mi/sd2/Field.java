@@ -21,7 +21,13 @@ public class Field {
         this.field = new int[h][h];
     }
 
-
+    public void clearField() {
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j< h; j++) {
+                field[i][j] = 0;
+            }
+        }
+    }
     /**
      * Print out the two-dimensional Array
      */
