@@ -4,21 +4,17 @@ import de.hdm_stuttgart.mi.sd2.Exceptions.IllegalFactoryArgument;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 
 @SuppressWarnings("Duplicates")
@@ -141,7 +137,17 @@ public class ShipPlacementController {
                 b.setId(r + "," + c);
                 b.getStyleClass().add("waterButton");
                 playerGrid.add(b, r, c);
-                b.setOnAction(event -> {
+                b.setOnMouseEntered(event -> {
+                    int rowIndex = GridPane.getRowIndex(b);
+                    int colIndex = GridPane.getColumnIndex(b);
+                    showShip(event, rowIndex, colIndex, false);
+                });
+                b.setOnMouseExited(event -> {
+                    int rowIndex = GridPane.getRowIndex(b);
+                    int colIndex = GridPane.getColumnIndex(b);
+                    showShip(event, rowIndex, colIndex, true);
+                });
+                b.setOnMouseClicked(event -> {
                     int rowIndex = GridPane.getRowIndex(b);
                     int colIndex = GridPane.getColumnIndex(b);
                     placeShip(event, rowIndex, colIndex);
@@ -153,7 +159,26 @@ public class ShipPlacementController {
     }
 
     @FXML
-    public void placeShip(ActionEvent event, int rowIndex, int colIndex) {
+    public void showShip(MouseEvent event, int rowIndex, int colIndex, boolean left) {
+        boolean dir = (group.getSelectedToggle() == horizontal);
+        int shipLength = shipList.get(0).getLength();
+        if(left) {
+            if(!playerMap.checkShip(shipList.get(0), rowIndex, colIndex, dir)) {
+                colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: #008ae6");
+            } else {
+                colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: black");
+            }
+        } else {
+            if (!playerMap.checkShip(shipList.get(0), rowIndex, colIndex, dir)) {
+                colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: grey");
+            } else {
+                colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: red");
+            }
+        }
+    }
+
+    @FXML
+    public void placeShip(MouseEvent event, int rowIndex, int colIndex) {
 
         try {
 
@@ -169,7 +194,7 @@ public class ShipPlacementController {
                 String second = "second ";
 
                 if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
-                    colorShipCells(shipLength, rowIndex, colIndex, dir, playerGrid);
+                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: black");
                     //shipList.remove(0);
                     int counter = 0;
                     for(IShip ship : shipList) {
@@ -190,7 +215,7 @@ public class ShipPlacementController {
             } else {
 
                 if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
-                    colorShipCells(shipLength, rowIndex, colIndex, dir, playerGrid);
+                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: black");
 
                     //shipList.remove(0);
                     GuiDriver.log.debug("Player's map created. All ships set.");
@@ -232,23 +257,24 @@ public class ShipPlacementController {
             infoLabel.setText("Placement not possible here!");
         }
 
+        //playerMap.printMap();
     }
 
     @FXML
-    public void colorShipCells (int shipLength, int row, int column, boolean dir, GridPane peterPane) {
+    public void colorPlacedShip(int shipLength, int row, int column, boolean dir, GridPane gridPane, String color) {
 
         //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
-        ObservableList<Node> children = peterPane.getChildren();
+        ObservableList<Node> children = gridPane.getChildren();
         //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
         for (int i = 1; i < children.size(); i++) {
             for(int l = 0; l < shipLength; l++) {
                 if (dir) {
                     if (GridPane.getRowIndex(children.get(i)) == row && GridPane.getColumnIndex(children.get(i)) == column+l) {
-                        children.get(i).setStyle("-fx-background-color: black");
+                        children.get(i).setStyle(color);
                     }
                 } else {
                     if (GridPane.getRowIndex(children.get(i)) == row+l && GridPane.getColumnIndex(children.get(i)) == column) {
-                        children.get(i).setStyle("-fx-background-color: black");
+                        children.get(i).setStyle(color);
                     }
                 }
             }
