@@ -48,6 +48,8 @@ public class ShipPlacementController {
 
     @FXML
     Pane popUp;
+    @FXML
+    Pane radioPane;
 
     final ToggleGroup group = new ToggleGroup();
 
@@ -210,7 +212,8 @@ public class ShipPlacementController {
                         }
                     }
 
-
+                    playerGrid.setDisable(true);
+                    radioPane.setDisable(true);
                     popUp.setDisable(false);
                     popUp.setVisible(true);
 

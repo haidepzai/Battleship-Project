@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="backPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="1001.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.sd2.BattlePhaseController">
+<AnchorPane id="backPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="1001.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.sd2.BattlePhaseController">
    <children>
       <GridPane fx:id="playerGrid" gridLinesVisible="true" layoutX="58.0" layoutY="73.0" prefHeight="400.0" prefWidth="400.0">
          <columnConstraints>
@@ -76,5 +78,15 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Pane fx:id="endPopUp" disable="true" layoutX="284.0" layoutY="199.0" prefHeight="140.0" prefWidth="441.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="220.0">
+         <children>
+            <Button fx:id="toMenu" layoutX="170.0" layoutY="76.0" mnemonicParsing="false" onAction="#goToMenu" text="Back to menu" />
+            <Label fx:id="gameWin" layoutX="14.0" layoutY="6.0" prefHeight="73.0" prefWidth="413.0" text="You won the game!">
+               <font>
+                  <Font size="44.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -44,13 +44,13 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Pane layoutX="413.0" layoutY="374.0" prefHeight="68.0" prefWidth="119.0" style="-fx-background-color: white;">
+      <Pane fx:id="radioPane" layoutX="413.0" layoutY="374.0" prefHeight="68.0" prefWidth="119.0" style="-fx-background-color: white;">
          <children>
             <RadioButton fx:id="horizontal" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Horizontal" />
             <RadioButton fx:id="vertical" layoutX="14.0" layoutY="34.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="91.0" style="-fx-background-color: white;" text="Vertical" />
          </children>
       </Pane>
-      <Pane fx:id="popUp" disable="true" layoutX="131.0" layoutY="204.0" prefHeight="100.0" prefWidth="360.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="200.0">
+      <Pane fx:id="popUp" layoutX="131.0" layoutY="204.0" prefHeight="100.0" prefWidth="360.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="200.0">
          <children>
             <Label prefHeight="68.0" prefWidth="340.0" text="You have placed all your ships! Let's jump to the battlefield" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                <font>

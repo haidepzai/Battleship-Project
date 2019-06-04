@@ -8,6 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+
+import java.io.IOException;
 
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
@@ -22,6 +25,12 @@ public class BattlePhaseController {
     GridPane enemyGrid;
     @FXML
     Label infoLabel;
+    @FXML
+    Button toMenu;
+    @FXML
+    Pane endPopUp;
+    @FXML
+    Label gameWin;
 
 //todo: easier way to transfer playerGrid from ShipPlacementController??!?!?!?!?!?!?
 
@@ -92,9 +101,18 @@ public class BattlePhaseController {
                         ShipPlacementController.computerMap.attack(row, col);
                         if (ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
                             bC.setStyle("-fx-background-color: green");
-                            if(ShipPlacementController.computerMap.checkShipState(row, col)) {
-                                ShipPlacementController.computerFleet--;
-                                infoLabel.setText("You have destroyed a ship! Computer has " + ShipPlacementController.computerFleet + " left.");
+                            if (ShipPlacementController.computerMap.checkShipState(row, col)) {
+                                if (ShipPlacementController.computerFleet == 1) {
+                                    infoLabel.setText("You destroyed every ship of the enemy!!!");
+                                    playerGrid.setDisable(true);
+                                    enemyGrid.setDisable(true);
+
+                                    endPopUp.setDisable(false);
+                                    endPopUp.setVisible(true);
+                                } else {
+                                    infoLabel.setText("You have destroyed a ship! Computer has " + (ShipPlacementController.computerFleet - 1) + " left.");
+                                    ShipPlacementController.computerFleet--;
+                                }
                             } else {
                                 infoLabel.setText("You hit a ship! You have another shoot!");
                             }
@@ -150,7 +168,7 @@ public class BattlePhaseController {
         //Computer's turn
         GuiDriver.log.debug("Computer's attack phase");
 
-        while(true) {
+        while (true) {
             int ranRow = aiRandom.randNumber(MAPSIZE);
             int ranCol = aiRandom.randNumber(MAPSIZE);
             if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.SHOT || ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
@@ -167,8 +185,19 @@ public class BattlePhaseController {
                         }
                     }
                     if (ShipPlacementController.playerMap.checkShipState(ranRow, ranCol)) {
+
+                        if (ShipPlacementController.playerFleet == 0) {
+                            infoLabel.setText("The computer destroyed every ship you!!!");
+                            gameWin.setText("The computer won the game!");
+                            playerGrid.setDisable(true);
+                            enemyGrid.setDisable(true);
+                            endPopUp.setDisable(false);
+                            endPopUp.setVisible(true);
+                        } else {
+                            infoLabel.setText("Computer has destroyed a ship! You have " + ShipPlacementController.playerFleet + " left.");
+
+                        }
                         ShipPlacementController.playerFleet--;
-                        infoLabel.setText("Computer has destroyed a ship! You have " + ShipPlacementController.playerFleet + " left.");
                     } else {
                         infoLabel.setText("Computer hit a ship and gets another shoot!");
                     }
@@ -188,6 +217,13 @@ public class BattlePhaseController {
             }
         }
     }
+
+    @FXML
+    public void goToMenu(ActionEvent event) throws IOException {
+        GuiDriver.getApplication().setScene("/fxml/Menu.fxml", "Menu", 600, 400);
+    }
+
+
 }
 
 
