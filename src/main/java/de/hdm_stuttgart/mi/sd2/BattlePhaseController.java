@@ -8,15 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.util.concurrent.TimeUnit;
+import java.io.IOException;
 
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
-
-    //ShipPlacementController spc = new ShipPlacementController();
 
     final int MAPSIZE = ShipPlacementController.MAPSIZE;
 
@@ -36,8 +32,6 @@ public class BattlePhaseController {
     Pane backPane;
     @FXML
     Button nextTurnB;
-
-//todo: easier way to transfer playerGrid from ShipPlacementController??!?!?!?!?!?!?
 
 
     @FXML
@@ -98,7 +92,7 @@ public class BattlePhaseController {
                 bC.setOnAction(event -> {
                     int row = GridPane.getRowIndex(bC);
                     int col = GridPane.getColumnIndex(bC);
-                    //Player's turn
+
                     GuiDriver.log.debug("Player's attack phase");
                     if (ShipPlacementController.computerMap.getStatus(row, col) == Field.SHOT || ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
                         infoLabelCF.setText("Position has already been shot! Try again!");
@@ -107,16 +101,15 @@ public class BattlePhaseController {
                         if (ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
                             bC.setStyle("-fx-background-color: green");
                             if (ShipPlacementController.computerMap.checkShipState(row, col)) {
-                                if (ShipPlacementController.computerFleet == 1) {
-                                    infoLabelPF.setText("You destroyed every ship of the enemy!!!");
+                                if (ShipPlacementController.computerFleet > 1) {
+                                    ShipPlacementController.computerFleet--;
+                                    infoLabelCF.setText("You have destroyed a ship! Computer has " + (ShipPlacementController.computerFleet) + " left.");
+                                } else {
+                                    infoLabelCF.setText("You destroyed every ship of the enemy!!!");
                                     playerGrid.setDisable(true);
                                     enemyGrid.setDisable(true);
-
                                     popUp.setDisable(false);
                                     popUp.setVisible(true);
-                                } else {
-                                    infoLabelCF.setText("You have destroyed a ship! Computer has " + (ShipPlacementController.computerFleet - 1) + " left.");
-                                    ShipPlacementController.computerFleet--;
                                 }
                             } else {
                                 infoLabelCF.setText("You hit a ship! You have another shot!");
@@ -168,10 +161,13 @@ public class BattlePhaseController {
         }
     }
 
+    /**
+     * Manages the shoot-events of the computer -> Random actions
+     */
     @FXML
     public void setAIShoot(){
+        //count: for later print out, that clarifies how often computer shot
         int count = 1;
-        //Computer's turn
         GuiDriver.log.debug("Computer's attack phase");
         while (true) {
             int ranRow = aiRandom.randNumber(MAPSIZE);
@@ -243,6 +239,10 @@ public class BattlePhaseController {
         enemyGrid.setDisable(true);
     }
 
+    /**
+     * Handles next-turn-event
+     * @param event ActionEvent: ButtonClick
+     */
     @FXML
     public void nextTurn(ActionEvent event) {
         nextTurnB.setDisable(true);
@@ -252,8 +252,13 @@ public class BattlePhaseController {
         infoLabelCF.setText("It's your turn! Set your shot!");
     }
 
+    /**
+     * Go back to menu after game is finished and clears the fields
+     * @param event ActionEvent: ButtonClick
+     * @throws Exception for setScene-event
+     */
     @FXML
-    public void goToMenu(ActionEvent event) throws Exception {
+    public void goToMenu(ActionEvent event) throws IOException {
         ShipPlacementController.playerMap.clearField();
         ShipPlacementController.computerMap.clearField();
         GuiDriver.getApplication().setScene("/fxml/Menu.fxml", "Menu", 600, 400);

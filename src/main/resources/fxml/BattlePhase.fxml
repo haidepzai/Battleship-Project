@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="1001.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.sd2.BattlePhaseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="1001.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.sd2.BattlePhaseController">
    <children>
       <Pane fx:id="backPane" prefHeight="559.0" prefWidth="1001.0">
          <children>
@@ -97,12 +97,12 @@
       <Pane fx:id="popUp" disable="true" layoutX="284.0" layoutY="199.0" prefHeight="140.0" prefWidth="441.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="220.0">
          <children>
             <Button layoutX="170.0" layoutY="76.0" mnemonicParsing="false" onAction="#goToMenu" styleClass="nextButton" text="Back to menu" />
-            <Label fx:id="gameWin" layoutX="108.0" layoutY="10.0" prefHeight="73.0" prefWidth="319.0" text="You won the game! Game finished.">
+            <Label fx:id="gameWin" layoutX="96.0" layoutY="10.0" prefHeight="73.0" prefWidth="319.0" text="You won the game! Game finished.">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="82.0" fitWidth="102.0" layoutX="14.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="82.0" fitWidth="102.0" layoutX="6.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../pictures/trophy.png" />
                </image>

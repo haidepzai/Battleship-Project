@@ -57,11 +57,11 @@ public class Field {
 
 
     public int getStatus(int row, int col) {
-        if (field[row - 1][col - 1] == -1) {
+        if (field[row - 1][col - 1] == SHIP) {
             return SHIP;
-        } else if (field[row - 1][col - 1] == -99) {
+        } else if (field[row - 1][col - 1] == SHOT) {
             return SHOT;
-        } else if (field[row - 1][col - 1] == -100) {
+        } else if (field[row - 1][col - 1] == HIT) {
             return HIT;
         } else {
             return WATER;
@@ -78,10 +78,12 @@ public class Field {
     public int getLeft(int row, int col) {
         if (col == 1) {
             return BORDER;
-        } else if (field[row - 1][col - 2] == -1) {
+        } else if (field[row - 1][col - 2] == SHIP) {
             return SHIP;
-        } else if (field[row - 1][col - 2] == -99) {
+        } else if (field[row - 1][col - 2] == SHOT) {
             return SHOT;
+        } else if(field[row - 1][col - 2] == HIT) {
+            return HIT;
         } else {
             return WATER;
         }
@@ -97,10 +99,12 @@ public class Field {
     public int getRight(int row, int col) {
         if (col == h) {
             return BORDER;
-        } else if (field[row - 1][col] == -1) {
+        } else if (field[row - 1][col] == SHIP) {
             return SHIP;
-        } else if (field[row - 1][col] == -99) {
+        } else if (field[row - 1][col] == SHOT) {
             return SHOT;
+        } else if (field[row - 1][col] == HIT) {
+            return HIT;
         } else {
             return WATER;
         }
@@ -116,10 +120,12 @@ public class Field {
     public int getTop(int row, int col) {
         if (row == 1) {
             return BORDER;
-        } else if (field[row - 2][col - 1] == -1) {
+        } else if (field[row - 2][col - 1] == SHIP) {
             return SHIP;
-        } else if (field[row - 2][col - 1] == -99) {
+        } else if (field[row - 2][col - 1] == SHOT) {
             return SHOT;
+        } else if (field[row - 2][col - 1] == HIT) {
+            return HIT;
         } else {
             return WATER;
         }
@@ -135,10 +141,12 @@ public class Field {
     public int getBot(int row, int col) {
         if (row == h) {
             return BORDER;
-        } else if (field[row][col - 1] == -1) {
+        } else if (field[row][col - 1] == SHIP) {
             return SHIP;
-        } else if (field[row][col - 1] == -99) {
+        } else if (field[row][col - 1] == SHOT) {
             return SHOT;
+        } else if (field[row][col - 1] == HIT) {
+            return HIT;
         } else {
             return WATER;
         }
@@ -181,11 +189,11 @@ public class Field {
 
         if (!dir) {
             for (int v = 0; v < size; v++) {
-                field[row - 1 + v][col - 1] = -1;
+                field[row - 1 + v][col - 1] = SHIP;
             }
         } else {
             for (int v = 0; v < size; v++) {
-                field[row - 1][col - 1 + v] = -1;
+                field[row - 1][col - 1 + v] = SHIP;
             }
         }
     }
@@ -248,7 +256,7 @@ public class Field {
         if (getStatus(row, col) == SHIP) {
             field[row - 1][col - 1] = HIT;
         } else {
-            field[row - 1][col - 1] = -99;
+            field[row - 1][col - 1] = SHOT;
         }
 
     }

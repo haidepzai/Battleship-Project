@@ -52,7 +52,7 @@ public class ShipPlacementController {
     final ToggleGroup group = new ToggleGroup();
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
 
         IShip Battleship;
         IShip Cruiser1;
@@ -131,19 +131,19 @@ public class ShipPlacementController {
         for (int r = 1; r <= MAPSIZE; r++) {
 
             for (int c = 1; c <= MAPSIZE; c++) {
-                //Pane p = new Pane();
+
                 Button b = new Button();
                 b.setMaxSize(100, 100);
                 b.setId(r + "," + c);
                 b.getStyleClass().add("waterButton");
                 playerGrid.add(b, r, c);
 
-
                 b.setOnMouseClicked(event -> {
                     int rowIndex = GridPane.getRowIndex(b);
                     int colIndex = GridPane.getColumnIndex(b);
                     placeShip(event, rowIndex, colIndex);
                 });
+
                 b.setOnMouseEntered(event -> {
                     if(shipList.size() > 0) {
                     int rowIndex = GridPane.getRowIndex(b);
@@ -158,25 +158,31 @@ public class ShipPlacementController {
                         showShip(event, rowIndex, colIndex, false);
                     }
                 });
-
-
             }
         }
 
         infoLabel.setText("Set your " + shipList.get(0).getName().toUpperCase());
     }
 
+    /**
+     * Colors cells by hovering with the size of the selected ship and signalize whether a ship-placement is possible there
+     * @param event Mouse Event: MouseEntered/MouseExited
+     * @param rowIndex Row of hovered button
+     * @param colIndex Column of hovered button
+     * @param entered Boolean: Is the hovered button entered OR exited ?
+     */
     @FXML
     public void showShip(MouseEvent event, int rowIndex, int colIndex, boolean entered) {
-
         boolean dir = (group.getSelectedToggle() == horizontal);
         int shipLength = shipList.get(0).getLength();
-        if (entered) {
+        //Button entered
+        if(entered) {
             if (!playerMap.checkShip(shipList.get(0), rowIndex, colIndex, dir)) {
                 colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: grey");
             } else {
                 colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: red");
             }
+        //Button exited
         } else {
             if (checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("ship")) {
                 colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
@@ -188,7 +194,16 @@ public class ShipPlacementController {
         }
     }
 
-
+    /**
+     * Check the water-/other-ship-state on the theoretic ship-position
+     * @param i Ship type
+     * @param row Row of hovered button
+     * @param col Column of hovered button
+     * @param dir Horizontal/Vertical direction of the ship to place
+     * @return "water": Only water on the ship-to-place-postion
+     *         "ship": Only a ship on the ship-to-place-position
+     *         "ship+water": Water AND a ship on the ship-to-place-position
+     */
     @FXML
     public String checkColoredCells(IShip i, int row, int col, boolean dir) {
         int size = i.getLength();
@@ -214,7 +229,7 @@ public class ShipPlacementController {
             }
             return status;
 
-            //Horizontal
+        //Horizontal
         } else {
             for (int h = 0; h < size; h++) {
                 if (playerMap.getStatus(row, col + h) == Field.SHIP) {
@@ -237,6 +252,12 @@ public class ShipPlacementController {
         }
     }
 
+    /**
+     * Places a ship on the selected position
+     * @param event MouseEvent: MouseClicked
+     * @param rowIndex Row of clicked button
+     * @param colIndex Column of clicked button
+     */
     @FXML
     public void placeShip(MouseEvent event, int rowIndex, int colIndex) {
 
@@ -277,10 +298,8 @@ public class ShipPlacementController {
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
 
-                    //shipList.remove(0);
                     GuiDriver.log.debug("Player's map created. All ships set.");
                     infoLabel.setText("All ships set. Computer is setting..");
-
 
                     while (true) {
 
@@ -296,7 +315,7 @@ public class ShipPlacementController {
                             break;
 
                         } catch (ArrayIndexOutOfBoundsException ignore) {
-                            //catches Exception but ignores it to continue uninterrupted
+                            //catches Exception but ignores it to continue after not possible ship-placements by computer
                         }
                     }
 
@@ -317,10 +336,19 @@ public class ShipPlacementController {
             GuiDriver.log.error("Entered position is too low, too high or the ship doesn't fit at this position!", err);
             infoLabel.setText("Placement not possible here!");
         }
-
-
     }
 
+    /**
+     * Colors the position of the (placed ship/ship-to-place)
+     * @param shipLength Length of placed ship
+     * @param row Row where ship was placed
+     * @param column Column where ship was placed
+     * @param dir Direction of placed ship: horizontal/vertical
+     * @param color Black: Placed ship
+     *              Red: No ship-placement on hovered position possible!
+     *              Blue: Water
+     *              Grey: Ship-placement on hovered position possible
+     */
     @FXML
     public void colorPlacedShip(int shipLength, int row, int column, boolean dir, String color) {
 
@@ -342,11 +370,19 @@ public class ShipPlacementController {
         }
     }
 
+    /**
+     * Coloring individual cells of the theoretic ship-position
+     * @param shipLength Length of ship-to-placed
+     * @param row Row of hovered button
+     * @param column Column of hovered button
+     * @param dir Direction of ship-to-placed: horizontal/vertical
+     */
     @FXML
     public void colorCellsIndividually(int shipLength, int row, int column, boolean dir) {
         ObservableList<Node> children = playerGrid.getChildren();
         for (int i = 1; i < children.size(); i++) {
-            for (int l = 0; l < shipLength; l++) {
+            for(int l = 0; l < shipLength; l++) {
+                //Horizontal
                 if (dir) {
                     if (GridPane.getRowIndex(children.get(i)) == row && GridPane.getColumnIndex(children.get(i)) == column + l) {
                         if (playerMap.getStatus(row, column + l) == Field.SHIP) {
@@ -355,6 +391,7 @@ public class ShipPlacementController {
                             children.get(i).setStyle("-fx-background-color: #008ae6");
                         }
                     }
+                  //Vertical
                 } else {
                     if (GridPane.getRowIndex(children.get(i)) == row + l && GridPane.getColumnIndex(children.get(i)) == column) {
                         if (playerMap.getStatus(row + l, column) == Field.SHIP) {
@@ -368,8 +405,13 @@ public class ShipPlacementController {
         }
     }
 
+    /**
+     * Jump to next scene : Battle-Phase
+     * @param event ActionEvent: ButtonClick
+     * @throws IOException for setScene
+     */
     @FXML
-    public void goToBattlePhase(ActionEvent event) throws IOException {
+    public void goToBattlePhase (ActionEvent event) throws IOException{
         GuiDriver.getApplication().setScene("/fxml/BattlePhase.fxml", "Battle-Phase", 1001, 559);
     }
 }
