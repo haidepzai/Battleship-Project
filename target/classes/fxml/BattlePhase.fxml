@@ -77,7 +77,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="nextTurnB" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="466.0" layoutY="233.0" mnemonicParsing="false" onAction="#nextTurn" prefHeight="93.0" prefWidth="70.0" styleClass="nextButton" text="NEXT TURN &gt;&gt;&gt;" textAlignment="CENTER" textFill="RED" wrapText="true">
+            <Button fx:id="nextTurnB" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="466.0" layoutY="233.0" mnemonicParsing="false" onAction="#nextTurn" prefHeight="93.0" prefWidth="70.0" styleClass="nextButton" text="NEXT TURN &gt;&gt;&gt;" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

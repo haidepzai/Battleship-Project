@@ -140,12 +140,12 @@ public class ShipPlacementController {
                 b.setOnMouseEntered(event -> {
                     int rowIndex = GridPane.getRowIndex(b);
                     int colIndex = GridPane.getColumnIndex(b);
-                    showShip(event, rowIndex, colIndex, false);
+                    showShip(event, rowIndex, colIndex, true);
                 });
                 b.setOnMouseExited(event -> {
                     int rowIndex = GridPane.getRowIndex(b);
                     int colIndex = GridPane.getColumnIndex(b);
-                    showShip(event, rowIndex, colIndex, true);
+                    showShip(event, rowIndex, colIndex, false);
                 });
                 b.setOnMouseClicked(event -> {
                     int rowIndex = GridPane.getRowIndex(b);
@@ -159,21 +159,71 @@ public class ShipPlacementController {
     }
 
     @FXML
-    public void showShip(MouseEvent event, int rowIndex, int colIndex, boolean left) {
+    public void showShip(MouseEvent event, int rowIndex, int colIndex, boolean entered) {
         boolean dir = (group.getSelectedToggle() == horizontal);
         int shipLength = shipList.get(0).getLength();
-        if(left) {
-            if(!playerMap.checkShip(shipList.get(0), rowIndex, colIndex, dir)) {
-                colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: #008ae6");
+        if(entered) {
+            if (!playerMap.checkShip(shipList.get(0), rowIndex, colIndex, dir)) {
+                colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: grey");
             } else {
-                colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: black");
+                colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: red");
             }
         } else {
-            if (!playerMap.checkShip(shipList.get(0), rowIndex, colIndex, dir)) {
-                colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: grey");
+            if(checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("ship")) {
+                colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
+            } else if(checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("water")){
+                colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: #008ae6");
             } else {
-                colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: red");
+                colorCellsIndividually(shipLength, rowIndex, colIndex, dir);
             }
+        }
+    }
+
+    @FXML
+    public String checkColoredCells(IShip i, int row, int col, boolean dir) {
+        int size = i.getLength();
+        String status = "";
+        //Vertical
+        if (!dir) {
+            for (int v = 0; v < size; v++) {
+                if (playerMap.getStatus(row + v, col) == Field.SHIP) {
+                    if(status.equals("water")) {
+                        status = "ship+water";
+                        break;
+                    } else {
+                        status = "ship";
+                    }
+                } else {
+                    if(status.equals("ship")) {
+                        status = "ship+water";
+                        break;
+                    } else {
+                        status = "water";
+                    }
+                }
+            }
+            return status;
+
+        //Horizontal
+        } else {
+            for (int h = 0; h < size; h++) {
+                if (playerMap.getStatus(row, col + h) == Field.SHIP) {
+                    if(status.equals("water")) {
+                        status = "ship+water";
+                        break;
+                    } else {
+                        status = "ship";
+                    }
+                } else {
+                    if(status.equals("ship")) {
+                        status = "ship+water";
+                        break;
+                    } else {
+                        status = "water";
+                    }
+                }
+            }
+            return status;
         }
     }
 
@@ -194,7 +244,7 @@ public class ShipPlacementController {
                 String second = "second ";
 
                 if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
-                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: black");
+                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
                     //shipList.remove(0);
                     int counter = 0;
                     for(IShip ship : shipList) {
@@ -215,7 +265,7 @@ public class ShipPlacementController {
             } else {
 
                 if(playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
-                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, playerGrid, "-fx-background-color: black");
+                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
 
                     //shipList.remove(0);
                     GuiDriver.log.debug("Player's map created. All ships set.");
@@ -261,10 +311,10 @@ public class ShipPlacementController {
     }
 
     @FXML
-    public void colorPlacedShip(int shipLength, int row, int column, boolean dir, GridPane gridPane, String color) {
+    public void colorPlacedShip(int shipLength, int row, int column, boolean dir, String color) {
 
         //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
-        ObservableList<Node> children = gridPane.getChildren();
+        ObservableList<Node> children = playerGrid.getChildren();
         //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
         for (int i = 1; i < children.size(); i++) {
             for(int l = 0; l < shipLength; l++) {
@@ -275,6 +325,32 @@ public class ShipPlacementController {
                 } else {
                     if (GridPane.getRowIndex(children.get(i)) == row+l && GridPane.getColumnIndex(children.get(i)) == column) {
                         children.get(i).setStyle(color);
+                    }
+                }
+            }
+        }
+    }
+
+    @FXML
+    public void colorCellsIndividually(int shipLength, int row, int column, boolean dir) {
+        ObservableList<Node> children = playerGrid.getChildren();
+        for (int i = 1; i < children.size(); i++) {
+            for(int l = 0; l < shipLength; l++) {
+                if (dir) {
+                    if (GridPane.getRowIndex(children.get(i)) == row && GridPane.getColumnIndex(children.get(i)) == column+l) {
+                        if(playerMap.getStatus(row, column+l) == Field.SHIP) {
+                            children.get(i).setStyle("-fx-background-color: black");
+                        } else {
+                            children.get(i).setStyle("-fx-background-color: #008ae6");
+                        }
+                    }
+                } else {
+                    if (GridPane.getRowIndex(children.get(i)) == row+l && GridPane.getColumnIndex(children.get(i)) == column) {
+                        if(playerMap.getStatus(row+l, column) == Field.SHIP) {
+                            children.get(i).setStyle("-fx-background-color: black");
+                        } else {
+                            children.get(i).setStyle("-fx-background-color: #008ae6");
+                        }
                     }
                 }
             }
