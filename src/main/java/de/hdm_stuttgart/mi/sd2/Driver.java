@@ -186,13 +186,8 @@ public class Driver {
                 } catch (ArrayIndexOutOfBoundsException ignore) { } //catches Exception but ignores it to continue uninterrupted
             }
 
-            //Info.shipInfo(shipListAI);
-
             shipList.remove(Battleship);
             System.out.println(playerFleet + ", " + computerFleet);
-
-            //todo: -----------------------------------------------
-            //todo: From here starts the battle-phase => STRG+C !!
 
             while(playerFleet != 0 && computerFleet != 0) {
 

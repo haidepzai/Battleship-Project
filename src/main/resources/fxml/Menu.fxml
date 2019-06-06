@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="menuPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.sd2.MenuController">
+<AnchorPane id="menuPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.hdm_stuttgart.mi.sd2.Gui.MenuController">
    <children>
       <Button fx:id="playButton" layoutX="226.0" layoutY="217.0" mnemonicParsing="false" onAction="#goToShipPlacement" prefHeight="54.0" prefWidth="150.0" text="Play" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="80.0" prefHeight="62.0" prefWidth="271.0" styleClass="menuLabel" text="BATTLESHIPS" textAlignment="CENTER">

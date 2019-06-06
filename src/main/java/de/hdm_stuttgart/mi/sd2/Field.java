@@ -1,9 +1,7 @@
 package de.hdm_stuttgart.mi.sd2;
 
+import de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Field {
 
@@ -12,9 +10,9 @@ public class Field {
 
     static final int BORDER = -42;
     static final int WATER = 0;
-    static final int SHIP = -1;
-    static final int SHOT = -99;
-    static final int HIT = -100;
+    public static final int SHIP = -1;
+    public static final int SHOT = -99;
+    public static final int HIT = -100;
 
     public Field(int h) {
         this.h = h;
@@ -23,11 +21,12 @@ public class Field {
 
     public void clearField() {
         for (int i = 0; i < h; i++) {
-            for (int j = 0; j< h; j++) {
+            for (int j = 0; j < h; j++) {
                 field[i][j] = 0;
             }
         }
     }
+
     /**
      * Print out the two-dimensional Array
      */
@@ -82,7 +81,7 @@ public class Field {
             return SHIP;
         } else if (field[row - 1][col - 2] == SHOT) {
             return SHOT;
-        } else if(field[row - 1][col - 2] == HIT) {
+        } else if (field[row - 1][col - 2] == HIT) {
             return HIT;
         } else {
             return WATER;
@@ -263,7 +262,7 @@ public class Field {
 
     public boolean checkShipState(int row, int col) {
 
-        if(checkVertical(row, col) && checkHorizontal(row, col)) {
+        if (checkVertical(row, col) && checkHorizontal(row, col)) {
             return true;
         } else {
             return false;
@@ -274,14 +273,14 @@ public class Field {
     public boolean checkHorizontal(int row, int col) {
 
         //Check left side
-        for(int l = 0; getLeft(row, col-l) != WATER && getLeft(row, col-l) != SHOT && getLeft(row, col-l) != BORDER; l++) {
-            if(getLeft(row, col-l) == SHIP) {
+        for (int l = 0; getLeft(row, col - l) != WATER && getLeft(row, col - l) != SHOT && getLeft(row, col - l) != BORDER; l++) {
+            if (getLeft(row, col - l) == SHIP) {
                 return false;
             }
         }
         //Check right side
-        for(int r = 0; getRight(row, col+r) != WATER && getRight(row, col+r) != SHOT && getRight(row, col+r) != BORDER; r++) {
-            if(getRight(row, col+r) == SHIP) {
+        for (int r = 0; getRight(row, col + r) != WATER && getRight(row, col + r) != SHOT && getRight(row, col + r) != BORDER; r++) {
+            if (getRight(row, col + r) == SHIP) {
                 return false;
             }
         }
@@ -291,14 +290,14 @@ public class Field {
     public boolean checkVertical(int row, int col) {
 
         //Check top side
-        for(int t = 0; getTop(row-t, col) != WATER && getTop(row-t, col) != SHOT && getTop(row-t, col) != BORDER; t++) {
-            if(getTop(row-t, col) == SHIP) {
+        for (int t = 0; getTop(row - t, col) != WATER && getTop(row - t, col) != SHOT && getTop(row - t, col) != BORDER; t++) {
+            if (getTop(row - t, col) == SHIP) {
                 return false;
             }
         }
         //Check bot side
-        for(int b = 0; getBot(row+b, col) != WATER && getBot(row+b, col) != SHOT && getBot(row+b, col) != BORDER; b++) {
-            if(getBot(row+b, col) == SHIP) {
+        for (int b = 0; getBot(row + b, col) != WATER && getBot(row + b, col) != SHOT && getBot(row + b, col) != BORDER; b++) {
+            if (getBot(row + b, col) == SHIP) {
                 return false;
             }
         }

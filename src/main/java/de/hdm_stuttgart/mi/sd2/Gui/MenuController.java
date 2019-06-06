@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.sd2;
+package de.hdm_stuttgart.mi.sd2.Gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +14,7 @@ public class MenuController {
 
     @FXML
     private void exit(ActionEvent event) {
+        GuiDriver.log.debug("Application terminated.");
         System.exit(0);
     }
 }

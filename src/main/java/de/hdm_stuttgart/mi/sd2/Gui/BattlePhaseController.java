@@ -1,5 +1,7 @@
-package de.hdm_stuttgart.mi.sd2;
+package de.hdm_stuttgart.mi.sd2.Gui;
 
+import de.hdm_stuttgart.mi.sd2.Field;
+import de.hdm_stuttgart.mi.sd2.aiRandom;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -118,6 +120,8 @@ public class BattlePhaseController {
                         } else {
                             bC.setStyle("-fx-background-color: red");
                             infoLabelCF.setText("Missed! Your turn is finished.");
+                            enemyGrid.setDisable(true);
+                            playerGrid.setDisable(false);
                             setAIShoot();
                         }
                     }
@@ -142,6 +146,8 @@ public class BattlePhaseController {
             }
 
         }
+
+        playerGrid.setDisable(true);
 
 //        //Color ships from AI - to TEST
 //        for (int r = 1; r <= MAPSIZE; r++) {
@@ -237,8 +243,6 @@ public class BattlePhaseController {
             }
         }
         nextTurnB.setDisable(false);
-        playerGrid.setDisable(true);
-        enemyGrid.setDisable(true);
     }
 
     /**
@@ -248,8 +252,8 @@ public class BattlePhaseController {
     @FXML
     public void nextTurn() {
         nextTurnB.setDisable(true);
-        playerGrid.setDisable(false);
         enemyGrid.setDisable(false);
+        playerGrid.setDisable(true);
         infoLabelPF.setText("");
         infoLabelCF.setText("It's your turn! Set your shot!");
     }
