@@ -145,14 +145,14 @@ public class ShipPlacementController {
                 });
 
                 b.setOnMouseEntered(event -> {
-                    if(shipList.size() > 0) {
-                    int rowIndex = GridPane.getRowIndex(b);
-                    int colIndex = GridPane.getColumnIndex(b);
-                    showShip(rowIndex, colIndex, true);
+                    if (shipList.size() > 0) {
+                        int rowIndex = GridPane.getRowIndex(b);
+                        int colIndex = GridPane.getColumnIndex(b);
+                        showShip(rowIndex, colIndex, true);
                     }
                 });
                 b.setOnMouseExited(event -> {
-                    if(shipList.size() > 0) {
+                    if (shipList.size() > 0) {
                         int rowIndex = GridPane.getRowIndex(b);
                         int colIndex = GridPane.getColumnIndex(b);
                         showShip(rowIndex, colIndex, false);
@@ -166,9 +166,10 @@ public class ShipPlacementController {
 
     /**
      * Colors cells by hovering with the size of the selected ship and signalize whether a ship-placement is possible there
+     *
      * @param rowIndex Row of hovered button
      * @param colIndex Column of hovered button
-     * @param entered Boolean: Is the hovered button entered OR exited ?
+     * @param entered  Boolean: Is the hovered button entered OR exited ?
      */
     @FXML
     private void showShip(int rowIndex, int colIndex, boolean entered) {
@@ -193,24 +194,24 @@ public class ShipPlacementController {
                 }
             }
             //Catch if place-to-ship would cross the map-border
-        } catch (ArrayIndexOutOfBoundsException l ) {
+        } catch (ArrayIndexOutOfBoundsException l) {
 
-          boolean dir = (group.getSelectedToggle() == horizontal);
+            boolean dir = (group.getSelectedToggle() == horizontal);
             if (dir) {
                 if (entered) {
-                    colorPlacedShip(shipList.get(0).getLength()-1, rowIndex, colIndex, true, "-fx-background-color: red");
+                    colorPlacedShip(shipList.get(0).getLength() - 1, rowIndex, colIndex, true, "-fx-background-color: red");
                     //Button exited
                 } else {
-                    colorPlacedShip(shipList.get(0).getLength()-1, rowIndex, colIndex, true, "-fx-background-color: #008ae6");
-                    colorCellsIndividually(shipList.get(0).getLength()-1, rowIndex, colIndex, true);
+                    colorPlacedShip(shipList.get(0).getLength() - 1, rowIndex, colIndex, true, "-fx-background-color: #008ae6");
+                    colorCellsIndividually(shipList.get(0).getLength() - 1, rowIndex, colIndex, true);
                 }
             } else {
                 if (entered) {
-                    colorPlacedShip(shipList.get(0).getLength()-1, rowIndex, colIndex, false, "-fx-background-color: red");
+                    colorPlacedShip(shipList.get(0).getLength() - 1, rowIndex, colIndex, false, "-fx-background-color: red");
                     //Button exited
                 } else {
-                    colorPlacedShip(shipList.get(0).getLength()-1, rowIndex, colIndex, false, "-fx-background-color: #008ae6");
-                    colorCellsIndividually(shipList.get(0).getLength()-1, rowIndex, colIndex, false);
+                    colorPlacedShip(shipList.get(0).getLength() - 1, rowIndex, colIndex, false, "-fx-background-color: #008ae6");
+                    colorCellsIndividually(shipList.get(0).getLength() - 1, rowIndex, colIndex, false);
                 }
             }
         }
@@ -218,13 +219,14 @@ public class ShipPlacementController {
 
     /**
      * Check the water-/other-ship-state on the theoretic ship-position
-     * @param i Ship type
+     *
+     * @param i   Ship type
      * @param row Row of hovered button
      * @param col Column of hovered button
      * @param dir Horizontal/Vertical direction of the ship to place
      * @return "water": Only water on the ship-to-place-postion
-     *         "ship": Only a ship on the ship-to-place-position
-     *         "ship+water": Water AND a ship on the ship-to-place-position
+     * "ship": Only a ship on the ship-to-place-position
+     * "ship+water": Water AND a ship on the ship-to-place-position
      */
     @FXML
     private String checkColoredCells(IShip i, int row, int col, boolean dir) {
@@ -251,7 +253,7 @@ public class ShipPlacementController {
             }
             return status;
 
-        //Horizontal
+            //Horizontal
         } else {
             for (int h = 0; h < size; h++) {
                 if (playerMap.getStatus(row, col + h) == Field.SHIP) {
@@ -276,6 +278,7 @@ public class ShipPlacementController {
 
     /**
      * Places a ship on the selected position
+     *
      * @param rowIndex Row of clicked button
      * @param colIndex Column of clicked button
      */
@@ -289,9 +292,6 @@ public class ShipPlacementController {
 
             if (shipList.size() > 1) {
 
-                String first = "first ";
-                String second = "second ";
-
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
                     int counter = 0;
@@ -301,9 +301,9 @@ public class ShipPlacementController {
                         }
                     }
                     if (counter == 2) {
-                        infoLabel.setText("Now set your " + first + shipList.get(0).getName().toUpperCase());
+                        infoLabel.setText("Now set your first " + shipList.get(0).getName().toUpperCase());
                     } else {
-                        infoLabel.setText("Now set your " + second + shipList.get(0).getName().toUpperCase());
+                        infoLabel.setText("Now set your second " + shipList.get(0).getName().toUpperCase());
                     }
 
                 } else {
@@ -357,14 +357,15 @@ public class ShipPlacementController {
 
     /**
      * Colors the position of the (placed ship/ship-to-place)
+     *
      * @param shipLength Length of placed ship
-     * @param row Row where ship was placed
-     * @param column Column where ship was placed
-     * @param dir Direction of placed ship: horizontal/vertical
-     * @param color Black: Placed ship
-     *              Red: No ship-placement on hovered position possible!
-     *              Blue: Water
-     *              Grey: Ship-placement on hovered position possible
+     * @param row        Row where ship was placed
+     * @param column     Column where ship was placed
+     * @param dir        Direction of placed ship: horizontal/vertical
+     * @param color      Black: Placed ship
+     *                   Red: No ship-placement on hovered position possible!
+     *                   Blue: Water
+     *                   Grey: Ship-placement on hovered position possible
      */
     @FXML
     private void colorPlacedShip(int shipLength, int row, int column, boolean dir, String color) {
@@ -389,16 +390,17 @@ public class ShipPlacementController {
 
     /**
      * Coloring individual cells of the theoretic ship-position
+     *
      * @param shipLength Length of ship-to-placed
-     * @param row Row of hovered button
-     * @param column Column of hovered button
-     * @param dir Direction of ship-to-placed: horizontal/vertical
+     * @param row        Row of hovered button
+     * @param column     Column of hovered button
+     * @param dir        Direction of ship-to-placed: horizontal/vertical
      */
     @FXML
     private void colorCellsIndividually(int shipLength, int row, int column, boolean dir) {
         ObservableList<Node> children = playerGrid.getChildren();
         for (int i = 1; i < children.size(); i++) {
-            for(int l = 0; l < shipLength; l++) {
+            for (int l = 0; l < shipLength; l++) {
                 //Horizontal
                 if (dir) {
                     if (GridPane.getRowIndex(children.get(i)) == row && GridPane.getColumnIndex(children.get(i)) == column + l) {
@@ -408,7 +410,7 @@ public class ShipPlacementController {
                             children.get(i).setStyle("-fx-background-color: #008ae6");
                         }
                     }
-                  //Vertical
+                    //Vertical
                 } else {
                     if (GridPane.getRowIndex(children.get(i)) == row + l && GridPane.getColumnIndex(children.get(i)) == column) {
                         if (playerMap.getStatus(row + l, column) == Field.SHIP) {
@@ -424,10 +426,11 @@ public class ShipPlacementController {
 
     /**
      * Jump to next scene : Battle-Phase
+     *
      * @throws IOException for setScene
      */
     @FXML
-    public void goToBattlePhase () throws IOException{
+    public void goToBattlePhase() throws IOException {
         GuiDriver.getApplication().setScene("/fxml/BattlePhase.fxml", "Battle-Phase", 1001, 559);
     }
 }

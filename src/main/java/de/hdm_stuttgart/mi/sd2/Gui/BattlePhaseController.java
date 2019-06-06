@@ -18,7 +18,6 @@ public class BattlePhaseController {
     final private int MAPSIZE = ShipPlacementController.MAPSIZE;
 
 
-
     @FXML
     GridPane playerGrid;
     @FXML
@@ -158,7 +157,7 @@ public class BattlePhaseController {
                 for (int i = 1; i < children.size(); i++) {
 
                     if (ShipPlacementController.computerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
-                        children.get(i).setStyle("-fx-background-color: black");
+                        children.get(i).setStyle("-fx-background-color: #008ae6");
                     }
 
 
@@ -247,7 +246,6 @@ public class BattlePhaseController {
 
     /**
      * Handles next-turn-event
-     *
      */
     @FXML
     public void nextTurn() {

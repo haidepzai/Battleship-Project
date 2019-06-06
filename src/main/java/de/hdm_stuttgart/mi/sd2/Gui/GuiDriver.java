@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.mi.sd2.Gui;
 
 
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
