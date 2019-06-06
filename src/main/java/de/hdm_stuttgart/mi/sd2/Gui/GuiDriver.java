@@ -1,4 +1,4 @@
-package de.hdm_stuttgart.mi.sd2;
+package de.hdm_stuttgart.mi.sd2.Gui;
 
 
 

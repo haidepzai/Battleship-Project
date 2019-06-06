@@ -1,8 +1,10 @@
-package de.hdm_stuttgart.mi.sd2;
+package de.hdm_stuttgart.mi.sd2.Gui;
 
 import de.hdm_stuttgart.mi.sd2.Exceptions.IllegalFactoryArgument;
+import de.hdm_stuttgart.mi.sd2.Field;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
+import de.hdm_stuttgart.mi.sd2.aiRandom;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,8 +22,8 @@ import java.util.List;
 @SuppressWarnings("Duplicates")
 public class ShipPlacementController {
 
-    static List<IShip> shipList = new ArrayList<>();
-    static List<IShip> shipListAI = new ArrayList<>();
+    public static List<IShip> shipList = new ArrayList<>();
+    public static List<IShip> shipListAI = new ArrayList<>();
     static final int MAPSIZE = 9;
 
     static int playerFleet;
@@ -288,9 +290,6 @@ public class ShipPlacementController {
             boolean dir = (group.getSelectedToggle() == horizontal);
             int shipLength = shipList.get(0).getLength();
 
-            //ObservableList<Node> children = playerGrid.getChildren();
-            //System.out.println(children);
-
             if (shipList.size() > 1) {
 
                 String first = "first ";
@@ -298,7 +297,6 @@ public class ShipPlacementController {
 
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
-                    //shipList.remove(0);
                     int counter = 0;
                     for (IShip ship : shipList) {
                         if (shipList.get(0).getName().equals(ship.getName())) {
