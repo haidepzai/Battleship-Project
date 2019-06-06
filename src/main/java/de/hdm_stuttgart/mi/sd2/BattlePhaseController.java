@@ -10,11 +10,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
 
     final int MAPSIZE = ShipPlacementController.MAPSIZE;
+
+
 
     @FXML
     GridPane playerGrid;
@@ -142,30 +145,30 @@ public class BattlePhaseController {
 
         }
 
-        //Color ships from AI - to TEST
-        for (int r = 1; r <= MAPSIZE; r++) {
-            for (int c = 1; c <= MAPSIZE; c++) {
-                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
-                ObservableList<Node> children = enemyGrid.getChildren();
-                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
-                for (int i = 1; i < children.size(); i++) {
-
-                    if (ShipPlacementController.computerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
-                        children.get(i).setStyle("-fx-background-color: black");
-                    }
-
-
-                }
-            }
-
-        }
+//        //Color ships from AI - to TEST
+//        for (int r = 1; r <= MAPSIZE; r++) {
+//            for (int c = 1; c <= MAPSIZE; c++) {
+//                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
+//                ObservableList<Node> children = enemyGrid.getChildren();
+//                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+//                for (int i = 1; i < children.size(); i++) {
+//
+//                    if (ShipPlacementController.computerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
+//                        children.get(i).setStyle("-fx-background-color: black");
+//                    }
+//
+//
+//                }
+//            }
+//
+//        }
     }
 
     /**
      * Manages the shoot-events of the computer -> Random actions
      */
     @FXML
-    public void setAIShoot(){
+    public void setAIShoot() {
         //count: for later print out, that clarifies how often computer shot
         int count = 1;
         GuiDriver.log.debug("Computer's attack phase");
@@ -190,6 +193,7 @@ public class BattlePhaseController {
                         if (ShipPlacementController.playerFleet == 0) {
                             infoLabelPF.setText("The computer destroyed all of your ships!!!");
                             gameWin.setText("The computer won the game!");
+
                             playerGrid.setDisable(true);
                             enemyGrid.setDisable(true);
                             backPane.setStyle("-fx-opacity: 0.3");
@@ -206,7 +210,7 @@ public class BattlePhaseController {
                     }
                 } else {
                     GuiDriver.log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");
-                    if(count > 1) {
+                    if (count > 1) {
                         infoLabelPF.setText("Computer hit a ship and shot " + count + " times! Round finished!");
                         ObservableList<Node> children = playerGrid.getChildren();
                         //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
@@ -241,6 +245,7 @@ public class BattlePhaseController {
 
     /**
      * Handles next-turn-event
+     *
      * @param event ActionEvent: ButtonClick
      */
     @FXML
@@ -254,6 +259,7 @@ public class BattlePhaseController {
 
     /**
      * Go back to menu after game is finished and clears the fields
+     *
      * @param event ActionEvent: ButtonClick
      * @throws Exception for setScene-event
      */

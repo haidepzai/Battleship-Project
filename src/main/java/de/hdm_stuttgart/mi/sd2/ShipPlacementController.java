@@ -173,23 +173,45 @@ public class ShipPlacementController {
      */
     @FXML
     public void showShip(MouseEvent event, int rowIndex, int colIndex, boolean entered) {
-        boolean dir = (group.getSelectedToggle() == horizontal);
-        int shipLength = shipList.get(0).getLength();
-        //Button entered
-        if(entered) {
-            if (!playerMap.checkShip(shipList.get(0), rowIndex, colIndex, dir)) {
-                colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: grey");
+        try {
+            boolean dir = (group.getSelectedToggle() == horizontal);
+            int shipLength = shipList.get(0).getLength();
+            //Button entered
+            if (entered) {
+                if (!playerMap.checkShip(shipList.get(0), rowIndex, colIndex, dir)) {
+                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: grey");
+                } else {
+                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: red");
+                }
+                //Button exited
             } else {
-                colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: red");
+                if (checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("ship")) {
+                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
+                } else if (checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("water")) {
+                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: #008ae6");
+                } else {
+                    colorCellsIndividually(shipLength, rowIndex, colIndex, dir);
+                }
             }
-        //Button exited
-        } else {
-            if (checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("ship")) {
-                colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
-            } else if (checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("water")) {
-                colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: #008ae6");
+        } catch (ArrayIndexOutOfBoundsException l ) {
+
+          boolean dir = (group.getSelectedToggle() == horizontal);
+            if (dir) {
+                if (entered) {
+                    colorPlacedShip(shipList.get(0).getLength()-1, rowIndex, colIndex, true, "-fx-background-color: red");
+                    //Button exited
+                } else {
+                    colorPlacedShip(shipList.get(0).getLength()-1, rowIndex, colIndex, true, "-fx-background-color: #008ae6");
+                    colorCellsIndividually(shipList.get(0).getLength()-1, rowIndex, colIndex, true);
+                }
             } else {
-                colorCellsIndividually(shipLength, rowIndex, colIndex, dir);
+                if (entered) {
+                    colorPlacedShip(shipList.get(0).getLength()-1, rowIndex, colIndex, false, "-fx-background-color: red");
+                    //Button exited
+                } else {
+                    colorPlacedShip(shipList.get(0).getLength()-1, rowIndex, colIndex, false, "-fx-background-color: #008ae6");
+                    colorCellsIndividually(shipList.get(0).getLength()-1, rowIndex, colIndex, false);
+                }
             }
         }
     }
