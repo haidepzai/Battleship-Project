@@ -14,3 +14,11 @@ Each player has to set their ships. You have five ships to set:
 - 2 Submarines
 
 Players take turns firing shots to attack enemy ships.
+The goal of the game is to sink all of the opponent's ships by correctly guessing their location on the grid.
+
+## Team
+
+| <a href="https://gitlab.mi.hdm-stuttgart.de/sv048" target="_blank">**Vu Son Hai**</a> | <a href="https://gitlab.mi.hdm-stuttgart.de/lh108" target="_blank">**Heinrich Leon**</a> | <a href="https://gitlab.mi.hdm-stuttgart.de/sd114" target="_blank">**Dubiel Sebastian**</a> |
+| :---: |:---:| :---:|
+| [![Hai](https://gitlab.mi.hdm-stuttgart.de/uploads/-/system/user/avatar/1055/avatar.png?width=400)](https://gitlab.mi.hdm-stuttgart.de/sv048)    | [![Leon](https://gitlab.mi.hdm-stuttgart.de/uploads/-/system/user/avatar/1210/avatar.png?width=400)](https://gitlab.mi.hdm-stuttgart.de/lh108) | [![Sebastian](https://gitlab.mi.hdm-stuttgart.de/uploads/-/system/user/avatar/1208/avatar.png?width=90)](https://gitlab.mi.hdm-stuttgart.de/sd114)  |
+| <a href="https://gitlab.mi.hdm-stuttgart.de/sv048" target="_blank">`https://gitlab.mi.hdm-stuttgart.de/sv048`</a> | <a href="https://gitlab.mi.hdm-stuttgart.de/lh108" target="_blank">`https://gitlab.mi.hdm-stuttgart.de/lh108`</a> | <a href="https://gitlab.mi.hdm-stuttgart.de/sd114" target="_blank">`https://gitlab.mi.hdm-stuttgart.de/sd114`</a> |
