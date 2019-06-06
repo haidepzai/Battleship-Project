@@ -1,4 +1,4 @@
-module de.hdm_stuttgart.mi.sd2 {                //package-Name
+module de.hdm_stuttgart.mi.sd2 {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.apache.logging.log4j;

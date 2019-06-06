@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class TestField {
 
-    Field f = new Field(9);
+    private Field f = new Field(9);
 
     //Check if Ships can be set
     @Test

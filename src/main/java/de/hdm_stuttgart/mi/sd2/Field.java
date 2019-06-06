@@ -5,11 +5,11 @@ import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 
 public class Field {
 
-    static int h;
-    int[][] field;
+    private int h;
+    private int[][] field;
 
-    static final int BORDER = -42;
-    static final int WATER = 0;
+    private static final int BORDER = -42;
+    private static final int WATER = 0;
     public static final int SHIP = -1;
     public static final int SHOT = -99;
     public static final int HIT = -100;
@@ -27,32 +27,25 @@ public class Field {
         }
     }
 
-    /**
-     * Print out the two-dimensional Array
-     */
-    public void printMap() {
-        //System.out.println(Arrays.deepToString(field));
-        for (int i = 0; i < h; i++) {
-            for (int j = 0; j < h; j++) {
-                System.out.printf("%4d ", field[i][j]);
-            }
-            System.out.println();
-        }
-    }
+//    /**
+//     * Print out the two-dimensional Array
+//     */
+//    void printMap() {
+//        //System.out.println(Arrays.deepToString(field));
+//        for (int i = 0; i < h; i++) {
+//            for (int j = 0; j < h; j++) {
+//                System.out.printf("%4d ", field[i][j]);
+//            }
+//            System.out.println();
+//        }
+//    }
 
-    /**
-     * @return Return game-field
-     */
-    public int[][] getField() {
-        return field;
-    }
-
-    /**
-     * @return Return size(length/width) of the game-field
-     */
-    public int getSize() {
-        return h;
-    }
+//    /**
+//     * @return Return game-field
+//     */
+//    public int[][] getField() {
+//        return field;
+//    }
 
 
     public int getStatus(int row, int col) {
@@ -183,7 +176,7 @@ public class Field {
         }
     }
 
-    private void setCore(IShip i, int row, int col, boolean dir) {
+    void setCore(IShip i, int row, int col, boolean dir) {
         int size = i.getLength();
 
         if (!dir) {
@@ -216,33 +209,14 @@ public class Field {
         }
     }
 
-    public boolean setShipAI(IShip i, int row, int col, boolean dir) {
+    public void setShipAI(IShip i, int row, int col, boolean dir) {
 
         if (!checkShip(i, row, col, dir)) {
             setCore(i, row, col, dir);
             ShipPlacementController.shipListAI.remove(i);
-            return true;
-        } else {
-            //setShipAI(i, aiRandom.randNumber(h), aiRandom.randNumber(h), aiRandom.randDir());
-            return false;
+
         }
     }
-
-    /**
-     * Check if a position has already been shot
-     *
-     * @param row Row of position that shall be checked
-     * @param col Column of position that shall be checked
-     * @return True: Position has already been shot , False: Not been shot
-     */
-//    boolean checkShot(int row, int col) {
-//
-//        if (field[row - 1][col - 1] == -99) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
 
     /**
      * Attack position on game-field
@@ -262,15 +236,12 @@ public class Field {
 
     public boolean checkShipState(int row, int col) {
 
-        if (checkVertical(row, col) && checkHorizontal(row, col)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (checkVertical(row, col) && checkHorizontal(row, col));
+
 
     }
 
-    public boolean checkHorizontal(int row, int col) {
+    private boolean checkHorizontal(int row, int col) {
 
         //Check left side
         for (int l = 0; getLeft(row, col - l) != WATER && getLeft(row, col - l) != SHOT && getLeft(row, col - l) != BORDER; l++) {
@@ -287,7 +258,7 @@ public class Field {
         return true;
     }
 
-    public boolean checkVertical(int row, int col) {
+    private boolean checkVertical(int row, int col) {
 
         //Check top side
         for (int t = 0; getTop(row - t, col) != WATER && getTop(row - t, col) != SHOT && getTop(row - t, col) != BORDER; t++) {

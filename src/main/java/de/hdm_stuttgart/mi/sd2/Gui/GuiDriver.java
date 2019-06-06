@@ -21,7 +21,7 @@ public class GuiDriver extends Application {
 
     static final Logger log = LogManager.getLogger(GuiDriver.class);
 
-    public static GuiDriver getApplication() {
+    static GuiDriver getApplication() {
         return application;
     }
 

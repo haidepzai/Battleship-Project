@@ -149,23 +149,23 @@ public class BattlePhaseController {
 
         playerGrid.setDisable(true);
 
-//        //Color ships from AI - to TEST
-//        for (int r = 1; r <= MAPSIZE; r++) {
-//            for (int c = 1; c <= MAPSIZE; c++) {
-//                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
-//                ObservableList<Node> children = enemyGrid.getChildren();
-//                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
-//                for (int i = 1; i < children.size(); i++) {
-//
-//                    if (ShipPlacementController.computerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
-//                        children.get(i).setStyle("-fx-background-color: black");
-//                    }
-//
-//
-//                }
-//            }
-//
-//        }
+        //Color ships from AI - to TEST
+        for (int r = 1; r <= MAPSIZE; r++) {
+            for (int c = 1; c <= MAPSIZE; c++) {
+                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
+                ObservableList<Node> children = enemyGrid.getChildren();
+                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+                for (int i = 1; i < children.size(); i++) {
+
+                    if (ShipPlacementController.computerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
+                        children.get(i).setStyle("-fx-background-color: black");
+                    }
+
+
+                }
+            }
+
+        }
     }
 
     /**
