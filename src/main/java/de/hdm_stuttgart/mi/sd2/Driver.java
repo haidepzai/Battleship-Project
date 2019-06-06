@@ -13,10 +13,10 @@ public class Driver {
 
     //Logger for Driver-class initialized
     private static Logger log = LogManager.getLogger(Driver.class);
-    static List<IShip> shipList = new ArrayList<>();
-    static List<IShip> shipListAI = new ArrayList<>();
+    public static List<IShip> shipList = new ArrayList<>();
+    public static List<IShip> shipListAI = new ArrayList<>();
 
-    final static int MAPSIZE = 9;
+    final private static int MAPSIZE = 9;
 
     public static void main(String[] args) {
 

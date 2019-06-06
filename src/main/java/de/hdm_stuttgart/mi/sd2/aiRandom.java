@@ -1,16 +1,15 @@
 package de.hdm_stuttgart.mi.sd2;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class aiRandom {
-    public static int randNumber(int mapsize) {
+class aiRandom {
+     static int randNumber(int mapSize) {
 
-        return (int)(Math.random() * mapsize) + 1;
+        return (int)(Math.random() * mapSize) + 1;
 
     }
 
-    public static boolean randDir() {
+    static boolean randDir() {
 
         Random random = new Random();
 

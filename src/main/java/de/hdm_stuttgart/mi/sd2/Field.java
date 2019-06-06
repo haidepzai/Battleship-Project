@@ -75,7 +75,7 @@ public class Field {
      * @param col Column of passed parameters
      * @return BORDER: Left-border of the Array / SHIP: Ship on the left side / WATER: Water (no ship) on the left side
      */
-    public int getLeft(int row, int col) {
+    private int getLeft(int row, int col) {
         if (col == 1) {
             return BORDER;
         } else if (field[row - 1][col - 2] == SHIP) {
@@ -96,7 +96,7 @@ public class Field {
      * @param col Column of passed parameters
      * @return BORDER: Right-border of the Array / SHIP: Ship on the right side / WATER: Water, free space on the right side
      */
-    public int getRight(int row, int col) {
+    private int getRight(int row, int col) {
         if (col == h) {
             return BORDER;
         } else if (field[row - 1][col] == SHIP) {
@@ -117,7 +117,7 @@ public class Field {
      * @param col Column of passed parameters
      * @return BORDER: Top-border of the Array / SHIP: Ship above / WATER: Water, free space above
      */
-    public int getTop(int row, int col) {
+    private int getTop(int row, int col) {
         if (row == 1) {
             return BORDER;
         } else if (field[row - 2][col - 1] == SHIP) {
@@ -138,7 +138,7 @@ public class Field {
      * @param col Column of passed parameters
      * @return BORDER: Bottom-border of the Array / SHIP: Ship beneath / WATER: Water, free space beneath
      */
-    public int getBot(int row, int col) {
+    private int getBot(int row, int col) {
         if (row == h) {
             return BORDER;
         } else if (field[row][col - 1] == SHIP) {
@@ -184,7 +184,7 @@ public class Field {
         }
     }
 
-    public void setCore(IShip i, int row, int col, boolean dir) {
+    private void setCore(IShip i, int row, int col, boolean dir) {
         int size = i.getLength();
 
         if (!dir) {

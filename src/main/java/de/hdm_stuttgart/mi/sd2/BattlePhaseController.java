@@ -1,7 +1,6 @@
 package de.hdm_stuttgart.mi.sd2;
 
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -10,12 +9,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
 
-    final int MAPSIZE = ShipPlacementController.MAPSIZE;
+    final private int MAPSIZE = ShipPlacementController.MAPSIZE;
 
 
 
@@ -168,7 +166,7 @@ public class BattlePhaseController {
      * Manages the shoot-events of the computer -> Random actions
      */
     @FXML
-    public void setAIShoot() {
+    private void setAIShoot() {
         //count: for later print out, that clarifies how often computer shot
         int count = 1;
         GuiDriver.log.debug("Computer's attack phase");
@@ -246,10 +244,9 @@ public class BattlePhaseController {
     /**
      * Handles next-turn-event
      *
-     * @param event ActionEvent: ButtonClick
      */
     @FXML
-    public void nextTurn(ActionEvent event) {
+    public void nextTurn() {
         nextTurnB.setDisable(true);
         playerGrid.setDisable(false);
         enemyGrid.setDisable(false);
@@ -260,11 +257,10 @@ public class BattlePhaseController {
     /**
      * Go back to menu after game is finished and clears the fields
      *
-     * @param event ActionEvent: ButtonClick
-     * @throws Exception for setScene-event
+     * @throws IOException for setScene-event
      */
     @FXML
-    public void goToMenu(ActionEvent event) throws IOException {
+    public void goToMenu() throws IOException {
         ShipPlacementController.playerMap.clearField();
         ShipPlacementController.computerMap.clearField();
         GuiDriver.getApplication().setScene("/fxml/Menu.fxml", "Menu", 600, 400);
