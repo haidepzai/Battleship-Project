@@ -28,23 +28,28 @@ public class TestField {
     }
 
     //Test what will happen if Battleship is set on border
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void testIndexOutOfBoundsException() throws IllegalFactoryArgument {
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void testArrayIndexOutOfBoundsException() throws IllegalFactoryArgument {
 
-        assertEquals("Placement not possible here!", f.setShip(ShipFactory.createShip(IShip.ShipType.BATTLESHIP), 9, 9, true));
-
+        assertTrue(f.setShip(ShipFactory.createShip(IShip.ShipType.BATTLESHIP), 9, 9, true));
+        assertTrue(f.setShip(ShipFactory.createShip(IShip.ShipType.CRUISER), 1, 8, true));
+        assertFalse(f.setShip(ShipFactory.createShip(IShip.ShipType.DESTROYER), 5, 8, true));
+        assertFalse(f.setShip(ShipFactory.createShip(IShip.ShipType.BATTLESHIP), 1, 9, false));
+        assertFalse(f.setShip(ShipFactory.createShip(IShip.ShipType.SUBMARINE), 9, 9, false));
     }
 
     //Check if Battleship has been set
     @Test
-    public void testCheckShip() throws IllegalFactoryArgument {
+    public void testCheckGetStatus() throws IllegalFactoryArgument {
+
+        //todo: test more states => WATER, SHOT, HIT by using "attack"-method
 
         //Battleship
         f.setCore(ShipFactory.createShip(IShip.ShipType.BATTLESHIP), 5, 5, true);
 
         assertTrue(f.getStatus(5, 5) == Field.SHIP);
         assertTrue(f.getStatus(5, 7) == Field.SHIP);
-        assertFalse(f.getStatus(9, 9) == Field.SHIP);
+        assertFalse(f.getStatus(5, 4) == Field.SHIP);
         assertFalse(f.getStatus(6, 5) == Field.SHIP);
 
         //Cruiser
@@ -88,6 +93,12 @@ public class TestField {
         assertFalse(f.getStatus(4, 1) == Field.HIT); //Cruiser length 3 = NO HIT
 
 
+    }
+
+    @Test
+    public void testCheckShipState() throws IllegalFactoryArgument {
+        //todo: check if a destroyed ship is correctly detected
+        //todo: "negative-test" - check whether a ship which is not destroyed is not detected as destroyed!
     }
 
 }

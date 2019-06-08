@@ -14,11 +14,18 @@ public class Field {
     public static final int SHOT = -99;
     public static final int HIT = -100;
 
+    /**
+     * Constructor that creates a new two-dimensional game-field
+     * @param h Size (edge length) of the square game-field
+     */
     public Field(int h) {
         this.h = h;
         this.field = new int[h][h];
     }
 
+    /**
+     * Clears/Reset a field for a game-restart
+     */
     public void clearField() {
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < h; j++) {
@@ -27,27 +34,16 @@ public class Field {
         }
     }
 
-//    /**
-//     * Print out the two-dimensional Array
-//     */
-//    void printMap() {
-//        //System.out.println(Arrays.deepToString(field));
-//        for (int i = 0; i < h; i++) {
-//            for (int j = 0; j < h; j++) {
-//                System.out.printf("%4d ", field[i][j]);
-//            }
-//            System.out.println();
-//        }
-//    }
-
-//    /**
-//     * @return Return game-field
-//     */
-//    public int[][] getField() {
-//        return field;
-//    }
-
-
+    /**
+     * Method that returns the status of the selected position
+     *
+     * @param row Row of selected position
+     * @param col Column of selected position
+     * @return SHIP: Ship on the position
+     *         SHOT: Position was shot, but didn't hit a ship
+     *         HIT: Position was shot and hit a ship
+     *         WATER: Water on the position (unaffected state)
+     */
     public int getStatus(int row, int col) {
         if (field[row - 1][col - 1] == SHIP) {
             return SHIP;
@@ -176,6 +172,14 @@ public class Field {
         }
     }
 
+    /**
+     * Core method for ship placement on the game-field
+     *
+     * @param i Ship type
+     * @param row Selected row
+     * @param col Selected column
+     * @param dir Selected direction: Horizontal? True/False
+     */
     void setCore(IShip i, int row, int col, boolean dir) {
         int size = i.getLength();
 
@@ -191,7 +195,8 @@ public class Field {
     }
 
     /**
-     * Places a ship on the game-field
+     * Handles the ship placement of the player by checking if a placement is possible at the selected position.
+     * If yes, the ship will be placed and removied out of the ship list
      *
      * @param i   Ship-type
      * @param row Selected row for ship placement
@@ -209,6 +214,14 @@ public class Field {
         }
     }
 
+    /**
+     * Handles the ship placement for the computer (functionality: look "setShip")
+     *
+     * @param i Ship-type
+     * @param row Randomly selected row for ship placement
+     * @param col Randomly selected column for ship placement
+     * @param dir Randomly selected direction of the ship. Horizontal? True/False
+     */
     public void setShipAI(IShip i, int row, int col, boolean dir) {
 
         if (!checkShip(i, row, col, dir)) {
@@ -234,13 +247,27 @@ public class Field {
 
     }
 
+    /**
+     * Checks whether a ship is destroyed or not by using checkVertical/checkHorizontal methods
+     *
+     * @param row Row of selected position
+     * @param col Column of selected position
+     * @return True, if the ship is destroyed
+     */
     public boolean checkShipState(int row, int col) {
 
         return (checkVertical(row, col) && checkHorizontal(row, col));
 
-
     }
 
+
+    /**
+     * Checks, whether in horizontal direction is no cell with the status SHIP left which belongs to the hit ship
+     *
+     * @param row Row of selected position
+     * @param col Column of selected position
+     * @return True, if the ship is destroyed
+     */
     private boolean checkHorizontal(int row, int col) {
 
         //Check left side
@@ -258,6 +285,14 @@ public class Field {
         return true;
     }
 
+
+    /**
+     * Checks, whether in vertical direction is no cell with the status SHIP left which belongs to the hit ship
+     *
+     * @param row Row of selected position
+     * @param col Column of selected position
+     * @return True, if the ship is destroyed
+     */
     private boolean checkVertical(int row, int col) {
 
         //Check top side

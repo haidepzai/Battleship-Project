@@ -185,13 +185,7 @@ public class ShipPlacementController {
                 }
                 //Button exited
             } else {
-                if (checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("ship")) {
-                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
-                } else if (checkColoredCells(shipList.get(0), rowIndex, colIndex, dir).equals("water")) {
-                    colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: #008ae6");
-                } else {
-                    colorCellsIndividually(shipLength, rowIndex, colIndex, dir);
-                }
+                colorCellsIndividually(shipLength, rowIndex, colIndex, dir);
             }
             //Catch if place-to-ship would cross the map-border
         } catch (ArrayIndexOutOfBoundsException l) {
@@ -214,65 +208,6 @@ public class ShipPlacementController {
                     colorCellsIndividually(shipList.get(0).getLength() - 1, rowIndex, colIndex, false);
                 }
             }
-        }
-    }
-
-    /**
-     * Check the water-/other-ship-state on the theoretic ship-position
-     *
-     * @param i   Ship type
-     * @param row Row of hovered button
-     * @param col Column of hovered button
-     * @param dir Horizontal/Vertical direction of the ship to place
-     * @return "water": Only water on the ship-to-place-postion
-     * "ship": Only a ship on the ship-to-place-position
-     * "ship+water": Water AND a ship on the ship-to-place-position
-     */
-    @FXML
-    private String checkColoredCells(IShip i, int row, int col, boolean dir) {
-        int size = i.getLength();
-        String status = "";
-        //Vertical
-        if (!dir) {
-            for (int v = 0; v < size; v++) {
-                if (playerMap.getStatus(row + v, col) == Field.SHIP) {
-                    if (status.equals("water")) {
-                        status = "ship+water";
-                        break;
-                    } else {
-                        status = "ship";
-                    }
-                } else {
-                    if (status.equals("ship")) {
-                        status = "ship+water";
-                        break;
-                    } else {
-                        status = "water";
-                    }
-                }
-            }
-            return status;
-
-            //Horizontal
-        } else {
-            for (int h = 0; h < size; h++) {
-                if (playerMap.getStatus(row, col + h) == Field.SHIP) {
-                    if (status.equals("water")) {
-                        status = "ship+water";
-                        break;
-                    } else {
-                        status = "ship";
-                    }
-                } else {
-                    if (status.equals("ship")) {
-                        status = "ship+water";
-                        break;
-                    } else {
-                        status = "water";
-                    }
-                }
-            }
-            return status;
         }
     }
 
