@@ -47,18 +47,18 @@ public class TestField {
         //Battleship
         f.setCore(ShipFactory.createShip(IShip.ShipType.BATTLESHIP), 5, 5, true);
 
-        assertTrue(f.getStatus(5, 5) == Field.SHIP);
-        assertTrue(f.getStatus(5, 7) == Field.SHIP);
-        assertFalse(f.getStatus(5, 4) == Field.SHIP);
-        assertFalse(f.getStatus(6, 5) == Field.SHIP);
+        assertEquals(f.getStatus(5, 5), Field.SHIP);
+        assertEquals(f.getStatus(5, 7), Field.SHIP);
+        assertNotEquals(f.getStatus(5, 4), Field.SHIP);
+        assertNotEquals(f.getStatus(6, 5), Field.SHIP);
 
         //Cruiser
         f.setCore(ShipFactory.createShip(IShip.ShipType.CRUISER), 1, 1, false);
 
-        assertTrue(f.getStatus(1, 1) == Field.SHIP);
-        assertTrue(f.getStatus(3, 1) == Field.SHIP);
-        assertFalse(f.getStatus(4, 1) == Field.SHIP);
-        assertFalse(f.getStatus(1, 2) == Field.SHIP);
+        assertEquals(f.getStatus(1, 1), Field.SHIP);
+        assertEquals(f.getStatus(3, 1), Field.SHIP);
+        assertNotEquals(f.getStatus(4, 1), Field.SHIP);
+        assertNotEquals(f.getStatus(1, 2), Field.SHIP);
 
     }
 
@@ -77,24 +77,24 @@ public class TestField {
 
         //Attack on the right of the ship
         f.attack(5, 6);
-        assertTrue(f.getStatus(5, 6) == Field.HIT); //Ship length 4 = HIT
+        assertEquals(f.getStatus(5, 6), Field.HIT); //Ship length 4 = HIT
 
         //Attack on the left of the ship
         f.attack(5, 4);
-        assertFalse(f.getStatus(5, 4) == Field.HIT);
+        assertNotEquals(f.getStatus(5, 4), Field.HIT);
 
         //Attack water
         f.attack(9, 9);
-        assertFalse(f.getStatus(9, 9) == Field.HIT); //NO hit
+        assertNotEquals(f.getStatus(9, 9), Field.HIT); //NO hit
 
         //Create vertical Cruiser
         f.setCore(ShipFactory.createShip(IShip.ShipType.CRUISER), 1, 1, false);
 
         f.attack(3, 1);
-        assertTrue(f.getStatus(3, 1) == Field.HIT);
+        assertEquals(f.getStatus(3, 1), Field.HIT);
 
         f.attack(4, 1);
-        assertFalse(f.getStatus(4, 1) == Field.HIT); //Cruiser length 3 = NO HIT
+        assertNotEquals(f.getStatus(4, 1), Field.HIT); //Cruiser length 3 = NO HIT
 
 
     }
