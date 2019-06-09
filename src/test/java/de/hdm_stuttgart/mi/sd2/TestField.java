@@ -62,6 +62,10 @@ public class TestField {
 
     }
 
+    /**
+     * Checks if the attack-method
+     * @throws IllegalFactoryArgument
+     */
     @Test
     public void testAttack() throws IllegalFactoryArgument {
 
@@ -69,7 +73,7 @@ public class TestField {
         f.setCore(ShipFactory.createShip(IShip.ShipType.BATTLESHIP), 5, 5, true);
 
         f.attack(5, 5);
-        assertTrue(f.getStatus(5, 5) == Field.HIT);
+        assertEquals(f.getStatus(5, 5), Field.HIT);
 
         //Attack on the right of the ship
         f.attack(5, 6);
@@ -95,10 +99,42 @@ public class TestField {
 
     }
 
+    /**
+     * Checks if the method that checks whether a ship was destroyed works correctly
+     * @throws IllegalFactoryArgument Thrown if transferred ship type doesn't exist
+     */
     @Test
     public void testCheckShipState() throws IllegalFactoryArgument {
-        //todo: check if a destroyed ship is correctly detected
-        //todo: "negative-test" - check whether a ship which is not destroyed is not detected as destroyed!
+
+        f.setCore(ShipFactory.createShip(IShip.ShipType.BATTLESHIP), 9, 1, true);
+        f.attack(9, 3);
+        f.attack(9, 4);
+        assertFalse(f.checkShipState(9, 4));
+        f.attack(9, 2);
+        assertFalse(f.checkShipState(9, 2));
+        f.attack(9, 1);
+        assertTrue(f.checkShipState(9, 1));
+
+
+        f.setCore(ShipFactory.createShip(IShip.ShipType.CRUISER), 3, 4, true);
+        f.attack(3, 4);
+        f.attack(3, 6);
+        assertFalse(f.checkShipState(3, 6));
+        assertFalse(f.checkShipState(3, 4));
+        f.attack(3, 5);
+        assertTrue(f.checkShipState(3, 5));
+
+
+        f.setCore(ShipFactory.createShip(IShip.ShipType.DESTROYER), 2, 9, false);
+        f.attack(2, 8);
+        f.attack(1, 9);
+        f.attack(3, 8);
+        f.attack(4, 9);
+        f.attack(3, 9);
+        assertFalse(f.checkShipState(3, 9));
+        f.attack(2, 9);
+        assertTrue(f.checkShipState(2, 9));
+        assertTrue(f.checkShipState(3, 9));
     }
 
 }

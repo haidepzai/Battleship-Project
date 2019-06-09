@@ -256,7 +256,8 @@ public class Field {
      */
     public boolean checkShipState(int row, int col) {
 
-        return (checkVertical(row, col) && checkHorizontal(row, col));
+        //getStatus is actually redundant, because the transferred position is already shot but it's safer to detect errors
+        return (getStatus(row, col) == HIT && checkVertical(row, col) && checkHorizontal(row, col));
 
     }
 

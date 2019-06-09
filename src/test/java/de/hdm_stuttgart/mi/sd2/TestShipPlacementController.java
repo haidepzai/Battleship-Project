@@ -12,6 +12,7 @@ public class TestShipPlacementController {
     public void testColorCellsIndividually() throws IllegalFactoryArgument {
         //todo: place two ships side by side and hover with a next ship over them and check correct coloring:
         //todo:                                                     -> is .getStyle().equals("-fx-background-color: ...")
+
     }
 
     @Test

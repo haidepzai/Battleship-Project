@@ -7,9 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
+import java.io.File;
 import java.io.IOException;
 
 @SuppressWarnings("Duplicates")
@@ -34,6 +37,8 @@ public class BattlePhaseController {
     Pane backPane;
     @FXML
     Button nextTurnB;
+    @FXML
+    ImageView winLostImage;
 
 
     @FXML
@@ -107,11 +112,7 @@ public class BattlePhaseController {
                                     ShipPlacementController.computerFleet--;
                                     infoLabelCF.setText("You have destroyed a ship! Computer has " + (ShipPlacementController.computerFleet) + " left.");
                                 } else {
-                                    infoLabelCF.setText("You destroyed every ship of the enemy!!!");
-                                    playerGrid.setDisable(true);
-                                    enemyGrid.setDisable(true);
-                                    popUp.setDisable(false);
-                                    popUp.setVisible(true);
+                                    playerWins();
                                 }
                             } else {
                                 infoLabelCF.setText("You hit a ship! You have another shot!");
@@ -179,7 +180,7 @@ public class BattlePhaseController {
             int ranRow = aiRandom.randNumber(MAPSIZE);
             int ranCol = aiRandom.randNumber(MAPSIZE);
             if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.SHOT || ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
-                GuiDriver.log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ")");
+                GuiDriver.log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ") and shoots again.");
             } else {
                 ShipPlacementController.playerMap.attack(ranRow, ranCol);
                 if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
@@ -193,20 +194,14 @@ public class BattlePhaseController {
                     }
                     if (ShipPlacementController.playerMap.checkShipState(ranRow, ranCol)) {
 
-                        if (ShipPlacementController.playerFleet == 0) {
-                            infoLabelPF.setText("The computer destroyed all of your ships!!!");
-                            gameWin.setText("The computer won the game!");
+                        ShipPlacementController.playerFleet--;
 
-                            playerGrid.setDisable(true);
-                            enemyGrid.setDisable(true);
-                            backPane.setStyle("-fx-opacity: 0.3");
-                            popUp.setDisable(false);
-                            popUp.setVisible(true);
+                        if (ShipPlacementController.playerFleet == 0) {
+                            computerWins();
                         } else {
                             infoLabelPF.setText("Computer has destroyed a ship! You have " + ShipPlacementController.playerFleet + " left.");
-
                         }
-                        ShipPlacementController.playerFleet--;
+
                     } else {
                         infoLabelPF.setText("Computer hit a ship and could shoot again!");
                         count++;
@@ -215,33 +210,53 @@ public class BattlePhaseController {
                     GuiDriver.log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");
                     if (count > 1) {
                         infoLabelPF.setText("Computer hit a ship and shot " + count + " times! Round finished!");
-                        ObservableList<Node> children = playerGrid.getChildren();
-                        //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
-                        for (int i = 1; i < children.size(); i++) {
-
-                            if (GridPane.getRowIndex(children.get(i)) == ranRow && GridPane.getColumnIndex(children.get(i)) == ranCol) {
-                                children.get(i).setStyle("-fx-background-color: red");
-                            }
-
-                        }
-                        break;
                     } else {
                         infoLabelPF.setText("Computer missed! Round finished!");
-                        ObservableList<Node> children = playerGrid.getChildren();
-                        //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
-                        for (int i = 1; i < children.size(); i++) {
-
-                            if (GridPane.getRowIndex(children.get(i)) == ranRow && GridPane.getColumnIndex(children.get(i)) == ranCol) {
-                                children.get(i).setStyle("-fx-background-color: red");
-                            }
-
-                        }
-                        break;
                     }
+                    ObservableList<Node> children = playerGrid.getChildren();
+                    //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+                    for (int i = 1; i < children.size(); i++) {
+
+                        if (GridPane.getRowIndex(children.get(i)) == ranRow && GridPane.getColumnIndex(children.get(i)) == ranCol) {
+                            children.get(i).setStyle("-fx-background-color: red");
+                        }
+                    }
+                    break;
                 }
             }
         }
         nextTurnB.setDisable(false);
+    }
+
+    @FXML
+    private void playerWins() {
+        infoLabelCF.setText("You destroyed every ship of the enemy!!!");
+        playerGrid.setDisable(true);
+        enemyGrid.setDisable(true);
+        gameWin.setText("You won the game! Game finished.");
+        File file = new File("/home/lh108/SE2Proj/battleshipproject/src/main/resources/pictures/trophy.png");
+        Image image = new Image(file.toURI().toString());
+        winLostImage.setImage(image);
+        winLostImage.maxHeight(100);
+        winLostImage.maxWidth(100);
+        popUp.setDisable(false);
+        popUp.setVisible(true);
+    }
+
+    @FXML
+    private void computerWins() {
+        infoLabelPF.setText("The computer destroyed all of your ships!!!");
+        playerGrid.setDisable(true);
+        enemyGrid.setDisable(true);
+        backPane.setStyle("-fx-opacity: 0.3");
+        gameWin.setText("You lost, the computer won the game! Game finished.");
+        File file = new File("/home/lh108/SE2Proj/battleshipproject/src/main/resources/pictures/lost.png");
+        Image image = new Image(file.toURI().toString());
+        winLostImage.setImage(image);
+        winLostImage.maxHeight(100);
+        winLostImage.maxWidth(100);
+        popUp.setDisable(false);
+        popUp.setVisible(true);
     }
 
     /**
