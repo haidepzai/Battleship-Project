@@ -21,6 +21,6 @@ public class TestShipPlacementController {
         //todo: "negative-test": check if positions that are free aren#t colored red (no placement possible)
     }
 
-    //todo: test showShip ? hovering process testable?
+    //todo: test showShip ? hovering process testable?!
 
 }

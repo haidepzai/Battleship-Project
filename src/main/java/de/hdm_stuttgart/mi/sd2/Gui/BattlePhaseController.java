@@ -2,6 +2,7 @@ package de.hdm_stuttgart.mi.sd2.Gui;
 
 import de.hdm_stuttgart.mi.sd2.Field;
 import de.hdm_stuttgart.mi.sd2.aiRandom;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -134,6 +135,13 @@ public class BattlePhaseController {
             for (int c = 1; c <= MAPSIZE; c++) {
                 //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
                 ObservableList<Node> children = playerGrid.getChildren();
+                //todo: first try to implement streams
+//                children
+//                        .stream()
+//                        .filter
+//                        .forEach();
+
+
                 //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
                 for (int i = 1; i < children.size(); i++) {
 
