@@ -46,42 +46,39 @@ public class BattlePhaseController {
     public void initialize() {
 
         //Filling the tables at one to nine
-        for (int i = 1; i <= 9; i++) {
-            Label l = new Label();
-            l.setId("oneToNine");
-            l.setText(Integer.toString(i));
+        //Thread t1 = new Thread(() -> {
+            for (int i = 1; i <= 9; i++) {
+                Label l = new Label();
+                l.setId("coordinatesB");
+                l.setText(Integer.toString(i));
+                playerGrid.add(l, 0, i);
+            }
+        //});
 
-            playerGrid.add(l, 0, i);
-            Label l2 = new Label();
-            l2.setId("oneToNine");
-            l2.setText(Integer.toString(i));
-            enemyGrid.add(l2, 0, i);
-        }
+        //Thread t2 = new Thread(() -> {
+            for (int i = 1; i <= 9; i++) {
+                Label l2 = new Label();
+                l2.setId("coordinatesB");
+                l2.setText(Integer.toString(i));
+                enemyGrid.add(l2, 0, i);
+            }
+        //});
 
+        //t1.start();
+        //t2.start();
 
         //filling the tables at a to i
         int e = 65;
         for (int i = 1; i <= 9; i++) {
-            if (e == 73) {
-                Label l = new Label();
-                l.setId("aToIjustI");
-                l.setText(Character.toString((char) e));
-                playerGrid.add(l, i, 0);
-                Label l2 = new Label();
-                l2.setId("aToIjustI");
-                l2.setText(Character.toString((char) e));
-                enemyGrid.add(l2, i, 0);
-            } else {
                 Label l = new Label();
                 Label l2 = new Label();
-                l.setId("aToI");
-                l2.setId("aToI");
+                l.setId("coordinatesB");
+                l2.setId("coordinatesB");
                 l.setText(Character.toString((char) e));
                 l2.setText(Character.toString((char) e));
                 playerGrid.add(l, i, 0);
                 enemyGrid.add(l2, i, 0);
                 e++;
-            }
         }
 
         for (int i = 1; i <= 9; i++) {
@@ -136,11 +133,6 @@ public class BattlePhaseController {
                 //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
                 ObservableList<Node> children = playerGrid.getChildren();
                 //todo: first try to implement streams
-//                children
-//                        .stream()
-//                        .filter
-//                        .forEach();
-
 
                 //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
                 for (int i = 1; i < children.size(); i++) {
@@ -148,11 +140,8 @@ public class BattlePhaseController {
                     if (ShipPlacementController.playerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
                         children.get(i).setStyle("-fx-background-color: black");
                     }
-
-
                 }
             }
-
         }
 
         playerGrid.setDisable(true);
@@ -195,6 +184,7 @@ public class BattlePhaseController {
                     GuiDriver.log.trace("Computer has hit a ship at (" + ranRow + ", " + ranCol + ")");
                     ObservableList<Node> children = playerGrid.getChildren();
                     //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+                    //todo: stream for children-list
                     for (int i = 1; i < children.size(); i++) {
                         if (GridPane.getRowIndex(children.get(i)) == ranRow && GridPane.getColumnIndex(children.get(i)) == ranCol) {
                             children.get(i).setStyle("-fx-background-color: green");
@@ -223,6 +213,7 @@ public class BattlePhaseController {
                     }
                     ObservableList<Node> children = playerGrid.getChildren();
                     //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+                    //todo: stream for children list
                     for (int i = 1; i < children.size(); i++) {
 
                         if (GridPane.getRowIndex(children.get(i)) == ranRow && GridPane.getColumnIndex(children.get(i)) == ranCol) {

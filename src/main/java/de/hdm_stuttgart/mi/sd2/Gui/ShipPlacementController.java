@@ -106,9 +106,8 @@ public class ShipPlacementController {
         //Filling the tables at one to nine
         for (int i = 1; i <= MAPSIZE; i++) {
             Label l = new Label();
-            l.setId("oneToNine");
+            l.setId("coordinates");
             l.setText(Integer.toString(i));
-
             playerGrid.add(l, 0, i);
         }
 
@@ -116,18 +115,11 @@ public class ShipPlacementController {
         //filling the tables at a to i
         int e = 65;
         for (int i = 1; i <= MAPSIZE; i++) {
-            if (e == 73) {
                 Label l = new Label();
-                l.setId("aToIjustI");
-                l.setText(Character.toString((char) e));
-                playerGrid.add(l, i, 0);
-            } else {
-                Label l = new Label();
-                l.setId("aToI");
+                l.setId("coordinates");
                 l.setText(Character.toString((char) e));
                 playerGrid.add(l, i, 0);
                 e++;
-            }
         }
 
         for (int r = 1; r <= MAPSIZE; r++) {
@@ -310,6 +302,9 @@ public class ShipPlacementController {
         //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
         ObservableList<Node> children = playerGrid.getChildren();
         //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+
+
+
         for (int i = 1; i < children.size(); i++) {
             for (int l = 0; l < shipLength; l++) {
                 if (dir) {

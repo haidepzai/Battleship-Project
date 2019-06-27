@@ -1,15 +1,16 @@
-#oneToNine{
+#coordinates{
    -fx-font-size: 18pt;
-   -fx-padding: 0px 0px 0px 11px;
+   -fx-padding: 0 0 0 15;
+   -fx-font-family: serif;
 }
-#aToI{
+
+#coordinatesB{
    -fx-font-size: 18pt;
-   -fx-padding: 0px 0px 0px 11px;
+   -fx-padding: 0 0 0 12;
+   -fx-font-family: serif;
+
 }
-#aToIjustI{
-   -fx-font-size: 18pt;
-   -fx-padding: 0px 0px 0px 16px;
-}
+
 #backPane{
    -fx-background-image: url("../pictures/water.png");
 }
