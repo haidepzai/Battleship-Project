@@ -30,6 +30,8 @@ public class ShipPlacementController {
     static Field playerMap = new Field(MAPSIZE);
     static Field computerMap = new Field(MAPSIZE);
 
+    int counter = 0;
+
     @FXML
     GridPane playerGrid;
 
@@ -229,16 +231,16 @@ public class ShipPlacementController {
 
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
-                    int counter = 0;
-                    for (IShip ship : shipList) {
-                        if (shipList.get(0).getName().equals(ship.getName())) {
-                            counter++;
-                        }
-                    }
+
+                    shipList.forEach(s -> {if (shipList.get(0).getName().equals(s.getName())) {
+                        counter++;
+                    }});
+
                     if (counter == 2) {
                         infoLabel.setText("Now set your first " + shipList.get(0).getName().toUpperCase());
                     } else {
                         infoLabel.setText("Now set your second " + shipList.get(0).getName().toUpperCase());
+                        counter = 0;
                     }
 
                 } else {
