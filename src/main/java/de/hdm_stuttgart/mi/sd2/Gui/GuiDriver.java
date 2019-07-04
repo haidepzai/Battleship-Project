@@ -40,9 +40,9 @@ public class GuiDriver extends Application {
     }
 
     void setScene(String fxml, String title, int width, int height) throws IOException {
+        log.debug("FXML-Datei von " + fxml + " geladen");
         Parent root = FXMLLoader.load(getClass().getResource(fxml));
         Scene scene = new Scene(root, width, height);
-        log.debug("FXML-Datei von " + fxml + " geladen");
         stage.setScene(scene);
         stage.setTitle(title);
     }

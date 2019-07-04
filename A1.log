@@ -1,8 +1,7 @@
 JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/Menu.fxml geladen
+JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/ShipPlacement.fxml geladen
 JavaFX Application Thread INFO  Gui.ShipPlacementController - Thread for creation of shipList started
 JavaFX Application Thread INFO  Gui.ShipPlacementController - Thread for creation of shipListAI started
-JavaFX Application Thread INFO  Gui.ShipPlacementController - Thread for creation of shipList stopped
-JavaFX Application Thread INFO  Gui.ShipPlacementController - Thread for creation of shipListAI stopped
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Vertical coordinates of field (1-9) added
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Horizontal coordinates of field (A-I) added
 main INFO  Gui.GuiDriver - Application started

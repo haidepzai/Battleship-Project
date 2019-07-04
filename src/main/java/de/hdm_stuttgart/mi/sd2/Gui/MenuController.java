@@ -12,7 +12,6 @@ public class MenuController {
 
     @FXML
     public void goToShipPlacement() throws IOException {
-
         GuiDriver.getApplication().setScene("/fxml/ShipPlacement.fxml", "Ship-Placement", 600, 450);
     }
 

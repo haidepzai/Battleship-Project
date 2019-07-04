@@ -2,7 +2,6 @@ package de.hdm_stuttgart.mi.sd2.Gui;
 
 import de.hdm_stuttgart.mi.sd2.Field;
 import de.hdm_stuttgart.mi.sd2.aiRandom;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -49,26 +48,20 @@ public class BattlePhaseController {
     public void initialize() {
 
         //Filling the tables at one to nine
-        //addToShipList t1 = new addToShipList(() -> {
             for (int i = 1; i <= 9; i++) {
                 Label l = new Label();
                 l.setId("coordinatesB");
                 l.setText(Integer.toString(i));
                 playerGrid.add(l, 0, i);
             }
-        //});
 
-        //addToShipList t2 = new addToShipList(() -> {
+
             for (int i = 1; i <= 9; i++) {
                 Label l2 = new Label();
                 l2.setId("coordinatesB");
                 l2.setText(Integer.toString(i));
                 enemyGrid.add(l2, 0, i);
             }
-        //});
-
-        //t1.start();
-        //t2.start();
 
         //filling the tables at a to i
         int e = 65;
@@ -135,22 +128,22 @@ public class BattlePhaseController {
             }
         }
 
-        //Color ships from ShipPlacementController
-        for (int r = 1; r <= MAPSIZE; r++) {
-            for (int c = 1; c <= MAPSIZE; c++) {
-                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
-                ObservableList<Node> children = playerGrid.getChildren();
-                //todo: first try to implement streams
-
-                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
-                for (int i = 1; i < children.size(); i++) {
-
-                    if (ShipPlacementController.playerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
-                        children.get(i).setStyle("-fx-background-color: black");
-                    }
-                }
-            }
-        }
+//        //Color ships from ShipPlacementController
+//        for (int r = 1; r <= MAPSIZE; r++) {
+//            for (int c = 1; c <= MAPSIZE; c++) {
+//                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
+//                ObservableList<Node> children = playerGrid.getChildren();
+//                //todo: first try to implement streams
+//
+//                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+//                for (int i = 1; i < children.size(); i++) {
+//
+//                    if (ShipPlacementController.playerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
+//                        children.get(i).setStyle("-fx-background-color: black");
+//                    }
+//                }
+//            }
+//        }
 
         playerGrid.setDisable(true);
 

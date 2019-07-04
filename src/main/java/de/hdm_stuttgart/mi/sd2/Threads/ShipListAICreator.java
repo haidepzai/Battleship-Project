@@ -16,29 +16,29 @@ public class ShipListAICreator implements Runnable {
     public synchronized void run() {
         try {
 
-            IShip Battleship;
-            IShip Cruiser1;
-            IShip Cruiser2;
-            IShip Destroyer1;
-            IShip Destroyer2;
-            IShip Submarine1;
-            IShip Submarine2;
+            IShip BattleshipAI1;
+            IShip CruiserAI1;
+            IShip CruiserAI2;
+            IShip DestroyerAI1;
+            IShip DestroyerAI2;
+            IShip SubmarineAI1;
+            IShip SubmarineAI2;
 
-            Cruiser1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            Cruiser2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            Destroyer1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            Destroyer2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            Submarine1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            Submarine2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            Battleship = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
+            CruiserAI1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
+            CruiserAI2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
+            DestroyerAI1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
+            DestroyerAI2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
+            SubmarineAI1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
+            SubmarineAI2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
+            BattleshipAI1 = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
 
-            ShipPlacementController.shipListAI.add(Battleship);
-            ShipPlacementController.shipListAI.add(Cruiser1);
-            ShipPlacementController.shipListAI.add(Cruiser2);
-            ShipPlacementController.shipListAI.add(Destroyer1);
-            ShipPlacementController.shipListAI.add(Destroyer2);
-            ShipPlacementController.shipListAI.add(Submarine1);
-            ShipPlacementController.shipListAI.add(Submarine2);
+            ShipPlacementController.shipListAI.add(BattleshipAI1);
+            ShipPlacementController.shipListAI.add(CruiserAI1);
+            ShipPlacementController.shipListAI.add(CruiserAI2);
+            ShipPlacementController.shipListAI.add(DestroyerAI1);
+            ShipPlacementController.shipListAI.add(DestroyerAI2);
+            ShipPlacementController.shipListAI.add(SubmarineAI1);
+            ShipPlacementController.shipListAI.add(SubmarineAI2);
 
             ShipPlacementController.computerFleet = ShipPlacementController.shipListAI.size();
 

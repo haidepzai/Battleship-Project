@@ -35,8 +35,6 @@ public class ShipPlacementController {
     static Field playerMap = new Field(MAPSIZE);
     static Field computerMap = new Field(MAPSIZE);
 
-    int counter = 0;
-
     @FXML
     GridPane playerGrid;
 
@@ -65,12 +63,9 @@ public class ShipPlacementController {
         Thread shipListCreator = new Thread(new ShipListCreator());
         Thread shipListAICreator = new Thread(new ShipListAICreator());
         shipListCreator.start();
-        shipListAICreator.start();
-
         log.info("Thread for creation of shipList started");
+        shipListAICreator.start();
         log.info("Thread for creation of shipListAI started");
-        log.info("Thread for creation of shipList stopped");
-        log.info("Thread for creation of shipListAI stopped");
 
         horizontal.setToggleGroup(group);
         vertical.setToggleGroup(group);
@@ -213,7 +208,6 @@ public class ShipPlacementController {
                         log.debug("First " + shipList.get(0).getName().toUpperCase() + " set!");
                     } else {
                         infoLabel.setText("Now set your second " + shipList.get(0).getName().toUpperCase());
-                        counter = 0;
                         log.debug("Second " + shipList.get(0).getName().toUpperCase() + " set!");
                     }
 

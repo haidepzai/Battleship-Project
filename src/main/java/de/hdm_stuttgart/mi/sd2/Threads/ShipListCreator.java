@@ -31,13 +31,13 @@ public class ShipListCreator implements Runnable {
             Submarine2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
             Battleship = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
 
-            ShipPlacementController.shipListAI.add(Battleship);
-            ShipPlacementController.shipListAI.add(Cruiser1);
-            ShipPlacementController.shipListAI.add(Cruiser2);
-            ShipPlacementController.shipListAI.add(Destroyer1);
-            ShipPlacementController.shipListAI.add(Destroyer2);
-            ShipPlacementController.shipListAI.add(Submarine1);
-            ShipPlacementController.shipListAI.add(Submarine2);
+            ShipPlacementController.shipList.add(Battleship);
+            ShipPlacementController.shipList.add(Cruiser1);
+            ShipPlacementController.shipList.add(Cruiser2);
+            ShipPlacementController.shipList.add(Destroyer1);
+            ShipPlacementController.shipList.add(Destroyer2);
+            ShipPlacementController.shipList.add(Submarine1);
+            ShipPlacementController.shipList.add(Submarine2);
 
             ShipPlacementController.playerFleet = ShipPlacementController.shipList.size();
 
