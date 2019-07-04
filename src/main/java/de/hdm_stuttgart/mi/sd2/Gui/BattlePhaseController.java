@@ -12,14 +12,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
 
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
-
+    private static Logger log = LogManager.getLogger(BattlePhaseController.class);
     final private int MAPSIZE = ShipPlacementController.MAPSIZE;
+
 
 
     @FXML
@@ -95,16 +98,20 @@ public class BattlePhaseController {
                 bC.getStyleClass().add("waterButton");
                 enemyGrid.add(bC, i, j);
                 bC.setOnAction(event -> {
+                    log.debug("Players turn to attack!");
                     int row = GridPane.getRowIndex(bC);
                     int col = GridPane.getColumnIndex(bC);
 
-                    GuiDriver.log.debug("Player's attack phase");
+
                     if (ShipPlacementController.computerMap.getStatus(row, col) == Field.SHOT || ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
                         infoLabelCF.setText("Position has already been shot! Try again!");
+                        log.debug("Player shot at [" + row + "][" + col + "] (Status: Already shot)");
                     } else {
                         ShipPlacementController.computerMap.attack(row, col);
+
                         if (ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
                             bC.setStyle("-fx-background-color: green");
+                            log.debug("Player shot at [" + row + "][" + col + "] (Status: shot)");
                             if (ShipPlacementController.computerMap.checkShipState(row, col)) {
                                 if (ShipPlacementController.computerFleet > 1) {
                                     ShipPlacementController.computerFleet--;
@@ -113,13 +120,14 @@ public class BattlePhaseController {
                                     playerWins();
                                 }
                             } else {
-                                infoLabelCF.setText("You hit a ship! You have another shot!");
+                                infoLabelCF.setText("You hit a ship! You have another Shot!");
                             }
                         } else {
                             bC.setStyle("-fx-background-color: red");
                             infoLabelCF.setText("Missed! Your turn is finished.");
                             enemyGrid.setDisable(true);
                             playerGrid.setDisable(false);
+                            log.debug("Player shot at [" + row + "][" + col + "] (Status: Water)");
                             setAIShoot();
                         }
                     }
@@ -172,16 +180,16 @@ public class BattlePhaseController {
     private void setAIShoot() {
         //count: for later print out, that clarifies how often computer shot
         int count = 1;
-        GuiDriver.log.debug("Computer's attack phase");
+       log.debug("Computer's attack phase");
         while (true) {
             int ranRow = aiRandom.randNumber(MAPSIZE);
             int ranCol = aiRandom.randNumber(MAPSIZE);
             if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.SHOT || ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
-                GuiDriver.log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ") and shoots again.");
+              log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ") and shoots again.");
             } else {
                 ShipPlacementController.playerMap.attack(ranRow, ranCol);
                 if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
-                    GuiDriver.log.trace("Computer has hit a ship at (" + ranRow + ", " + ranCol + ")");
+                   log.trace("Computer has hit a ship at (" + ranRow + ", " + ranCol + ")");
                     ObservableList<Node> children = playerGrid.getChildren();
                     //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
                     //todo: stream for children-list
@@ -205,7 +213,7 @@ public class BattlePhaseController {
                         count++;
                     }
                 } else {
-                    GuiDriver.log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");
+                    log.trace("Computer missed! Position: (" + ranRow + ", " + ranCol + "). Turn finished.");
                     if (count > 1) {
                         infoLabelPF.setText("Computer hit a ship and shot " + count + " times! Round finished!");
                     } else {

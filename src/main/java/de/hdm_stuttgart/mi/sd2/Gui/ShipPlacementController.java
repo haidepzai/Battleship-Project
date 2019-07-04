@@ -11,6 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +23,8 @@ import java.util.List;
 @SuppressWarnings("Duplicates")
 public class ShipPlacementController {
 
+    private static Logger log = LogManager.getLogger(ShipPlacementController.class);
+
     public static List<IShip> shipList = new ArrayList<>();
     public static List<IShip> shipListAI = new ArrayList<>();
     static final int MAPSIZE = 9;
@@ -27,9 +32,10 @@ public class ShipPlacementController {
     static int playerFleet;
     static int computerFleet;
 
-    static Field playerMap = new Field(MAPSIZE);
-    static Field computerMap = new Field(MAPSIZE);
+    static Field playerMap;
 
+
+    static Field computerMap;
     int counter = 0;
 
     @FXML
@@ -52,9 +58,28 @@ public class ShipPlacementController {
     Pane backPane;
 
     final private ToggleGroup group = new ToggleGroup();
-
     @FXML
-    public void initialize() {
+    public synchronized void initialize() {
+
+        //CREATE THE PLAYER AND THE COMPUTER MAP
+
+        Thread createMap = new Thread(() ->{
+            Field playerMap = new Field(MAPSIZE);
+            this.playerMap = playerMap;
+            log.debug("Player map was created");
+        });
+
+        Thread createComputerMap = new Thread(() ->{
+            Field computerMap = new Field(MAPSIZE);
+            this.computerMap = computerMap;
+            log.debug("Computer map was created");
+        });
+
+        createMap.start();
+        createComputerMap.start();
+
+
+
 
         IShip Battleship;
         IShip Cruiser1;
@@ -95,9 +120,10 @@ public class ShipPlacementController {
             computerFleet = shipListAI.size();
 
         } catch (IllegalFactoryArgument i) {
-            GuiDriver.log.error(i);
+            log.error(i);
             System.exit(0);
         }
+
 
         horizontal.setToggleGroup(group);
         vertical.setToggleGroup(group);
@@ -230,9 +256,11 @@ public class ShipPlacementController {
 
                     if (counter == 2) {
                         infoLabel.setText("Now set your first " + shipList.get(0).getName().toUpperCase());
+                        log.debug("First " + shipList.get(0).getName().toUpperCase() + " set!");
                     } else {
                         infoLabel.setText("Now set your second " + shipList.get(0).getName().toUpperCase());
                         counter = 0;
+                        log.debug("Second " + shipList.get(0).getName().toUpperCase() + " set!");
                     }
 
                 } else {
@@ -243,8 +271,7 @@ public class ShipPlacementController {
 
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
-
-                    GuiDriver.log.debug("Player's map created. All ships set.");
+                    log.debug("All ships of the player set.");
                     infoLabel.setText("All ships set. Computer is setting..");
 
                     while (true) {
@@ -257,7 +284,7 @@ public class ShipPlacementController {
 
                             }
 
-                            GuiDriver.log.debug("Computer's map created. All ships set.");
+                            log.debug("All ships of the computer were set.");
                             break;
 
                         } catch (ArrayIndexOutOfBoundsException ignore) {
@@ -279,7 +306,7 @@ public class ShipPlacementController {
             }
 
         } catch (ArrayIndexOutOfBoundsException err) {
-            GuiDriver.log.error("Entered position is too low, too high or the ship doesn't fit at this position!", err);
+            log.error("Entered position is too low, too high or the ship doesn't fit at this position!", err);
             infoLabel.setText("Placement not possible here!");
         }
     }

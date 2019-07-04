@@ -36,16 +36,6 @@ public class GuiDriver extends Application {
         stage.setResizable(false);
         stage.show();
 
-        //final String fxmlFile = "/fxml/BattlePhase.fxml";
-        //log.debug("Loading FXML for main view from: {}", fxmlFile);
-        //final FXMLLoader loader = new FXMLLoader();
-        //final Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
-
-        //log.debug("Showing JFX scene");
-        //final Scene scene = new Scene(rootNode, 1001, 559);
-
-        //scene.getStylesheets().add(GuiDriver.class.getResource("/pictures/pictures.css").toExternalForm());
-
     }
 
     void setScene(String fxml, String title, int width, int height) throws IOException {

@@ -1,10 +1,14 @@
 package de.hdm_stuttgart.mi.sd2.Gui;
 
 import javafx.fxml.FXML;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 import java.io.IOException;
 
 public class MenuController {
+    private static Logger log = LogManager.getLogger(MenuController.class);
 
     @FXML
     public void goToShipPlacement() throws IOException {
@@ -13,7 +17,7 @@ public class MenuController {
 
     @FXML
     public void exit() {
-        GuiDriver.log.debug("Application terminated.");
+        log.debug("Application terminated.");
         System.exit(0);
     }
 }
