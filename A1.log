@@ -1,19 +1,8 @@
 JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/Menu.fxml geladen
-Thread-2 DEBUG Gui.ShipPlacementController - Player map was created
-Thread-3 DEBUG Gui.ShipPlacementController - Computer map was created
-JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/ShipPlacement.fxml geladen
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - First CRUISER set!
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - Second CRUISER set!
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - First DESTROYER set!
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - Second DESTROYER set!
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - First SUBMARINE set!
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - Second SUBMARINE set!
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - All ships of the player set.
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - All ships of the computer were set.
-JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/BattlePhase.fxml geladen
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [1][1] (Status: Water)
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer's attack phase
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][5] (Status: Water)
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread INFO  Gui.ShipPlacementController - Thread for creation of shipList started
+JavaFX Application Thread INFO  Gui.ShipPlacementController - Thread for creation of shipListAI started
+JavaFX Application Thread INFO  Gui.ShipPlacementController - Thread for creation of shipList stopped
+JavaFX Application Thread INFO  Gui.ShipPlacementController - Thread for creation of shipListAI stopped
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Vertical coordinates of field (1-9) added
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Horizontal coordinates of field (A-I) added
+main INFO  Gui.GuiDriver - Application started

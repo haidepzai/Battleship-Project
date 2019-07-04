@@ -18,7 +18,7 @@ public class GuiDriver extends Application {
 
     private static Stage stage = null;
 
-    static final Logger log = LogManager.getLogger(GuiDriver.class);
+    private static final Logger log = LogManager.getLogger(GuiDriver.class);
 
     static GuiDriver getApplication() {
         return application;
@@ -26,6 +26,7 @@ public class GuiDriver extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        log.info("Application started");
     }
 
     public void start(Stage stage) throws Exception {

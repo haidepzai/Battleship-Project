@@ -20,7 +20,7 @@ import java.io.IOException;
 
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
-    private static Logger log = LogManager.getLogger(BattlePhaseController.class);
+    private static final Logger log = LogManager.getLogger(BattlePhaseController.class);
     final private int MAPSIZE = ShipPlacementController.MAPSIZE;
 
 
@@ -49,7 +49,7 @@ public class BattlePhaseController {
     public void initialize() {
 
         //Filling the tables at one to nine
-        //Thread t1 = new Thread(() -> {
+        //addToShipList t1 = new addToShipList(() -> {
             for (int i = 1; i <= 9; i++) {
                 Label l = new Label();
                 l.setId("coordinatesB");
@@ -58,7 +58,7 @@ public class BattlePhaseController {
             }
         //});
 
-        //Thread t2 = new Thread(() -> {
+        //addToShipList t2 = new addToShipList(() -> {
             for (int i = 1; i <= 9; i++) {
                 Label l2 = new Label();
                 l2.setId("coordinatesB");
@@ -154,23 +154,23 @@ public class BattlePhaseController {
 
         playerGrid.setDisable(true);
 
-//        //Color ships from AI - to TEST
-//        for (int r = 1; r <= MAPSIZE; r++) {
-//            for (int c = 1; c <= MAPSIZE; c++) {
-//                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
-//                ObservableList<Node> children = enemyGrid.getChildren();
-//                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
-//                for (int i = 1; i < children.size(); i++) {
-//
-//                    if (ShipPlacementController.computerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
-//                        children.get(i).setStyle("-fx-background-color: black");
-//                    }
-//
-//
-//                }
-//            }
-//
-//        }
+        //Color ships from AI - to TEST
+        for (int r = 1; r <= MAPSIZE; r++) {
+            for (int c = 1; c <= MAPSIZE; c++) {
+                //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
+                ObservableList<Node> children = enemyGrid.getChildren();
+                //begin at i=1 because first child causes NullPointerException => has no Row-/ColumnIndex
+                for (int i = 1; i < children.size(); i++) {
+
+                    if (ShipPlacementController.computerMap.getStatus(r, c) == Field.SHIP && GridPane.getRowIndex(children.get(i)) == r && GridPane.getColumnIndex(children.get(i)) == c) {
+                        children.get(i).setStyle("-fx-background-color: black");
+                    }
+
+
+                }
+            }
+
+        }
     }
 
     /**

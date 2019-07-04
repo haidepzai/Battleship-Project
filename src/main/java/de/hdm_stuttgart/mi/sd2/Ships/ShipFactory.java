@@ -4,7 +4,7 @@ import de.hdm_stuttgart.mi.sd2.Exceptions.IllegalFactoryArgument;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 
 public class ShipFactory {
-    public static IShip createShip(IShip.ShipType i) throws IllegalFactoryArgument {
+    public static synchronized IShip createShip(IShip.ShipType i) throws IllegalFactoryArgument {
         switch (i) {
             case DESTROYER: return new Destroyer() ;
             case CRUISER:return new Cruiser();

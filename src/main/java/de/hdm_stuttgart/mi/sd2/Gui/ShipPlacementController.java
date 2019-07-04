@@ -1,9 +1,9 @@
 package de.hdm_stuttgart.mi.sd2.Gui;
 
-import de.hdm_stuttgart.mi.sd2.Exceptions.IllegalFactoryArgument;
 import de.hdm_stuttgart.mi.sd2.Field;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
-import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
+import de.hdm_stuttgart.mi.sd2.Threads.ShipListAICreator;
+import de.hdm_stuttgart.mi.sd2.Threads.ShipListCreator;
 import de.hdm_stuttgart.mi.sd2.aiRandom;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,19 +23,18 @@ import java.util.List;
 @SuppressWarnings("Duplicates")
 public class ShipPlacementController {
 
-    private static Logger log = LogManager.getLogger(ShipPlacementController.class);
+    private static final Logger log = LogManager.getLogger(ShipPlacementController.class);
 
     public static List<IShip> shipList = new ArrayList<>();
     public static List<IShip> shipListAI = new ArrayList<>();
     static final int MAPSIZE = 9;
 
-    static int playerFleet;
-    static int computerFleet;
+    public static int playerFleet;
+    public static int computerFleet;
 
-    static Field playerMap;
+    static Field playerMap = new Field(MAPSIZE);
+    static Field computerMap = new Field(MAPSIZE);
 
-
-    static Field computerMap;
     int counter = 0;
 
     @FXML
@@ -58,72 +57,20 @@ public class ShipPlacementController {
     Pane backPane;
 
     final private ToggleGroup group = new ToggleGroup();
+
     @FXML
-    public synchronized void initialize() {
+    public void initialize() {
 
-        //CREATE THE PLAYER AND THE COMPUTER MAP
+        //Adding all needed ships to the specific lists by using two threads (player, computer)
+        Thread shipListCreator = new Thread(new ShipListCreator());
+        Thread shipListAICreator = new Thread(new ShipListAICreator());
+        shipListCreator.start();
+        shipListAICreator.start();
 
-        Thread createMap = new Thread(() ->{
-            Field playerMap = new Field(MAPSIZE);
-            this.playerMap = playerMap;
-            log.debug("Player map was created");
-        });
-
-        Thread createComputerMap = new Thread(() ->{
-            Field computerMap = new Field(MAPSIZE);
-            this.computerMap = computerMap;
-            log.debug("Computer map was created");
-        });
-
-        createMap.start();
-        createComputerMap.start();
-
-
-
-
-        IShip Battleship;
-        IShip Cruiser1;
-        IShip Cruiser2;
-        IShip Destroyer1;
-        IShip Destroyer2;
-        IShip Submarine1;
-        IShip Submarine2;
-
-
-        //Adding all needed ships for the game (2 Cruiser, 2 Destroyer, 2 Submarines and one Battleship)
-        try {
-            Cruiser1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            Cruiser2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            Destroyer1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            Destroyer2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            Submarine1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            Submarine2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            Battleship = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
-
-            shipList.add(Battleship);
-            shipList.add(Cruiser1);
-            shipList.add(Cruiser2);
-            shipList.add(Destroyer1);
-            shipList.add(Destroyer2);
-            shipList.add(Submarine1);
-            shipList.add(Submarine2);
-
-            shipListAI.add(Battleship);
-            shipListAI.add(Cruiser1);
-            shipListAI.add(Cruiser2);
-            shipListAI.add(Destroyer1);
-            shipListAI.add(Destroyer2);
-            shipListAI.add(Submarine1);
-            shipListAI.add(Submarine2);
-
-            playerFleet = shipList.size();
-            computerFleet = shipListAI.size();
-
-        } catch (IllegalFactoryArgument i) {
-            log.error(i);
-            System.exit(0);
-        }
-
+        log.info("Thread for creation of shipList started");
+        log.info("Thread for creation of shipListAI started");
+        log.info("Thread for creation of shipList stopped");
+        log.info("Thread for creation of shipListAI stopped");
 
         horizontal.setToggleGroup(group);
         vertical.setToggleGroup(group);
@@ -136,6 +83,7 @@ public class ShipPlacementController {
             l.setText(Integer.toString(i));
             playerGrid.add(l, 0, i);
         }
+        log.debug("Vertical coordinates of field (1-9) added");
 
 
         //filling the tables at a to i
@@ -147,6 +95,8 @@ public class ShipPlacementController {
                 playerGrid.add(l, i, 0);
                 e++;
         }
+
+        log.debug("Horizontal coordinates of field (A-I) added");
 
         for (int r = 1; r <= MAPSIZE; r++) {
 
@@ -250,11 +200,15 @@ public class ShipPlacementController {
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
 
-                    shipList.forEach(s -> {if (shipList.get(0).getName().equals(s.getName())) {
-                        counter++;
-                    }});
+                    final List<IShip> placeList = shipList;
 
-                    if (counter == 2) {
+                    //Count whether there are still two ships of the same type in the list
+                    long count = placeList
+                            .stream()
+                            .filter(s -> placeList.get(0).getName().equals(s.getName()))
+                            .count();
+
+                    if (count == 2) {
                         infoLabel.setText("Now set your first " + shipList.get(0).getName().toUpperCase());
                         log.debug("First " + shipList.get(0).getName().toUpperCase() + " set!");
                     } else {
