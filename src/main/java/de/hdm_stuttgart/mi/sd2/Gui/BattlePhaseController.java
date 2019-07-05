@@ -44,6 +44,7 @@ public class BattlePhaseController {
     ImageView winLostImage;
 
 
+
     public void initialize() {
 
         //Filling the tables at one to nine
@@ -214,8 +215,7 @@ public class BattlePhaseController {
         playerGrid.setDisable(true);
         enemyGrid.setDisable(true);
         gameWin.setText("You won the game! Game finished.");
-        File file = new File("/home/lh108/SE2Proj/battleshipproject/src/main/resources/pictures/trophy.png");
-        Image image = new Image(file.toURI().toString());
+        Image image = new Image("file:src/main/resources/pictures/trophy.png");
         winLostImage.setImage(image);
         winLostImage.maxHeight(100);
         winLostImage.maxWidth(100);
@@ -229,8 +229,7 @@ public class BattlePhaseController {
         enemyGrid.setDisable(true);
         backPane.setStyle("-fx-opacity: 0.3");
         gameWin.setText("You lost, the computer won the game! Game finished.");
-        File file = new File("/home/lh108/SE2Proj/battleshipproject/src/main/resources/pictures/lost.png");
-        Image image = new Image(file.toURI().toString());
+        Image image = new Image("file:src/main/resources/pictures/lost.png");
         winLostImage.setImage(image);
         winLostImage.maxHeight(100);
         winLostImage.maxWidth(100);

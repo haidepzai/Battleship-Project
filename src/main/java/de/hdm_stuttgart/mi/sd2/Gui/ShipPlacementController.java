@@ -52,6 +52,7 @@ public class ShipPlacementController {
 
     final private ToggleGroup group = new ToggleGroup();
 
+
     public void initialize() {
 
         //Adding all needed ships to the specific lists by using two threads (player, computer)
