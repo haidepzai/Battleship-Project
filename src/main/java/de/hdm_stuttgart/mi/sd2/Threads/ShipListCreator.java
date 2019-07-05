@@ -13,7 +13,8 @@ public class ShipListCreator implements Runnable {
     private static Logger log = LogManager.getLogger(ShipListCreator.class);
 
     @Override
-    public synchronized void run() {
+    public void run() {
+        log.info("Thread for creation of shipList started");
         try {
             IShip Battleship;
             IShip Cruiser1;

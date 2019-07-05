@@ -13,9 +13,9 @@ public class ShipListAICreator implements Runnable {
     private static Logger log = LogManager.getLogger(ShipListAICreator.class);
 
     @Override
-    public synchronized void run() {
+    public void run() {
+        log.info("Thread for creation of shipListAI started");
         try {
-
             IShip BattleshipAI1;
             IShip CruiserAI1;
             IShip CruiserAI2;

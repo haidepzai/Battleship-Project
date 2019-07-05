@@ -25,8 +25,9 @@ public class GuiDriver extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
         log.info("Application started");
+        launch(args);
+        log.info("Application closed");
     }
 
     public void start(Stage stage) throws Exception {
