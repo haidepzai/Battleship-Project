@@ -315,6 +315,7 @@ public class ShipPlacementController {
                                 if (playerMap.getStatus(row + l, column) == Field.SHIP) {
                                     child.setStyle("-fx-background-color: black");
                                 } else {
+
                                     child.setStyle("-fx-background-color: #008ae6");
                                 }
                             }

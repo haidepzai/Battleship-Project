@@ -1,3 +1,3 @@
 main INFO  Gui.GuiDriver - Application started
 JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/Menu.fxml geladen
-JavaFX Application Thread DEBUG Gui.MenuController - Application terminated.
+main INFO  Gui.GuiDriver - Application closed
