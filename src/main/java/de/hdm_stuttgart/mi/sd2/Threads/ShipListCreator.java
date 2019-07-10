@@ -44,13 +44,13 @@ public class ShipListCreator implements Runnable {
             shipList.add(Submarine1);
             shipList.add(Submarine2);
 
-            //ShipPlacementController spc = new ShipPlacementController();
             ShipPlacementController.setShipList(shipList);
+            log.debug("Assigned value of \"shipList\" to copy in \"ShipPlacementController\"");
 
         } catch (IllegalFactoryArgument i) {
-            log.error(i);
+            log.error(i + ": Invalid ship type found!");
             System.exit(0);
         }
-        log.debug("Thread for creation of shipList started");
+        log.debug("Thread for creation of shipList finished");
     }
 }

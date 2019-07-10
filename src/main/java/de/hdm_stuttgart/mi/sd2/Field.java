@@ -2,11 +2,15 @@ package de.hdm_stuttgart.mi.sd2;
 
 import de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Field {
+
+    private static Logger log = LogManager.getLogger(Field.class);
 
     private int MAPSIZE;
     private int[][] field;
@@ -15,7 +19,7 @@ public class Field {
     private static List<IShip> shipListAI = new ArrayList<>();
 
     private static final int BORDER = -42;
-    private static final int WATER = 0;
+    public static final int WATER = 0;
     public static final int SHIP = -1;
     public static final int SHOT = -99;
     public static final int HIT = -100;
@@ -223,9 +227,10 @@ public class Field {
     public boolean setShip(IShip i, int row, int col, boolean dir) {
 
         if (!checkShip(i, row, col, dir)) {
+            log.trace("Player placed ship " + i + " at: [" + row + "][" + col + "]");
             setCore(i, row, col, dir);
             shipList.remove(i);
-            //ShipPlacementController spc = new ShipPlacementController();
+            log.debug(i + " removed from \"shipList\".");
             ShipPlacementController.setShipList(shipList);
             return true;
         } else {
@@ -244,9 +249,10 @@ public class Field {
     public void setShipAI(IShip i, int row, int col, boolean dir) {
 
         if (!checkShip(i, row, col, dir)) {
+            log.trace("Computer placed ship " + i + " at: " + "[" + row + "][" + col + "]");
             setCore(i, row, col, dir);
             shipListAI.remove(i);
-            //ShipPlacementController spc = new ShipPlacementController();
+            log.debug(i + " removed from \"shipListAI\".");
             ShipPlacementController.setShipListAI(shipListAI);
         }
     }

@@ -23,7 +23,7 @@ public class MenuController {
 
     @FXML
     public void exit() {
-        log.debug("Application terminated.");
+        log.info("Application terminated.");
         System.exit(0);
     }
 }

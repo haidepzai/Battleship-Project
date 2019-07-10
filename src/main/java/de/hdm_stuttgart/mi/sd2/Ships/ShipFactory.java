@@ -10,7 +10,7 @@ public class ShipFactory {
             case CRUISER:return new Cruiser();
             case SUBMARINE: return new Submarine();
             case BATTLESHIP: return new Battleship();
-            default: throw new IllegalFactoryArgument("Invalid Ship type!");
+            default: throw new IllegalFactoryArgument("Invalid Ship type found!");
 
         }
     }

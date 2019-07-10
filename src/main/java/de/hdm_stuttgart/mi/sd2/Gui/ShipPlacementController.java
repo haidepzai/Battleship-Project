@@ -66,7 +66,9 @@ public class ShipPlacementController {
         computerMap.clearField();
         //Adding all needed ships to the specific lists by using two threads (player, computer)
         Thread shipListCreator = new Thread(new ShipListCreator());
+        log.debug("Thread \"shipListCreator\" created.");
         Thread shipListAICreator = new Thread(new ShipListAICreator());
+        log.debug("Thread \"shipListAICreator\" created.");
         shipListCreator.start();
         shipListAICreator.start();
         shipListCreator.join();
@@ -85,9 +87,8 @@ public class ShipPlacementController {
             l.setId("coordinates");
             l.setText(Integer.toString(i));
             playerGrid.add(l, 0, i);
+            log.trace(l + " added to \"playerGrid\"");
         }
-        log.debug("Vertical coordinates of field (1-9) added");
-
 
         //filling the tables at a to i
         int e = 65;
@@ -96,10 +97,9 @@ public class ShipPlacementController {
                 l.setId("coordinates");
                 l.setText(Character.toString((char) e));
                 playerGrid.add(l, i, 0);
+                log.trace(l + " added to \"playerGrid\"");
                 e++;
         }
-
-        log.debug("Horizontal coordinates of field (A-I) added");
 
         for (int r = 1; r <= MAPSIZE; r++) {
 
@@ -110,8 +110,10 @@ public class ShipPlacementController {
                 b.setId(r + "," + c);
                 b.getStyleClass().add("waterButton");
                 playerGrid.add(b, r, c);
+                log.trace(b + " added to \"playerGrid\"");
 
                 b.setOnMouseClicked(event -> {
+                    log.debug(b + " clicked.");
                     int rowIndex = GridPane.getRowIndex(b);
                     int colIndex = GridPane.getColumnIndex(b);
                     placeShip(rowIndex, colIndex);
@@ -190,26 +192,23 @@ public class ShipPlacementController {
      * @param colIndex Column of clicked button
      */
     private void placeShip(int rowIndex, int colIndex) {
-
         try {
-
             boolean dir = (group.getSelectedToggle() == horizontal);
             int shipLength = shipList.get(0).getLength();
+            log.debug("Actual length of \"shipList\" assigned to \"shipLength\"");
             if (shipList.size() > 1) {
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
-                    final List<IShip> placeList = shipList;
                     //Count whether there are still two ships of the same type in the list
-                    long count = placeList
+                    long count = shipList
                             .stream()
-                            .filter(s -> placeList.get(0).getName().equals(s.getName()))
+                            .filter(s -> shipList.get(0).getName().equals(s.getName()))
                             .count();
+                    log.debug("Actual number of equivalent ship types assigned to \"count\" by stream.");
                     if (count == 2) {
                         infoLabel.setText("Now set your first " + shipList.get(0).getName().toUpperCase());
-                        log.debug("First " + shipList.get(0).getName().toUpperCase() + " set!");
                     } else {
                         infoLabel.setText("Now set your second " + shipList.get(0).getName().toUpperCase());
-                        log.debug("Second " + shipList.get(0).getName().toUpperCase() + " set!");
                     }
 
                 } else {
@@ -219,7 +218,6 @@ public class ShipPlacementController {
 
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
-                    log.debug("All ships of the player set.");
                     infoLabel.setText("All ships set. Computer is setting..");
 
                     while (true) {
@@ -227,12 +225,9 @@ public class ShipPlacementController {
                         try {
 
                             while (shipListAI.size() > 0) {
-
                                 computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir());
-
                             }
 
-                            log.debug("All ships of the computer were set.");
                             break;
 
                         } catch (ArrayIndexOutOfBoundsException ignore) {
@@ -240,6 +235,7 @@ public class ShipPlacementController {
                         }
                     }
 
+                    log.info("Ship placement finished. All ships set.");
                     playerGrid.setDisable(true);
                     radioPane.setDisable(true);
                     backPane.setStyle("-fx-opacity: 0.3");

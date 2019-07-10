@@ -44,11 +44,11 @@ public class ShipListAICreator implements Runnable {
             shipListAI.add(SubmarineAI1);
             shipListAI.add(SubmarineAI2);
 
-            //ShipPlacementController spc = new ShipPlacementController();
             ShipPlacementController.setShipListAI(shipListAI);
+            log.debug("Assigned value of \"shipListAI\" to copy in \"ShipPlacementController\"");
 
         } catch (IllegalFactoryArgument i) {
-            log.error(i);
+            log.error(i + ": Invalid ship type found!");
             System.exit(0);
         }
         log.info("Thread for creation of shipListAI finished");

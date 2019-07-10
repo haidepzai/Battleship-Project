@@ -1,11 +1,38 @@
 main INFO  Gui.GuiDriver - Application started
-JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/Menu.fxml geladen
-Thread-2 INFO  Threads.ShipListCreator - Thread for creation of shipList started
+JavaFX Application Thread DEBUG Gui.GuiDriver - FXML file: /fxml/Menu.fxml loaded
+JavaFX Application Thread INFO  Gui.GuiDriver - Menu created.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Thread "shipListCreator" created.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Thread "shipListAICreator" created.
+Thread-2 DEBUG Threads.ShipListCreator - Thread for creation of shipList started
 Thread-3 INFO  Threads.ShipListAICreator - Thread for creation of shipListAI started
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - Vertical coordinates of field (1-9) added
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - Horizontal coordinates of field (A-I) added
-JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/ShipPlacement.fxml geladen
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - First CRUISER set!
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - Second CRUISER set!
-JavaFX Application Thread DEBUG Gui.ShipPlacementController - First DESTROYER set!
+Thread-2 DEBUG Threads.ShipListCreator - Assigned value of "shipList" to copy in "ShipPlacementController"
+Thread-3 DEBUG Threads.ShipListAICreator - Assigned value of "shipListAI" to copy in "ShipPlacementController"
+Thread-3 INFO  Threads.ShipListAICreator - Thread for creation of shipListAI finished
+Thread-2 DEBUG Threads.ShipListCreator - Thread for creation of shipList finished
+JavaFX Application Thread DEBUG Gui.GuiDriver - FXML file: /fxml/ShipPlacement.fxml loaded
+JavaFX Application Thread INFO  Gui.GuiDriver - Ship-Placement created.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,1, styleClass=button waterButton]'' clicked.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" assigned to "shipLength"
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Battleship@646b9b34 removed from "shipList".
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types assigned to "count" by stream.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,3, styleClass=button waterButton]'' clicked.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" assigned to "shipLength"
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@64100979 removed from "shipList".
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types assigned to "count" by stream.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,5, styleClass=button waterButton]'' clicked.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" assigned to "shipLength"
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@57fbf1ba removed from "shipList".
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types assigned to "count" by stream.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,7, styleClass=button waterButton]'' clicked.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" assigned to "shipLength"
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@9e3f20b removed from "shipList".
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types assigned to "count" by stream.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,9, styleClass=button waterButton]'' clicked.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" assigned to "shipLength"
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@45b18559 removed from "shipList".
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types assigned to "count" by stream.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=4,9, styleClass=button waterButton]'' clicked.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" assigned to "shipLength"
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@5f0820f6 removed from "shipList".
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types assigned to "count" by stream.
 main INFO  Gui.GuiDriver - Application closed
