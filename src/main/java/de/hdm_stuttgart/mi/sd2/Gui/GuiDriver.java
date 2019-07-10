@@ -18,14 +18,16 @@ public class GuiDriver extends Application {
 
     private static Stage stage = null;
 
-    static final Logger log = LogManager.getLogger(GuiDriver.class);
+    private static final Logger log = LogManager.getLogger(GuiDriver.class);
 
     static GuiDriver getApplication() {
         return application;
     }
 
     public static void main(String[] args) {
+        log.info("Application started");
         launch(args);
+        log.info("Application closed");
     }
 
     public void start(Stage stage) throws Exception {
@@ -39,9 +41,9 @@ public class GuiDriver extends Application {
     }
 
     void setScene(String fxml, String title, int width, int height) throws IOException {
+        log.debug("FXML-Datei von " + fxml + " geladen");
         Parent root = FXMLLoader.load(getClass().getResource(fxml));
         Scene scene = new Scene(root, width, height);
-        log.debug("FXML-Datei von " + fxml + " geladen");
         stage.setScene(scene);
         stage.setTitle(title);
     }
