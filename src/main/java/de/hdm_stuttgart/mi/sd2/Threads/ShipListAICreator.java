@@ -7,10 +7,14 @@ import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("Duplicates")
 public class ShipListAICreator implements Runnable {
 
     private static Logger log = LogManager.getLogger(ShipListAICreator.class);
+    private static List<IShip> shipListAI = new ArrayList<>();
 
     @Override
     public void run() {
@@ -32,19 +36,21 @@ public class ShipListAICreator implements Runnable {
             SubmarineAI2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
             BattleshipAI1 = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
 
-            ShipPlacementController.shipListAI.add(BattleshipAI1);
-            ShipPlacementController.shipListAI.add(CruiserAI1);
-            ShipPlacementController.shipListAI.add(CruiserAI2);
-            ShipPlacementController.shipListAI.add(DestroyerAI1);
-            ShipPlacementController.shipListAI.add(DestroyerAI2);
-            ShipPlacementController.shipListAI.add(SubmarineAI1);
-            ShipPlacementController.shipListAI.add(SubmarineAI2);
+            shipListAI.add(BattleshipAI1);
+            shipListAI.add(CruiserAI1);
+            shipListAI.add(CruiserAI2);
+            shipListAI.add(DestroyerAI1);
+            shipListAI.add(DestroyerAI2);
+            shipListAI.add(SubmarineAI1);
+            shipListAI.add(SubmarineAI2);
 
-            ShipPlacementController.computerFleet = ShipPlacementController.shipListAI.size();
+            //ShipPlacementController spc = new ShipPlacementController();
+            ShipPlacementController.setShipListAI(shipListAI);
 
         } catch (IllegalFactoryArgument i) {
             log.error(i);
             System.exit(0);
         }
+        log.info("Thread for creation of shipListAI finished");
     }
 }

@@ -1,3 +1,11 @@
 main INFO  Gui.GuiDriver - Application started
 JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/Menu.fxml geladen
+Thread-2 INFO  Threads.ShipListCreator - Thread for creation of shipList started
+Thread-3 INFO  Threads.ShipListAICreator - Thread for creation of shipListAI started
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Vertical coordinates of field (1-9) added
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Horizontal coordinates of field (A-I) added
+JavaFX Application Thread DEBUG Gui.GuiDriver - FXML-Datei von /fxml/ShipPlacement.fxml geladen
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - First CRUISER set!
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Second CRUISER set!
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - First DESTROYER set!
 main INFO  Gui.GuiDriver - Application closed

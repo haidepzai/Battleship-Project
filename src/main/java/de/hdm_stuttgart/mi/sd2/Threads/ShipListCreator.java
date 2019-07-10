@@ -7,14 +7,18 @@ import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("Duplicates")
 public class ShipListCreator implements Runnable {
 
     private static Logger log = LogManager.getLogger(ShipListCreator.class);
+    private static List<IShip> shipList = new ArrayList<>();
 
     @Override
     public void run() {
-        log.info("Thread for creation of shipList started");
+        log.debug("Thread for creation of shipList started");
         try {
             IShip Battleship;
             IShip Cruiser1;
@@ -32,20 +36,21 @@ public class ShipListCreator implements Runnable {
             Submarine2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
             Battleship = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
 
-            ShipPlacementController.shipList.add(Battleship);
-            ShipPlacementController.shipList.add(Cruiser1);
-            ShipPlacementController.shipList.add(Cruiser2);
-            ShipPlacementController.shipList.add(Destroyer1);
-            ShipPlacementController.shipList.add(Destroyer2);
-            ShipPlacementController.shipList.add(Submarine1);
-            ShipPlacementController.shipList.add(Submarine2);
+            shipList.add(Battleship);
+            shipList.add(Cruiser1);
+            shipList.add(Cruiser2);
+            shipList.add(Destroyer1);
+            shipList.add(Destroyer2);
+            shipList.add(Submarine1);
+            shipList.add(Submarine2);
 
-            ShipPlacementController.playerFleet = ShipPlacementController.shipList.size();
+            //ShipPlacementController spc = new ShipPlacementController();
+            ShipPlacementController.setShipList(shipList);
 
         } catch (IllegalFactoryArgument i) {
             log.error(i);
             System.exit(0);
         }
-
+        log.debug("Thread for creation of shipList started");
     }
 }

@@ -19,10 +19,8 @@ import java.io.IOException;
 
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
+
     private static final Logger log = LogManager.getLogger(BattlePhaseController.class);
-    final private int MAPSIZE = ShipPlacementController.MAPSIZE;
-
-
 
     @FXML
     GridPane playerGrid;
@@ -44,15 +42,15 @@ public class BattlePhaseController {
     ImageView winLostImage;
 
 
-
     public void initialize() {
-
+        System.out.println();
         //Filling the tables at one to nine
             for (int i = 1; i <= 9; i++) {
                 Label l = new Label();
                 l.setId("coordinatesB");
                 l.setText(Integer.toString(i));
                 playerGrid.add(l, 0, i);
+                log.debug("Button " + i + " added to playerGrid");
             }
 
 
@@ -61,6 +59,7 @@ public class BattlePhaseController {
                 l2.setId("coordinatesB");
                 l2.setText(Integer.toString(i));
                 enemyGrid.add(l2, 0, i);
+                log.debug("Button " + i + " added to enemyGrid");
             }
 
         //filling the tables at a to i
@@ -73,7 +72,9 @@ public class BattlePhaseController {
                 l.setText(Character.toString((char) e));
                 l2.setText(Character.toString((char) e));
                 playerGrid.add(l, i, 0);
+                log.debug("Label" + i + " added to playerGrid");
                 enemyGrid.add(l2, i, 0);
+                log.debug("Label" + i + " added to enemyGrid");
                 e++;
         }
 
@@ -94,7 +95,6 @@ public class BattlePhaseController {
                     log.debug("Players turn to attack!");
                     int row = GridPane.getRowIndex(bC);
                     int col = GridPane.getColumnIndex(bC);
-
 
                     if (ShipPlacementController.computerMap.getStatus(row, col) == Field.SHOT || ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
                         infoLabelCF.setText("Position has already been shot! Try again!");
@@ -134,8 +134,8 @@ public class BattlePhaseController {
                 .stream()
                 .filter(child -> child instanceof Button)
                 .forEach(child -> {
-                    for(int row = 1; row <= MAPSIZE; row++) {
-                        for(int col = 1; col <= MAPSIZE; col++) {
+                    for(int row = 1; row <= ShipPlacementController.MAPSIZE; row++) {
+                        for(int col = 1; col <= ShipPlacementController.MAPSIZE; col++) {
                             if (ShipPlacementController.playerMap.getStatus(row, col) == Field.SHIP && GridPane.getRowIndex(child) == row && GridPane.getColumnIndex(child) == col) {
                                 child.setStyle("-fx-background-color: black");
                             }
@@ -155,8 +155,8 @@ public class BattlePhaseController {
         int count = 1;
        log.debug("Computer's attack phase");
         while (true) {
-            int ranRow = aiRandom.randNumber(MAPSIZE);
-            int ranCol = aiRandom.randNumber(MAPSIZE);
+            int ranRow = aiRandom.randNumber(ShipPlacementController.MAPSIZE);
+            int ranCol = aiRandom.randNumber(ShipPlacementController.MAPSIZE);
             if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.SHOT || ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
               log.trace("Computer has already shot position (" + ranRow + ", " + ranCol + ") and shoots again.");
             } else {
@@ -211,6 +211,7 @@ public class BattlePhaseController {
     }
 
     private void playerWins() {
+        log.info("Player won the game");
         infoLabelCF.setText("You destroyed every ship of the enemy!!!");
         playerGrid.setDisable(true);
         enemyGrid.setDisable(true);
@@ -224,6 +225,7 @@ public class BattlePhaseController {
     }
 
     private void computerWins() {
+        log.info("Computer won the game");
         infoLabelPF.setText("The computer destroyed all of your ships!!!");
         playerGrid.setDisable(true);
         enemyGrid.setDisable(true);
@@ -256,8 +258,6 @@ public class BattlePhaseController {
      */
     @FXML
     public void goToMenu() throws IOException {
-        ShipPlacementController.playerMap.clearField();
-        ShipPlacementController.computerMap.clearField();
         GuiDriver.getApplication().setScene("/fxml/Menu.fxml", "Menu", 600, 400);
     }
 

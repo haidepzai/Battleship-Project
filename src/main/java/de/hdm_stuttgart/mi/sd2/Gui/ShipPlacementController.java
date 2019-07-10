@@ -25,12 +25,13 @@ public class ShipPlacementController {
 
     private static final Logger log = LogManager.getLogger(ShipPlacementController.class);
 
-    public static List<IShip> shipList = new ArrayList<>();
-    public static List<IShip> shipListAI = new ArrayList<>();
+    private static List<IShip> shipList = new ArrayList<>();
+    private static List<IShip> shipListAI = new ArrayList<>();
+
     static final int MAPSIZE = 9;
 
-    public static int playerFleet;
-    public static int computerFleet;
+    static int playerFleet;
+    static int computerFleet;
 
     static Field playerMap = new Field(MAPSIZE);
     static Field computerMap = new Field(MAPSIZE);
@@ -52,14 +53,27 @@ public class ShipPlacementController {
 
     final private ToggleGroup group = new ToggleGroup();
 
+    public static void setShipList(List<IShip> shipList) {
+        ShipPlacementController.shipList = shipList;
+    }
 
-    public void initialize() {
+    public static void setShipListAI(List<IShip> shipListAI) {
+        ShipPlacementController.shipListAI = shipListAI;
+    }
 
+    public void initialize() throws InterruptedException {
+        playerMap.clearField();
+        computerMap.clearField();
         //Adding all needed ships to the specific lists by using two threads (player, computer)
         Thread shipListCreator = new Thread(new ShipListCreator());
         Thread shipListAICreator = new Thread(new ShipListAICreator());
         shipListCreator.start();
         shipListAICreator.start();
+        shipListCreator.join();
+        shipListAICreator.join();
+        Field.setShipLists(shipList, shipListAI);
+        playerFleet = shipList.size();
+        computerFleet = shipListAI.size();
 
         horizontal.setToggleGroup(group);
         vertical.setToggleGroup(group);
@@ -181,20 +195,15 @@ public class ShipPlacementController {
 
             boolean dir = (group.getSelectedToggle() == horizontal);
             int shipLength = shipList.get(0).getLength();
-
             if (shipList.size() > 1) {
-
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
-
                     final List<IShip> placeList = shipList;
-
                     //Count whether there are still two ships of the same type in the list
                     long count = placeList
                             .stream()
                             .filter(s -> placeList.get(0).getName().equals(s.getName()))
                             .count();
-
                     if (count == 2) {
                         infoLabel.setText("Now set your first " + shipList.get(0).getName().toUpperCase());
                         log.debug("First " + shipList.get(0).getName().toUpperCase() + " set!");
@@ -206,7 +215,6 @@ public class ShipPlacementController {
                 } else {
                     infoLabel.setText("FAIL: There is another ship. Try again!");
                 }
-
             } else {
 
                 if (playerMap.setShip(shipList.get(0), rowIndex, colIndex, dir)) {
@@ -323,6 +331,7 @@ public class ShipPlacementController {
                     }
                 });
     }
+
 
     /**
      * Jump to next scene : Battle-Phase

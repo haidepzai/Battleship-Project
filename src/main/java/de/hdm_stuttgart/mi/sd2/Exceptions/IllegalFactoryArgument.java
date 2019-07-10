@@ -9,6 +9,6 @@ public class IllegalFactoryArgument extends Exception{
 
     public IllegalFactoryArgument( String message ) {
         super(message);
-        log.error("A fatal error has occurred!");
+        log.error("Found invalid ship type!");
     }
 }

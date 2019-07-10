@@ -3,10 +3,16 @@ package de.hdm_stuttgart.mi.sd2;
 import de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Field {
 
-    private int h;
+    private int MAPSIZE;
     private int[][] field;
+
+    private static List<IShip> shipList = new ArrayList<>();
+    private static List<IShip> shipListAI = new ArrayList<>();
 
     private static final int BORDER = -42;
     private static final int WATER = 0;
@@ -14,21 +20,32 @@ public class Field {
     public static final int SHOT = -99;
     public static final int HIT = -100;
 
+
+    public Field() {
+
+    }
+
     /**
      * Constructor that creates a new two-dimensional game-field
-     * @param h Size (edge length) of the square game-field
+     * @param MAPSIZE Size (edge length) of the square game-field
      */
-    public Field(int h) {
-        this.h = h;
-        this.field = new int[h][h];
+
+    public Field(final int MAPSIZE) {
+        this.MAPSIZE = MAPSIZE;
+        this.field = new int[MAPSIZE][MAPSIZE];
+    }
+
+    public static void setShipLists(List<IShip> shipList, List <IShip> shipListAI) {
+        Field.shipList = shipList;
+        Field.shipListAI = shipListAI;
     }
 
     /**
      * Clears/Reset a field for a game-restart
      */
     public void clearField() {
-        for (int i = 0; i < h; i++) {
-            for (int j = 0; j < h; j++) {
+        for (int i = 0; i < MAPSIZE; i++) {
+            for (int j = 0; j < MAPSIZE; j++) {
                 field[i][j] = 0;
             }
         }
@@ -85,7 +102,7 @@ public class Field {
      * @return BORDER: Right-border of the Array / SHIP: Ship on the right side / WATER: Water, free space on the right side
      */
     private int getRight(int row, int col) {
-        if (col == h) {
+        if (col == MAPSIZE) {
             return BORDER;
         } else if (field[row - 1][col] == SHIP) {
             return SHIP;
@@ -127,7 +144,7 @@ public class Field {
      * @return BORDER: Bottom-border of the Array / SHIP: Ship beneath / WATER: Water, free space beneath
      */
     private int getBot(int row, int col) {
-        if (row == h) {
+        if (row == MAPSIZE) {
             return BORDER;
         } else if (field[row][col - 1] == SHIP) {
             return SHIP;
@@ -207,7 +224,9 @@ public class Field {
 
         if (!checkShip(i, row, col, dir)) {
             setCore(i, row, col, dir);
-            ShipPlacementController.shipList.remove(i);
+            shipList.remove(i);
+            //ShipPlacementController spc = new ShipPlacementController();
+            ShipPlacementController.setShipList(shipList);
             return true;
         } else {
             return false;
@@ -226,8 +245,9 @@ public class Field {
 
         if (!checkShip(i, row, col, dir)) {
             setCore(i, row, col, dir);
-            ShipPlacementController.shipListAI.remove(i);
-
+            shipListAI.remove(i);
+            //ShipPlacementController spc = new ShipPlacementController();
+            ShipPlacementController.setShipListAI(shipListAI);
         }
     }
 
