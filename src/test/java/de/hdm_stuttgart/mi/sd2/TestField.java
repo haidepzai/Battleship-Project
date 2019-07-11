@@ -1,6 +1,7 @@
 package de.hdm_stuttgart.mi.sd2;
 
 import de.hdm_stuttgart.mi.sd2.Exceptions.IllegalFactoryArgument;
+import de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController;
 import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
 import org.junit.Test;
@@ -9,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class TestField {
 
-    private Field f = new Field(9);
+    private Field f = new Field(ShipPlacementController.MAPSIZE);
 
     //Check if Ships can be set
     @Test
@@ -41,8 +42,6 @@ public class TestField {
     //Check if Battleship has been set
     @Test
     public void testCheckGetStatus() throws IllegalFactoryArgument {
-
-        //todo: test more states => WATER, SHOT, HIT by using "attack"-method
 
         //Battleship
         f.setCore(ShipFactory.createShip(IShip.ShipType.BATTLESHIP), 5, 5, true);

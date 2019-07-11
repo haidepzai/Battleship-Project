@@ -6,4 +6,6 @@ module de.hdm_stuttgart.mi.sd2 {
 
     opens de.hdm_stuttgart.mi.sd2.Gui to javafx.fxml, org.apache.logging.log4j;
     exports de.hdm_stuttgart.mi.sd2.Gui;
+    exports de.hdm_stuttgart.mi.sd2.Interfaces;
+    exports de.hdm_stuttgart.mi.sd2;
 }

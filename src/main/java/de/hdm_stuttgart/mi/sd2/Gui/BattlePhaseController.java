@@ -22,23 +22,23 @@ public class BattlePhaseController {
     private static final Logger log = LogManager.getLogger(BattlePhaseController.class);
 
     @FXML
-    GridPane playerGrid;
+    private GridPane playerGrid;
     @FXML
-    GridPane enemyGrid;
+    private GridPane enemyGrid;
     @FXML
-    Label infoLabelCF;
+    private Label infoLabelCF;
     @FXML
-    Label infoLabelPF;
+    private Label infoLabelPF;
     @FXML
-    Pane popUp;
+    private Pane popUp;
     @FXML
-    Label gameWin;
+    private Label gameWin;
     @FXML
-    Pane backPane;
+    private Pane backPane;
     @FXML
-    Button nextTurnB;
+    private Button nextTurnB;
     @FXML
-    ImageView winLostImage;
+    private ImageView winLostImage;
 
 
     public void initialize() {

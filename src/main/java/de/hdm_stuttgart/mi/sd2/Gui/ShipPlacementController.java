@@ -28,7 +28,7 @@ public class ShipPlacementController {
     private static List<IShip> shipList = new ArrayList<>();
     private static List<IShip> shipListAI = new ArrayList<>();
 
-    static final int MAPSIZE = 9;
+    public static final int MAPSIZE = 9;
 
     static int playerFleet;
     static int computerFleet;
@@ -37,19 +37,19 @@ public class ShipPlacementController {
     static Field computerMap = new Field(MAPSIZE);
 
     @FXML
-    GridPane playerGrid;
+    private GridPane playerGrid;
     @FXML
-    Label infoLabel;
+    private Label infoLabel;
     @FXML
-    RadioButton horizontal;
+    private RadioButton horizontal;
     @FXML
-    RadioButton vertical;
+    private RadioButton vertical;
     @FXML
-    Pane popUp;
+    private Pane popUp;
     @FXML
-    Pane radioPane;
+    private Pane radioPane;
     @FXML
-    Pane backPane;
+    private Pane backPane;
 
     final private ToggleGroup group = new ToggleGroup();
 
@@ -190,7 +190,7 @@ public class ShipPlacementController {
      * @param rowIndex Row of clicked button
      * @param colIndex Column of clicked button
      */
-    private void placeShip(int rowIndex, int colIndex) {
+    public void placeShip(int rowIndex, int colIndex) {
         try {
             boolean dir = (group.getSelectedToggle() == horizontal);
             int shipLength = shipList.get(0).getLength();
@@ -320,6 +320,18 @@ public class ShipPlacementController {
                 });
     }
 
+
+    //Methods for JUnit-tests -------------------------------
+    public GridPane getPlayerGrid() {
+        GridPane gridpane = new GridPane();
+        return gridpane = playerGrid;
+    }
+
+    public List<IShip> getShipList() {
+        List<IShip> list = new ArrayList<>();
+        return list = shipList;
+    }
+    // ------------------------------------------------------
 
     /**
      * Jump to next scene : Battle-Phase
