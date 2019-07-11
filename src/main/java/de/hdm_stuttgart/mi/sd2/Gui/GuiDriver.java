@@ -1,8 +1,6 @@
 package de.hdm_stuttgart.mi.sd2.Gui;
 
-
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,6 +30,11 @@ public class GuiDriver extends Application {
         System.exit(0);
     }
 
+    /**
+     * Setting stage of GUI
+     * @param stage Stage to set
+     * @throws Exception
+     */
     public void start(Stage stage) throws Exception {
         application = this;
         GuiDriver.stage = stage;
@@ -40,6 +43,14 @@ public class GuiDriver extends Application {
         stage.show();
     }
 
+    /**
+     * Setting (new) scenes for GUI
+     * @param fxml FXML file
+     * @param title Shown title of the scene
+     * @param width Width of scene
+     * @param height Height of scene
+     * @throws IOException
+     */
     void setScene(String fxml, String title, int width, int height) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxml));
