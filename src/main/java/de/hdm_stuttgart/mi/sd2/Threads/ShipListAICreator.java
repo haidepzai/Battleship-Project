@@ -13,12 +13,12 @@ import java.util.List;
 @SuppressWarnings("Duplicates")
 public class ShipListAICreator implements Runnable {
 
-    private static Logger log = LogManager.getLogger(ShipListAICreator.class);
+    final private static Logger log = LogManager.getLogger(ShipListAICreator.class);
     private static List<IShip> shipListAI = new ArrayList<>();
 
     @Override
     public void run() {
-        log.info("Thread for creation of shipListAI started");
+        log.debug("Thread for creation of shipListAI started");
         try {
             IShip BattleshipAI1;
             IShip CruiserAI1;
@@ -48,9 +48,9 @@ public class ShipListAICreator implements Runnable {
             log.debug("Assigned value of \"shipListAI\" to copy in \"ShipPlacementController\"");
 
         } catch (IllegalFactoryArgument i) {
-            log.error(i + ": Invalid ship type found!");
+            log.fatal("Invalid ship type found! System exited: " + i);
             System.exit(0);
         }
-        log.info("Thread for creation of shipListAI finished");
+        log.debug("Thread for creation of shipListAI finished");
     }
 }

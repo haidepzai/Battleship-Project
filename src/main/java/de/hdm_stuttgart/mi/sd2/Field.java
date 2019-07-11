@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Field {
 
-    private static Logger log = LogManager.getLogger(Field.class);
+    final private static Logger log = LogManager.getLogger(Field.class);
 
     private int MAPSIZE;
     private int[][] field;
@@ -227,7 +227,7 @@ public class Field {
     public boolean setShip(IShip i, int row, int col, boolean dir) {
 
         if (!checkShip(i, row, col, dir)) {
-            log.trace("Player placed ship " + i + " at: [" + row + "][" + col + "]");
+            log.debug("Player placed ship " + i + " at: [" + row + "][" + col + "], dir(horizontal): " + dir);
             setCore(i, row, col, dir);
             shipList.remove(i);
             log.debug(i + " removed from \"shipList\".");
@@ -249,7 +249,7 @@ public class Field {
     public void setShipAI(IShip i, int row, int col, boolean dir) {
 
         if (!checkShip(i, row, col, dir)) {
-            log.trace("Computer placed ship " + i + " at: " + "[" + row + "][" + col + "]");
+            log.debug("Computer placed ship " + i + " at: " + "[" + row + "][" + col + "], dir(horizontal): " + dir);
             setCore(i, row, col, dir);
             shipListAI.remove(i);
             log.debug(i + " removed from \"shipListAI\".");

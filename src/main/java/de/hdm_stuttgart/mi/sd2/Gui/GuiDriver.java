@@ -44,11 +44,11 @@ public class GuiDriver extends Application {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxml));
         Parent root = loader.load();
-        log.debug("FXML file: " + fxml + " loaded");
+        log.debug("FXML file " + fxml + " loaded");
         Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
         stage.setTitle(title);
-        log.info(title + " created.");
+        log.info("New scene: " + title + " opened.");
     }
 
 }

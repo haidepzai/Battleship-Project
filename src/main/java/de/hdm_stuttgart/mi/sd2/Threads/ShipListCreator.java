@@ -13,7 +13,7 @@ import java.util.List;
 @SuppressWarnings("Duplicates")
 public class ShipListCreator implements Runnable {
 
-    private static Logger log = LogManager.getLogger(ShipListCreator.class);
+    final private static Logger log = LogManager.getLogger(ShipListCreator.class);
     private static List<IShip> shipList = new ArrayList<>();
 
     @Override
@@ -48,7 +48,7 @@ public class ShipListCreator implements Runnable {
             log.debug("Assigned value of \"shipList\" to copy in \"ShipPlacementController\"");
 
         } catch (IllegalFactoryArgument i) {
-            log.error(i + ": Invalid ship type found!");
+            log.fatal("Invalid ship type found! System exited: " + i);
             System.exit(0);
         }
         log.debug("Thread for creation of shipList finished");
