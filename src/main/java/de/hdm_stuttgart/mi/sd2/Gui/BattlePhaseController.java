@@ -48,14 +48,14 @@ public class BattlePhaseController {
             l.setId("coordinatesB");
             l.setText(Integer.toString(i));
             playerGrid.add(l, 0, i);
-            log.trace(l + " added to \"playerGrid\"");
+            log.debug(l + " added to \"playerGrid\"");
         }
         for (int i = 1; i <= 9; i++) {
             Label l2 = new Label();
             l2.setId("coordinatesB");
             l2.setText(Integer.toString(i));
             enemyGrid.add(l2, 0, i);
-            log.trace(l2 + " added to \"enemyGrid\"");
+            log.debug(l2 + " added to \"enemyGrid\"");
         }
 
         //filling the Table-Labels from A-I
@@ -68,9 +68,9 @@ public class BattlePhaseController {
             l.setText(Character.toString((char) e));
             l2.setText(Character.toString((char) e));
             playerGrid.add(l, i, 0);
-            log.trace(l + " added to \"playerGrid\"");
+            log.debug(l + " added to \"playerGrid\"");
             enemyGrid.add(l2, i, 0);
-            log.trace(l2 + " added to \"enemyGrid\"");
+            log.debug(l2 + " added to \"enemyGrid\"");
             e++;
         }
         for (int i = 1; i <= 9; i++) {
@@ -82,14 +82,14 @@ public class BattlePhaseController {
                 bP.getStyleClass().add("waterButton");
                 bP.setId(i + ", " + j);
                 playerGrid.add(bP, i, j);
-                log.trace(bP + " added to \"playerGrid\"");
+                log.debug(bP + " added to \"playerGrid\"");
 
                 Button bC = new Button();
                 bC.setMaxSize(100, 100);
                 bC.getStyleClass().add("waterButton");
                 bC.setId(i + ", " + j);
                 enemyGrid.add(bC, i, j);
-                log.trace(bC + " added to \"enemyGrid\"");
+                log.debug(bC + " added to \"enemyGrid\"");
                 log.info("Players turn to attack!");
                 bC.setOnAction(event -> {
                     int row = GridPane.getRowIndex(bC);

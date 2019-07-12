@@ -87,7 +87,7 @@ public class ShipPlacementController {
             l.setId("coordinates");
             l.setText(Integer.toString(i));
             playerGrid.add(l, 0, i);
-            log.trace(l + " added to \"playerGrid\"");
+            log.debug(l + " added to \"playerGrid\"");
         }
 
         //filling the tables at a to i
@@ -97,7 +97,7 @@ public class ShipPlacementController {
                 l.setId("coordinates");
                 l.setText(Character.toString((char) e));
                 playerGrid.add(l, i, 0);
-                log.trace(l + " added to \"playerGrid\"");
+                log.debug(l + " added to \"playerGrid\"");
                 e++;
         }
 
@@ -110,7 +110,7 @@ public class ShipPlacementController {
                 b.setId(r + "," + c);
                 b.getStyleClass().add("waterButton");
                 playerGrid.add(b, r, c);
-                log.trace(b + " added to \"playerGrid\"");
+                log.debug(b + " added to \"playerGrid\"");
 
                 b.setOnMouseClicked(event -> {
                     log.debug(b + " clicked.");
@@ -190,7 +190,7 @@ public class ShipPlacementController {
      * @param rowIndex Row of clicked button
      * @param colIndex Column of clicked button
      */
-    public void placeShip(int rowIndex, int colIndex) {
+    private void placeShip(int rowIndex, int colIndex) {
         try {
             boolean dir = (group.getSelectedToggle() == horizontal);
             int shipLength = shipList.get(0).getLength();
@@ -259,7 +259,7 @@ public class ShipPlacementController {
      *                   Blue: Water
      *                   Grey: Ship-placement on hovered position possible
      */
-    private void colorPlacedShip(int shipLength, int row, int column, boolean dir, String color) {
+    public void colorPlacedShip(int shipLength, int row, int column, boolean dir, String color) {
 
         //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
         ObservableList<Node> children = playerGrid.getChildren();
@@ -323,8 +323,9 @@ public class ShipPlacementController {
 
     //Methods for JUnit-tests -------------------------------
     public GridPane getPlayerGrid() {
-        GridPane gridpane = new GridPane();
-        return gridpane = playerGrid;
+        GridPane playerPane;
+        playerPane = playerGrid;
+        return playerPane;
     }
 
     public List<IShip> getShipList() {

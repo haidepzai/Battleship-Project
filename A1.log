@@ -1,8 +1,0 @@
-main DEBUG Gui.ShipPlacementController - Thread "shipListCreator" created.
-main DEBUG Gui.ShipPlacementController - Thread "shipListAICreator" created.
-Thread-1 DEBUG Threads.ShipListAICreator - Thread for creation of shipListAI started
-Thread-0 DEBUG Threads.ShipListCreator - Thread for creation of shipList started
-Thread-1 DEBUG Threads.ShipListAICreator - Assigned value of "shipListAI" to copy in "ShipPlacementController"
-Thread-0 DEBUG Threads.ShipListCreator - Assigned value of "shipList" to copy in "ShipPlacementController"
-Thread-0 DEBUG Threads.ShipListCreator - Thread for creation of shipList finished
-Thread-1 DEBUG Threads.ShipListAICreator - Thread for creation of shipListAI finished
