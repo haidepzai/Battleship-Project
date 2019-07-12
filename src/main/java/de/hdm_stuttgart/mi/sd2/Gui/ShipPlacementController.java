@@ -30,11 +30,11 @@ public class ShipPlacementController {
 
     public static final int MAPSIZE = 9;
 
-    static int playerFleet;
-    static int computerFleet;
+    private static int playerFleet;
+    private static int computerFleet;
 
-    static Field playerMap = new Field(MAPSIZE);
-    static Field computerMap = new Field(MAPSIZE);
+    private static Field playerMap = new Field(MAPSIZE);
+    private static Field computerMap = new Field(MAPSIZE);
 
     @FXML
     private GridPane playerGrid;
@@ -81,6 +81,17 @@ public class ShipPlacementController {
         vertical.setToggleGroup(group);
         horizontal.setSelected(true);
 
+        setLabels();
+
+        createFieldButtons();
+
+        infoLabel.setText("Set your " + shipList.get(0).getName().toUpperCase());
+    }
+
+    /**
+     * Set coordinate lables for game-fields
+     */
+    private void setLabels() {
         //Filling the tables at one to nine
         for (int i = 1; i <= MAPSIZE; i++) {
             Label l = new Label();
@@ -93,14 +104,19 @@ public class ShipPlacementController {
         //filling the tables at a to i
         int e = 65;
         for (int i = 1; i <= MAPSIZE; i++) {
-                Label l = new Label();
-                l.setId("coordinates");
-                l.setText(Character.toString((char) e));
-                playerGrid.add(l, i, 0);
-                log.debug(l + " added to \"playerGrid\"");
-                e++;
+            Label l = new Label();
+            l.setId("coordinates");
+            l.setText(Character.toString((char) e));
+            playerGrid.add(l, i, 0);
+            log.debug(l + " added to \"playerGrid\"");
+            e++;
         }
+    }
 
+    /**
+     * Create buttons for game-field
+     */
+    private void createFieldButtons() {
         for (int r = 1; r <= MAPSIZE; r++) {
 
             for (int c = 1; c <= MAPSIZE; c++) {
@@ -135,7 +151,6 @@ public class ShipPlacementController {
                 });
             }
         }
-        infoLabel.setText("Set your " + shipList.get(0).getName().toUpperCase());
     }
 
     /**
@@ -259,7 +274,7 @@ public class ShipPlacementController {
      *                   Blue: Water
      *                   Grey: Ship-placement on hovered position possible
      */
-    public void colorPlacedShip(int shipLength, int row, int column, boolean dir, String color) {
+    private void colorPlacedShip(int shipLength, int row, int column, boolean dir, String color) {
 
         //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
         ObservableList<Node> children = playerGrid.getChildren();
@@ -321,19 +336,6 @@ public class ShipPlacementController {
     }
 
 
-    //Methods for JUnit-tests -------------------------------
-    public GridPane getPlayerGrid() {
-        GridPane playerPane;
-        playerPane = playerGrid;
-        return playerPane;
-    }
-
-    public List<IShip> getShipList() {
-        List<IShip> list = new ArrayList<>();
-        return list = shipList;
-    }
-    // ------------------------------------------------------
-
     /**
      * Jump to next scene : Battle-Phase
      *
@@ -341,6 +343,10 @@ public class ShipPlacementController {
      */
     @FXML
     public void goToBattlePhase() throws IOException {
+        BattlePhaseController.setPlayerFleet(playerFleet);
+        BattlePhaseController.setComputerFleet(computerFleet);
+        BattlePhaseController.setPlayerMap(playerMap);
+        BattlePhaseController.setComputerMap(computerMap);
         GuiDriver.getApplication().setScene("/fxml/BattlePhase.fxml", "Battle-Phase", 1001, 559);
     }
 }

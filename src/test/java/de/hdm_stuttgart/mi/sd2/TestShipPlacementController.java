@@ -1,30 +1,12 @@
 package de.hdm_stuttgart.mi.sd2;
 
-import de.hdm_stuttgart.mi.sd2.Exceptions.IllegalFactoryArgument;
-import de.hdm_stuttgart.mi.sd2.Gui.GuiDriver;
-import de.hdm_stuttgart.mi.sd2.Gui.MenuController;
-import de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController;
-import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
-import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
-import de.hdm_stuttgart.mi.sd2.Threads.ShipListCreator;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class TestShipPlacementController {
 
     @Test
-    public void testColorCellsIndividually() throws InterruptedException, IOException{
+    public void testColorCellsIndividually() {
 //        FXMLLoader.load(getClass().getResource("/fxml/ShipPlacement.fxml"));
 //        ShipPlacementController spc = new ShipPlacementController();
 //        spc.initialize();

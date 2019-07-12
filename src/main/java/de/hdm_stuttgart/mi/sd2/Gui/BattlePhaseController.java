@@ -16,6 +16,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
+import static de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.MAPSIZE;
+
 @SuppressWarnings("Duplicates")
 public class BattlePhaseController {
 
@@ -40,20 +42,53 @@ public class BattlePhaseController {
     @FXML
     private ImageView winLostImage;
 
+    private static int playerFleet;
+    private static int computerFleet;
+
+    private static Field playerMap = new Field(MAPSIZE);
+    private static Field computerMap = new Field(MAPSIZE);
+
+    static void setPlayerFleet(int playerFleet) {
+        BattlePhaseController.playerFleet = playerFleet;
+    }
+
+    static void setComputerFleet(int computerFleet) {
+        BattlePhaseController.computerFleet = computerFleet;
+    }
+
+    static void setPlayerMap(Field playerMap) {
+        BattlePhaseController.playerMap = playerMap;
+    }
+
+    static void setComputerMap(Field computerMap) {
+        BattlePhaseController.computerMap = computerMap;
+    }
 
     public void initialize() {
+
+        fillLabels();
+
+        createFieldButtons();
+
+        colorPlacedShips();
+
+        playerGrid.setDisable(true);
+    }
+
+    /**
+     * Filling coordinate labels for game-fields
+     */
+    private void fillLabels() {
         //Filling the Table-Labels from 1-9
         for (int i = 1; i <= 9; i++) {
             Label l = new Label();
+            Label l2 = new Label();
             l.setId("coordinatesB");
+            l2.setId("coordinatesB");
             l.setText(Integer.toString(i));
+            l2.setText(Integer.toString(i));
             playerGrid.add(l, 0, i);
             log.debug(l + " added to \"playerGrid\"");
-        }
-        for (int i = 1; i <= 9; i++) {
-            Label l2 = new Label();
-            l2.setId("coordinatesB");
-            l2.setText(Integer.toString(i));
             enemyGrid.add(l2, 0, i);
             log.debug(l2 + " added to \"enemyGrid\"");
         }
@@ -73,6 +108,12 @@ public class BattlePhaseController {
             log.debug(l2 + " added to \"enemyGrid\"");
             e++;
         }
+    }
+
+    /**
+     * Create the interactive game-field by filling buttons into GridPane
+     */
+    private void createFieldButtons() {
         for (int i = 1; i <= 9; i++) {
 
             for (int j = 1; j <= 9; j++) {
@@ -95,20 +136,20 @@ public class BattlePhaseController {
                     int row = GridPane.getRowIndex(bC);
                     int col = GridPane.getColumnIndex(bC);
 
-                    if (ShipPlacementController.computerMap.getStatus(row, col) == Field.SHOT || ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
+                    if (computerMap.getStatus(row, col) == Field.SHOT || computerMap.getStatus(row, col) == Field.HIT) {
                         infoLabelCF.setText("Position has already been shot! Try again!");
                         log.debug("Player already shot at [" + row + "][" + col + "] (Status: " + Field.SHOT + " )");
                     } else {
-                        ShipPlacementController.computerMap.attack(row, col);
-                        if (ShipPlacementController.computerMap.getStatus(row, col) == Field.HIT) {
+                        computerMap.attack(row, col);
+                        if (computerMap.getStatus(row, col) == Field.HIT) {
                             bC.setStyle("-fx-background-color: green");
                             log.debug("Player hit a ship at [" + row + "][" + col + "] (Status: " + Field.HIT + ")");
-                            if (ShipPlacementController.computerMap.checkShipState(row, col)) {
+                            if (computerMap.checkShipState(row, col)) {
                                 log.debug("Player destroyed a ship by shooting at [" + row + "][" + col + "] (Status: " + Field.HIT + ")");
-                                if (ShipPlacementController.computerFleet > 1) {
-                                    ShipPlacementController.computerFleet--;
-                                    log.debug("Player destroyed an enemies ship. \"computerFleet\" reduced by 1 -> New state: " + ShipPlacementController.computerFleet);
-                                    infoLabelCF.setText("You have destroyed a ship! Computer has " + (ShipPlacementController.computerFleet) + " left.");
+                                if (computerFleet > 1) {
+                                    computerFleet--;
+                                    log.debug("Player destroyed an enemies ship. \"computerFleet\" reduced by 1 -> New state: " + computerFleet);
+                                    infoLabelCF.setText("You have destroyed a ship! Computer has " + (computerFleet) + " left.");
                                 } else {
                                     playerWins();
                                 }
@@ -127,40 +168,42 @@ public class BattlePhaseController {
                 });
             }
         }
-        //Color placed ships from ShipPlacementController
+    }
+
+    /**
+     * Color placed ships from ShipPlacementController
+     */
+    private void colorPlacedShips() {
         ObservableList<Node> children = playerGrid.getChildren();
         children
                 .stream()
                 .filter(child -> child instanceof Button)
                 .forEach(child -> {
-                    for (int row = 1; row <= ShipPlacementController.MAPSIZE; row++) {
-                        for (int col = 1; col <= ShipPlacementController.MAPSIZE; col++) {
-                            if (ShipPlacementController.playerMap.getStatus(row, col) == Field.SHIP && GridPane.getRowIndex(child) == row && GridPane.getColumnIndex(child) == col) {
+                    for (int row = 1; row <= MAPSIZE; row++) {
+                        for (int col = 1; col <= MAPSIZE; col++) {
+                            if (playerMap.getStatus(row, col) == Field.SHIP && GridPane.getRowIndex(child) == row && GridPane.getColumnIndex(child) == col) {
                                 child.setStyle("-fx-background-color: black");
                             }
                         }
                     }
                 });
-
-        playerGrid.setDisable(true);
     }
 
     /**
      * Manages the shoot-events of the computer -> Random actions
      */
-
     private void setAIShoot() {
         //count: for later print out, that clarifies how often computer shot
         int count = 1;
         log.info("Computer's attack phase");
         while (true) {
-            int ranRow = aiRandom.randNumber(ShipPlacementController.MAPSIZE);
-            int ranCol = aiRandom.randNumber(ShipPlacementController.MAPSIZE);
-            if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.SHOT || ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
+            int ranRow = aiRandom.randNumber(MAPSIZE);
+            int ranCol = aiRandom.randNumber(MAPSIZE);
+            if (playerMap.getStatus(ranRow, ranCol) == Field.SHOT || playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
                 log.debug("Computer has already shot at [" + ranRow + "][" + ranCol + "] (Status: " + Field.SHOT + ") and shoots again.");
             } else {
-                ShipPlacementController.playerMap.attack(ranRow, ranCol);
-                if (ShipPlacementController.playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
+                playerMap.attack(ranRow, ranCol);
+                if (playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
                     log.debug("Computer has hit a ship at [" + ranRow + "][" + ranCol + "] (Status: " + Field.HIT + ")");
                     ObservableList<Node> children = playerGrid.getChildren();
                     children
@@ -172,15 +215,15 @@ public class BattlePhaseController {
                                 }
                             });
 
-                    if (ShipPlacementController.playerMap.checkShipState(ranRow, ranCol)) {
+                    if (playerMap.checkShipState(ranRow, ranCol)) {
 
-                        ShipPlacementController.playerFleet--;
-                        log.debug("Computer destroyed a ship. \"playerFleet\" reduced by 1 -> New state: " + ShipPlacementController.playerFleet);
+                        playerFleet--;
+                        log.debug("Computer destroyed a ship. \"playerFleet\" reduced by 1 -> New state: " + playerFleet);
 
-                        if (ShipPlacementController.playerFleet == 0) {
+                        if (playerFleet == 0) {
                             computerWins();
                         } else {
-                            infoLabelPF.setText("Computer has destroyed a ship! You have " + ShipPlacementController.playerFleet + " left.");
+                            infoLabelPF.setText("Computer has destroyed a ship! You have " + playerFleet + " left.");
                         }
 
                     } else {
