@@ -104,7 +104,7 @@ public class ShipPlacementController {
      * Set coordinate lables for game-fields
      */
     private void setLabels() {
-        //Filling the tables at one to nine
+        //Column coordinates
         for (int i = 1; i <= MAPSIZE; i++) {
             Label l = new Label();
             l.setId("coordinates");
@@ -113,15 +113,13 @@ public class ShipPlacementController {
             log.debug(l + " added to \"playerGrid\"");
         }
 
-        //filling the tables at a to i
-        int e = 65;
+        //Row coordinates
         for (int i = 1; i <= MAPSIZE; i++) {
             Label l = new Label();
             l.setId("coordinates");
-            l.setText(Character.toString((char) e));
+            l.setText(Integer.toString(i));
             playerGrid.add(l, i, 0);
             log.debug(l + " added to \"playerGrid\"");
-            e++;
         }
     }
 

@@ -79,7 +79,7 @@ public class BattlePhaseController {
      * Filling coordinate labels for game-fields
      */
     private void fillLabels() {
-        //Filling the Table-Labels from 1-9
+        //column coordinates
         for (int i = 1; i <= 9; i++) {
             Label l = new Label();
             Label l2 = new Label();
@@ -93,20 +93,18 @@ public class BattlePhaseController {
             log.debug(l2 + " added to \"enemyGrid\"");
         }
 
-        //filling the Table-Labels from A-I
-        int e = 65;
+        //row coordinates
         for (int i = 1; i <= 9; i++) {
             Label l = new Label();
             Label l2 = new Label();
             l.setId("coordinatesB");
             l2.setId("coordinatesB");
-            l.setText(Character.toString((char) e));
-            l2.setText(Character.toString((char) e));
+            l.setText(Integer.toString(i));
+            l2.setText(Integer.toString(i));
             playerGrid.add(l, i, 0);
             log.debug(l + " added to \"playerGrid\"");
             enemyGrid.add(l2, i, 0);
             log.debug(l2 + " added to \"enemyGrid\"");
-            e++;
         }
     }
 
@@ -194,7 +192,7 @@ public class BattlePhaseController {
      */
     private void setAIShoot() {
         //count: for later print out, that clarifies how often computer has shot
-        int count = 1;
+        int count = 0;
         log.info("Computer's attack phase");
         while (true) {
             int ranRow = aiRandom.randNumber(MAPSIZE);
@@ -227,12 +225,12 @@ public class BattlePhaseController {
                         }
 
                     } else {
-                        infoLabelPF.setText("Computer hit a ship and could shoot again!");
+                        log.debug("Computer shots again!");
                         count++;
                     }
                 } else {
-                    log.debug("Computer missed! Position: [" + ranRow + "][" + ranCol + "] (Status: " + Field.WATER + ")");
-                    if (count > 1) {
+                    log.debug("Computer missed! Position: [" + ranRow + "][" + ranCol + "] (Status: " + Field.WATER + ") Shots this round: " + count);
+                    if (count >= 1) {
                         infoLabelPF.setText("Computer missed after shooting " + count + " times! Round finished!");
                     } else {
                         infoLabelPF.setText("Computer missed! Round finished!");

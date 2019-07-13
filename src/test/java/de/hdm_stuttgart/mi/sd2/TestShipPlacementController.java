@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class shipPlacementController {
+public class TestShipPlacementController {
 
     private ShipPlacementController spc = new ShipPlacementController();
 
@@ -29,16 +29,16 @@ public class shipPlacementController {
         testList.add(Cruiser);
         testList.add(Cruiser2);
 
-        assertNotEquals(spc.countShipsInList(testList), 3);
-        assertEquals(spc.countShipsInList(testList), 1);
+        assertNotEquals(3, spc.countShipsInList(testList));
+        assertEquals(1, spc.countShipsInList(testList));
 
         testList.remove(0);
 
-        assertEquals(spc.countShipsInList(testList), 2);
+        assertEquals(2, spc.countShipsInList(testList));
 
         testList.remove(0);
 
-        assertNotEquals(spc.countShipsInList(testList), 2);
+        assertNotEquals(2, spc.countShipsInList(testList));
     }
 
     @Test
