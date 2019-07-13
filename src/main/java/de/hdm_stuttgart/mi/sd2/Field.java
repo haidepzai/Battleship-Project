@@ -77,6 +77,17 @@ public class Field {
         }
     }
 
+//    public void printMap() {
+//        //System.out.println(Arrays.deepToString(field));
+//        for (int i = 0; i < MAPSIZE; i++) {
+//            for (int j = 0; j < MAPSIZE; j++) {
+//                System.out.printf("%4d ", field[i][j]);
+//            }
+//            System.out.println();
+//        }
+//    }
+
+
     /**
      * Check the status of the position on the LEFT side of the transferred position
      *

@@ -61,6 +61,18 @@ public class ShipPlacementController {
         ShipPlacementController.shipListAI = shipListAI;
     }
 
+//    public static Field getComputerMap() {
+//        Field computerMap;
+//        computerMap = ShipPlacementController.computerMap;
+//        return computerMap;
+//    }
+//
+//    public static List<IShip> getShipListAI() {
+//        List<IShip> shipListAI;
+//        shipListAI = ShipPlacementController.shipListAI;
+//        return shipListAI;
+//    }
+
     public void initialize() throws InterruptedException {
         playerMap.clearField();
         computerMap.clearField();
@@ -215,12 +227,9 @@ public class ShipPlacementController {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
                     log.debug("Equivalent buttons of placed ship colored. (shipLength: " + shipLength + ", row/col: " + rowIndex + "/" + colIndex + ", dir(horizontal): " + dir + ", color: black)");
                     //Count whether there are still two ships of the same type in the list
-                    long count = shipList
-                            .stream()
-                            .filter(s -> shipList.get(0).getName().equals(s.getName()))
-                            .count();
-                    log.debug("Actual number of equivalent ship types in \"shipList\" (" + count + ") assigned to \"count\" by stream.");
-                    if (count == 2) {
+                    long shipCount = countShipsInList(shipList);
+                    log.debug("Actual number of equivalent ship types in \"shipList\" (" + shipCount + ") assigned to \"count\" by stream.");
+                    if (shipCount == 2) {
                         infoLabel.setText("Now set your first " + shipList.get(0).getName().toUpperCase());
                     } else {
                         infoLabel.setText("Now set your second " + shipList.get(0).getName().toUpperCase());
@@ -235,17 +244,7 @@ public class ShipPlacementController {
                     colorPlacedShip(shipLength, rowIndex, colIndex, dir, "-fx-background-color: black");
                     log.debug("Equivalent buttons of placed ship colored. (shipLength: " + shipLength + ", row/col: " + rowIndex + "/" + colIndex + ", dir(horizontal): " + dir + ", color: black)");
                     infoLabel.setText("All ships set. Computer is setting..");
-
-                    while (true) {
-                        try {
-                            while (shipListAI.size() > 0) {
-                                computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir());
-                            }
-                            break;
-                        } catch (ArrayIndexOutOfBoundsException ignore) {
-                            //catches Exception but ignores it to continue after not possible (random) ship-placements by computer
-                        }
-                    }
+                    placeShipAI();
                     log.info("Ship placement finished. All ships set.");
                     playerGrid.setDisable(true);
                     radioPane.setDisable(true);
@@ -260,6 +259,36 @@ public class ShipPlacementController {
             log.error("Entered position is too low, too high or the ship doesn't fit at this position!", err);
             infoLabel.setText("Placement not possible here!");
         }
+    }
+
+    /**
+     * Places ships for Computer-Player randomly
+     */
+    public void placeShipAI() {
+        while (true) {
+            try {
+                while (shipListAI.size() > 0) {
+                    computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir());
+                }
+                break;
+            } catch (ArrayIndexOutOfBoundsException ignore) {
+                //catches Exception but ignores it to continue after not possible (random) ship-placements by computer
+            }
+        }
+    }
+
+    /**
+     * Counts how much ships are equivalent to the shipType of the first ship in a list
+     * @param shipList shipList that is searched through
+     * @return Number of equivalent shipTypes referred on first ship in list
+     */
+    public long countShipsInList(List<IShip> shipList) {
+        final long count;
+        count = shipList
+                .stream()
+                .filter(s -> shipList.get(0).getName().equals(s.getName()))
+                .count();
+        return count;
     }
 
     /**
@@ -335,8 +364,7 @@ public class ShipPlacementController {
                 });
     }
 
-
-    /**
+      /**
      * Jump to next scene : Battle-Phase
      *
      * @throws IOException for setScene

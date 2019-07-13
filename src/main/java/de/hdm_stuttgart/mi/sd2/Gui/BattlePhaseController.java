@@ -193,7 +193,7 @@ public class BattlePhaseController {
      * Manages the shoot-events of the computer -> Random actions
      */
     private void setAIShoot() {
-        //count: for later print out, that clarifies how often computer shot
+        //count: for later print out, that clarifies how often computer has shot
         int count = 1;
         log.info("Computer's attack phase");
         while (true) {
@@ -274,7 +274,7 @@ public class BattlePhaseController {
         playerGrid.setDisable(true);
         enemyGrid.setDisable(true);
         backPane.setStyle("-fx-opacity: 0.3");
-        gameWin.setText("You lost, the computer won the game! Game finished.");
+        gameWin.setText("You lost the game! Game finished.");
         Image image = new Image("file:src/main/resources/pictures/lost.png");
         winLostImage.setImage(image);
         winLostImage.maxHeight(100);
