@@ -11,7 +11,7 @@
     <Loggers>
 
         <!-- You my want to define class or package level per-logger rules -->
-        <Logger name="de.hdm_stuttgart.mi.sd2" level="debug">
+        <Logger name="de.hdm_stuttgart.mi.sd2" level="trace">
             <AppenderRef ref="A1"/>
         </Logger>
         <Root level="info">

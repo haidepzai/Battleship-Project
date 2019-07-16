@@ -2,9 +2,7 @@ package de.hdm_stuttgart.mi.sd2.Gui;
 
 import de.hdm_stuttgart.mi.sd2.Field;
 import de.hdm_stuttgart.mi.sd2.aiRandom;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -88,9 +86,9 @@ public class BattlePhaseController {
             l.setText(Integer.toString(i));
             l2.setText(Integer.toString(i));
             playerGrid.add(l, 0, i);
-            log.debug(l + " added to \"playerGrid\"");
+            log.trace(l + " added to \"playerGrid\"");
             enemyGrid.add(l2, 0, i);
-            log.debug(l2 + " added to \"enemyGrid\"");
+            log.trace(l2 + " added to \"enemyGrid\"");
         }
 
         //row coordinates
@@ -102,9 +100,9 @@ public class BattlePhaseController {
             l.setText(Integer.toString(i));
             l2.setText(Integer.toString(i));
             playerGrid.add(l, i, 0);
-            log.debug(l + " added to \"playerGrid\"");
+            log.trace(l + " added to \"playerGrid\"");
             enemyGrid.add(l2, i, 0);
-            log.debug(l2 + " added to \"enemyGrid\"");
+            log.trace(l2 + " added to \"enemyGrid\"");
         }
     }
 
@@ -121,15 +119,14 @@ public class BattlePhaseController {
                 bP.getStyleClass().add("waterButton");
                 bP.setId(i + ", " + j);
                 playerGrid.add(bP, i, j);
-                log.debug(bP + " added to \"playerGrid\"");
+                log.trace(bP + " added to \"playerGrid\"");
 
                 Button bC = new Button();
                 bC.setMaxSize(100, 100);
                 bC.getStyleClass().add("waterButton");
                 bC.setId(i + ", " + j);
                 enemyGrid.add(bC, i, j);
-                log.debug(bC + " added to \"enemyGrid\"");
-                log.info("Players turn to attack!");
+                log.trace(bC + " added to \"enemyGrid\"");
                 bC.setOnAction(event -> {
                     int row = GridPane.getRowIndex(bC);
                     int col = GridPane.getColumnIndex(bC);
@@ -169,12 +166,12 @@ public class BattlePhaseController {
     }
 
     /**
-     * Color placed ships from ShipPlacementController
+     * Color placed ships from ShipPlacementController, by using ParallelStream
      */
     private void colorPlacedShips() {
-        ObservableList<Node> children = playerGrid.getChildren();
-        children
-                .stream()
+        log.debug("Coloring placed ships from ship-placement-scene");
+        playerGrid.getChildren()
+                .parallelStream()
                 .filter(child -> child instanceof Button)
                 .forEach(child -> {
                     for (int row = 1; row <= MAPSIZE; row++) {
@@ -183,6 +180,23 @@ public class BattlePhaseController {
                                 child.setStyle("-fx-background-color: black");
                             }
                         }
+                    }
+                });
+    }
+
+    /**
+     * Colors buttons of player's field depending on whether the computer has hit a ship or missed
+     * @param stateColor Green: Hit, Red: Missed
+     * @param row Row of shot position
+     * @param col Column of shot position
+     */
+    private void colorAIShots(String stateColor, int row, int col) {
+        playerGrid.getChildren()
+                .stream()
+                .filter(child -> child instanceof Button)
+                .forEach(child -> {
+                    if (GridPane.getRowIndex(child) == row && GridPane.getColumnIndex(child) == col) {
+                        child.setStyle(stateColor);
                     }
                 });
     }
@@ -203,27 +217,15 @@ public class BattlePhaseController {
                 playerMap.attack(ranRow, ranCol);
                 if (playerMap.getStatus(ranRow, ranCol) == Field.HIT) {
                     log.debug("Computer has hit a ship at [" + ranRow + "][" + ranCol + "] (Status: " + Field.HIT + ")");
-                    ObservableList<Node> children = playerGrid.getChildren();
-                    children
-                            .stream()
-                            .filter(child -> child instanceof Button)
-                            .forEach(child -> {
-                                if (GridPane.getRowIndex(child) == ranRow && GridPane.getColumnIndex(child) == ranCol) {
-                                    child.setStyle("-fx-background-color: green");
-                                }
-                            });
-
+                    colorAIShots("-fx-background-color: green", ranRow, ranCol);
                     if (playerMap.checkShipState(ranRow, ranCol)) {
-
                         playerFleet--;
                         log.debug("Computer destroyed a ship. \"playerFleet\" reduced by 1 -> New state: " + playerFleet);
-
                         if (playerFleet == 0) {
                             computerWins();
                         } else {
                             infoLabelPF.setText("Computer has destroyed a ship! You have " + playerFleet + " left.");
                         }
-
                     } else {
                         log.debug("Computer shots again!");
                         count++;
@@ -231,19 +233,11 @@ public class BattlePhaseController {
                 } else {
                     log.debug("Computer missed! Position: [" + ranRow + "][" + ranCol + "] (Status: " + Field.WATER + ") Shots this round: " + count);
                     if (count >= 1) {
-                        infoLabelPF.setText("Computer missed after shooting " + count + " times! Round finished!");
+                        infoLabelPF.setText("Computer missed after shooting " + count + " time(s)! Round finished!");
                     } else {
                         infoLabelPF.setText("Computer missed! Round finished!");
                     }
-                    ObservableList<Node> children = playerGrid.getChildren();
-                    children
-                            .stream()
-                            .filter(child -> child instanceof Button)
-                            .forEach(child -> {
-                                if (GridPane.getRowIndex(child) == ranRow && GridPane.getColumnIndex(child) == ranCol) {
-                                    child.setStyle("-fx-background-color: red");
-                                }
-                            });
+                    colorAIShots("-fx-background-color: red", ranRow, ranCol);
                     log.info("Players turn to attack!");
                     break;
                 }

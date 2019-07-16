@@ -5,9 +5,7 @@ import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
 import de.hdm_stuttgart.mi.sd2.Threads.ShipListAICreator;
 import de.hdm_stuttgart.mi.sd2.Threads.ShipListCreator;
 import de.hdm_stuttgart.mi.sd2.aiRandom;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -61,17 +59,17 @@ public class ShipPlacementController {
         ShipPlacementController.shipListAI = shipListAI;
     }
 
-//    public static Field getComputerMap() {
-//        Field computerMap;
-//        computerMap = ShipPlacementController.computerMap;
-//        return computerMap;
-//    }
-//
-//    public static List<IShip> getShipListAI() {
-//        List<IShip> shipListAI;
-//        shipListAI = ShipPlacementController.shipListAI;
-//        return shipListAI;
-//    }
+    public static List<IShip> getShipList() {
+        List<IShip> shipList;
+        shipList = ShipPlacementController.shipList;
+        return shipList;
+    }
+
+    public static List<IShip> getShipListAI() {
+        List<IShip> shipListAI;
+        shipListAI = ShipPlacementController.shipListAI;
+        return shipListAI;
+    }
 
     public void initialize() throws InterruptedException {
         playerMap.clearField();
@@ -110,7 +108,7 @@ public class ShipPlacementController {
             l.setId("coordinates");
             l.setText(Integer.toString(i));
             playerGrid.add(l, 0, i);
-            log.debug(l + " added to \"playerGrid\"");
+            log.trace(l + " added to \"playerGrid\"");
         }
 
         //Row coordinates
@@ -119,7 +117,7 @@ public class ShipPlacementController {
             l.setId("coordinates");
             l.setText(Integer.toString(i));
             playerGrid.add(l, i, 0);
-            log.debug(l + " added to \"playerGrid\"");
+            log.trace(l + " added to \"playerGrid\"");
         }
     }
 
@@ -136,7 +134,7 @@ public class ShipPlacementController {
                 b.setId(r + "," + c);
                 b.getStyleClass().add("waterButton");
                 playerGrid.add(b, r, c);
-                log.debug(b + " added to \"playerGrid\"");
+                log.trace(b + " added to \"playerGrid\"");
 
                 b.setOnMouseClicked(event -> {
                     log.debug(b + " clicked.");
@@ -262,7 +260,7 @@ public class ShipPlacementController {
     /**
      * Places ships for Computer-Player randomly
      */
-    public void placeShipAI() {
+    private void placeShipAI() {
         while (true) {
             try {
                 while (shipListAI.size() > 0) {
@@ -281,10 +279,11 @@ public class ShipPlacementController {
      * @return Number of equivalent shipTypes referred on first ship in list
      */
     public long countShipsInList(List<IShip> shipList) {
+        String comparableShip = shipList.get(0).getName();
         final long count;
         count = shipList
                 .stream()
-                .filter(s -> shipList.get(0).getName().equals(s.getName()))
+                .filter(s -> comparableShip.equals(s.getName()))
                 .count();
         return count;
     }
@@ -304,8 +303,7 @@ public class ShipPlacementController {
     private void colorPlacedShip(int shipLength, int row, int column, boolean dir, String color) {
 
         //List all children of GridPane => all Nodes (BUTTONS, labels, etc.)
-        ObservableList<Node> children = playerGrid.getChildren();
-        children
+        playerGrid.getChildren()
                 .stream()
                 .filter(child -> child instanceof Button)
                 .forEach(child -> {
@@ -332,8 +330,7 @@ public class ShipPlacementController {
      * @param dir        Direction of ship-to-placed: horizontal/vertical
      */
     private void colorCellsIndividually(int shipLength, int row, int column, boolean dir) {
-        ObservableList<Node> children = playerGrid.getChildren();
-        children
+        playerGrid.getChildren()
                 .stream()
                 .filter(child -> child instanceof Button)
                 .forEach(child -> {

@@ -54,12 +54,12 @@ public class GuiDriver extends Application {
     void setScene(String fxml, String title, int width, int height) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxml));
+        log.debug("Load FXML file: " + fxml);
         Parent root = loader.load();
-        log.debug("FXML file " + fxml + " loaded");
         Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
         stage.setTitle(title);
-        log.info("New scene: " + title + " opened.");
+        log.info("Scene created: " + title);
     }
 
 }
