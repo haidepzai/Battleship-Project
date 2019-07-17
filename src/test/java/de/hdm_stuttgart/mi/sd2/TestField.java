@@ -12,7 +12,10 @@ public class TestField {
 
     private Field f = new Field(ShipPlacementController.MAPSIZE);
 
-    //Check if Ships can be set
+    /**
+     * Check if Ships can be set
+     * @throws IllegalFactoryArgument Ship type doesn't exist
+     */
     @Test
     public void testSetShip() throws IllegalFactoryArgument {
 
@@ -28,7 +31,10 @@ public class TestField {
 
     }
 
-    //Test what will happen if Battleship is set on border
+    /**
+     * Test what will happen if Battleship is set on border
+     * @throws IllegalFactoryArgument Ship type doesn't exist
+     */
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void testArrayIndexOutOfBoundsException() throws IllegalFactoryArgument {
 
@@ -39,7 +45,10 @@ public class TestField {
         assertFalse(f.setShip(ShipFactory.createShip(IShip.ShipType.SUBMARINE), 9, 9, false));
     }
 
-    //Check if Battleship has been set
+    /**
+     * Check if Battleship has been set
+     * @throws IllegalFactoryArgument Ship type doesn't exist
+     */
     @Test
     public void testCheckGetStatus() throws IllegalFactoryArgument {
 
@@ -63,7 +72,7 @@ public class TestField {
 
     /**
      * Checks if the attack-method
-     * @throws IllegalFactoryArgument
+     * @throws IllegalFactoryArgument Ship type doesn't exist
      */
     @Test
     public void testAttack() throws IllegalFactoryArgument {

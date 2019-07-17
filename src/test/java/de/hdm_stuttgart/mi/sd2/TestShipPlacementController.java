@@ -19,6 +19,10 @@ public class TestShipPlacementController {
     private ShipPlacementController spc = new ShipPlacementController();
     private static List<IShip> testList = new ArrayList<>();
 
+    /**
+     * Filling shipLists with some ships
+     * @throws IllegalFactoryArgument ShipType doesn't exist
+     */
     @BeforeClass
     public static void setList() throws IllegalFactoryArgument{
         IShip Battleship;
@@ -33,6 +37,9 @@ public class TestShipPlacementController {
 
     }
 
+    /**
+     * Tests whether countShipList ist counting correctly and finds equivalent shipTypes
+     */
     @Test
     public void testCountShipsInList() {
         assertNotEquals(3, spc.countShipsInList(testList));

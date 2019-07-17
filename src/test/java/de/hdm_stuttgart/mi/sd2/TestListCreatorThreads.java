@@ -1,8 +1,6 @@
 package de.hdm_stuttgart.mi.sd2;
 
 import de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController;
-import de.hdm_stuttgart.mi.sd2.Interfaces.IShip;
-import de.hdm_stuttgart.mi.sd2.Ships.ShipFactory;
 import de.hdm_stuttgart.mi.sd2.Threads.ShipListAICreator;
 import de.hdm_stuttgart.mi.sd2.Threads.ShipListCreator;
 import org.junit.BeforeClass;
@@ -13,6 +11,10 @@ import static org.junit.Assert.*;
 public class TestListCreatorThreads {
 
 
+    /**
+     * Start Threads to create shipLists before testing
+     * @throws InterruptedException Ship type doesn't exist
+     */
     @BeforeClass
     public static void createLists() throws InterruptedException {
         Thread shipListCreator = new Thread(new ShipListCreator());
@@ -23,6 +25,9 @@ public class TestListCreatorThreads {
         shipListAICreator.join();
     }
 
+    /**
+     * Checks whether Thread "shipListCreator" works fine and fills all 7 ships into the shipList
+     */
     @Test
     public void testShipList() {
         assertNotEquals(0, ShipPlacementController.getShipList().size());
@@ -31,6 +36,9 @@ public class TestListCreatorThreads {
         assertEquals(ShipPlacementController.getShipList().get(6).getName(), "Submarine");
     }
 
+    /**
+     * Checks whether Thread "shipListAICreator" works fine and fills all 7 ships into the shipListAI
+     */
     @Test
     public void testShipListAI() {
         assertNotEquals(0, ShipPlacementController.getShipListAI().size());
