@@ -23,8 +23,8 @@ public class TestShipPlacementController {
      * Filling shipLists with some ships
      * @throws IllegalFactoryArgument ShipType doesn't exist
      */
-    @BeforeClass
-    public static void setList() throws IllegalFactoryArgument{
+    @Before
+    public void setList() throws IllegalFactoryArgument{
         IShip Battleship;
         IShip Cruiser;
         IShip Cruiser2;
