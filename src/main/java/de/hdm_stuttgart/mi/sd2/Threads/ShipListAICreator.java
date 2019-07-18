@@ -20,21 +20,13 @@ public class ShipListAICreator implements Runnable {
     public void run() {
         log.debug("Thread for creation of shipListAI started");
         try {
-            IShip BattleshipAI1;
-            IShip CruiserAI1;
-            IShip CruiserAI2;
-            IShip DestroyerAI1;
-            IShip DestroyerAI2;
-            IShip SubmarineAI1;
-            IShip SubmarineAI2;
-
-            CruiserAI1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            CruiserAI2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            DestroyerAI1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            DestroyerAI2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            SubmarineAI1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            SubmarineAI2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            BattleshipAI1 = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
+            IShip CruiserAI1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
+            IShip CruiserAI2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
+            IShip DestroyerAI1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
+            IShip DestroyerAI2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
+            IShip SubmarineAI1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
+            IShip SubmarineAI2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
+            IShip BattleshipAI1 = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
 
             shipListAI.add(BattleshipAI1);
             shipListAI.add(CruiserAI1);

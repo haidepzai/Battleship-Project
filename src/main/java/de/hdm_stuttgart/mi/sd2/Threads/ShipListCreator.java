@@ -20,21 +20,13 @@ public class ShipListCreator implements Runnable {
     public void run() {
         log.debug("Thread for creation of shipList started");
         try {
-            IShip Battleship;
-            IShip Cruiser1;
-            IShip Cruiser2;
-            IShip Destroyer1;
-            IShip Destroyer2;
-            IShip Submarine1;
-            IShip Submarine2;
-
-            Cruiser1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            Cruiser2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
-            Destroyer1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            Destroyer2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
-            Submarine1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            Submarine2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
-            Battleship = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
+            IShip Cruiser1 = ShipFactory.createShip(IShip.ShipType.CRUISER);
+            IShip Cruiser2 = ShipFactory.createShip(IShip.ShipType.CRUISER);
+            IShip Destroyer1 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
+            IShip Destroyer2 = ShipFactory.createShip(IShip.ShipType.DESTROYER);
+            IShip Submarine1 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
+            IShip Submarine2 = ShipFactory.createShip(IShip.ShipType.SUBMARINE);
+            IShip Battleship = ShipFactory.createShip(IShip.ShipType.BATTLESHIP);
 
             shipList.add(Battleship);
             shipList.add(Cruiser1);
