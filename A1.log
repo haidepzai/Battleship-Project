@@ -8,8 +8,8 @@ Thread-2 DEBUG Threads.ShipListCreator - Thread for creation of shipList started
 Thread-3 DEBUG Threads.ShipListAICreator - Thread for creation of shipListAI started
 Thread-2 DEBUG Threads.ShipListCreator - Assigned value of "shipList" to copy in "ShipPlacementController"
 Thread-3 DEBUG Threads.ShipListAICreator - Assigned value of "shipListAI" to copy in "ShipPlacementController"
-Thread-2 DEBUG Threads.ShipListCreator - Thread for creation of shipList finished
 Thread-3 DEBUG Threads.ShipListAICreator - Thread for creation of shipListAI finished
+Thread-2 DEBUG Threads.ShipListCreator - Thread for creation of shipList finished
 JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'1' added to "playerGrid"
 JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'2' added to "playerGrid"
 JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'3' added to "playerGrid"
@@ -112,59 +112,167 @@ JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,9, sty
 JavaFX Application Thread INFO  Gui.GuiDriver - Scene created: Ship-Placement
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,1, styleClass=button waterButton]'' clicked.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" (4) assigned to "shipLength" (4)
-JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Battleship@6e0bee66 at: [1][1], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Battleship@6e0bee66 removed from "shipList".
+JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Battleship@4385de79 at: [1][1], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Battleship@4385de79 removed from "shipList".
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Equivalent buttons of placed ship colored. (shipLength: 4, row/col: 1/1, dir(horizontal): true, color: black)
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types in "shipList" (2) assigned to "count" by stream.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,3, styleClass=button waterButton]'' clicked.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" (3) assigned to "shipLength" (3)
-JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Cruiser@26470de8 at: [3][1], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@26470de8 removed from "shipList".
+JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Cruiser@3ad3261f at: [3][1], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@3ad3261f removed from "shipList".
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Equivalent buttons of placed ship colored. (shipLength: 3, row/col: 3/1, dir(horizontal): true, color: black)
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types in "shipList" (1) assigned to "count" by stream.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,5, styleClass=button waterButton]'' clicked.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" (3) assigned to "shipLength" (3)
-JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Cruiser@3c1cc02f at: [5][1], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@3c1cc02f removed from "shipList".
+JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Cruiser@f4ab9e4 at: [5][1], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@f4ab9e4 removed from "shipList".
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Equivalent buttons of placed ship colored. (shipLength: 3, row/col: 5/1, dir(horizontal): true, color: black)
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types in "shipList" (2) assigned to "count" by stream.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,7, styleClass=button waterButton]'' clicked.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" (2) assigned to "shipLength" (2)
-JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Destroyer@18619c32 at: [7][1], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@18619c32 removed from "shipList".
+JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Destroyer@394f456d at: [7][1], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@394f456d removed from "shipList".
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Equivalent buttons of placed ship colored. (shipLength: 2, row/col: 7/1, dir(horizontal): true, color: black)
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types in "shipList" (1) assigned to "count" by stream.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=1,9, styleClass=button waterButton]'' clicked.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" (2) assigned to "shipLength" (2)
-JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Destroyer@f7df153 at: [9][1], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@f7df153 removed from "shipList".
+JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Destroyer@354e475b at: [9][1], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@354e475b removed from "shipList".
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Equivalent buttons of placed ship colored. (shipLength: 2, row/col: 9/1, dir(horizontal): true, color: black)
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types in "shipList" (2) assigned to "count" by stream.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=4,9, styleClass=button waterButton]'' clicked.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" (1) assigned to "shipLength" (1)
-JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Submarine@481bbcfe at: [9][4], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@481bbcfe removed from "shipList".
+JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Submarine@2291b1bf at: [9][4], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@2291b1bf removed from "shipList".
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Equivalent buttons of placed ship colored. (shipLength: 1, row/col: 9/4, dir(horizontal): true, color: black)
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual number of equivalent ship types in "shipList" (1) assigned to "count" by stream.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Button[id=4,7, styleClass=button waterButton]'' clicked.
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Actual length of "shipList" (1) assigned to "shipLength" (1)
-JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Submarine@688ce11f at: [7][4], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@688ce11f removed from "shipList".
+JavaFX Application Thread DEBUG sd2.Field - Player placed ship de.hdm_stuttgart.mi.sd2.Ships.Submarine@7ccf839b at: [7][4], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@7ccf839b removed from "shipList".
 JavaFX Application Thread DEBUG Gui.ShipPlacementController - Equivalent buttons of placed ship colored. (shipLength: 1, row/col: 7/4, dir(horizontal): true, color: black)
-JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Battleship@647f86a5 at: [4][8], dir(horizontal): false
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Battleship@647f86a5 removed from "shipListAI".
-JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Cruiser@5919d674 at: [6][2], dir(horizontal): false
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@5919d674 removed from "shipListAI".
-JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Cruiser@414b395c at: [1][7], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@414b395c removed from "shipListAI".
-JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Destroyer@61967b2d at: [4][1], dir(horizontal): false
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@61967b2d removed from "shipListAI".
-JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Destroyer@7453675a at: [2][2], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@7453675a removed from "shipListAI".
-JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Submarine@636eb5d2 at: [3][7], dir(horizontal): false
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@636eb5d2 removed from "shipListAI".
-JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Submarine@7bf7f13a at: [4][5], dir(horizontal): true
-JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@7bf7f13a removed from "shipListAI".
+JavaFX Application Thread ERROR Gui.ShipPlacementController - Computer's try to place ship crossing the border of the gamefield
+java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+	at de.hdm_stuttgart.mi.sd2.Field.getStatus(Field.java:69) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Field.checkShip(Field.java:188) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Field.setShipAI(Field.java:251) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.placeShipAI(ShipPlacementController.java:267) [classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.placeShip(ShipPlacementController.java:243) [classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.lambda$createFieldButtons$0(ShipPlacementController.java:143) [classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) [javafx-base-12.0.1-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) [javafx-base-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3569) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3871) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1849) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299) [javafx-graphics-12.0.1-linux.jar:?]
+	at java.security.AccessController.doPrivileged(Native Method) [?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:411) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:556) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:942) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:277) [javafx-graphics-12.0.1-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Battleship@42883c31 at: [5][3], dir(horizontal): false
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Battleship@42883c31 removed from "shipListAI".
+JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Cruiser@525cde79 at: [3][7], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@525cde79 removed from "shipListAI".
+JavaFX Application Thread ERROR Gui.ShipPlacementController - Computer's try to place ship crossing the border of the gamefield
+java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+	at de.hdm_stuttgart.mi.sd2.Field.getStatus(Field.java:69) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Field.checkShip(Field.java:179) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Field.setShipAI(Field.java:251) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.placeShipAI(ShipPlacementController.java:267) [classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.placeShip(ShipPlacementController.java:243) [classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.lambda$createFieldButtons$0(ShipPlacementController.java:143) [classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) [javafx-base-12.0.1-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) [javafx-base-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3569) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3871) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1849) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299) [javafx-graphics-12.0.1-linux.jar:?]
+	at java.security.AccessController.doPrivileged(Native Method) [?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:411) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:556) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:942) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:277) [javafx-graphics-12.0.1-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Cruiser@6e1dbb72 at: [5][5], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Cruiser@6e1dbb72 removed from "shipListAI".
+JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Destroyer@5f6a2a76 at: [8][1], dir(horizontal): false
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@5f6a2a76 removed from "shipListAI".
+JavaFX Application Thread ERROR Gui.ShipPlacementController - Computer's try to place ship crossing the border of the gamefield
+java.lang.ArrayIndexOutOfBoundsException: Index 9 out of bounds for length 9
+	at de.hdm_stuttgart.mi.sd2.Field.getStatus(Field.java:69) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Field.checkShip(Field.java:188) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Field.setShipAI(Field.java:251) ~[classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.placeShipAI(ShipPlacementController.java:267) [classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.placeShip(ShipPlacementController.java:243) [classes/:?]
+	at de.hdm_stuttgart.mi.sd2.Gui.ShipPlacementController.lambda$createFieldButtons$0(ShipPlacementController.java:143) [classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:238) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) [javafx-base-12.0.1-linux.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) [javafx-base-12.0.1-linux.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) [javafx-base-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$ClickGenerator.postProcess(Scene.java:3569) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3871) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1849) [javafx-graphics-12.0.1-linux.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2590) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:409) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:299) [javafx-graphics-12.0.1-linux.jar:?]
+	at java.security.AccessController.doPrivileged(Native Method) [?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:447) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:411) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:446) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:556) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:942) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method) [javafx-graphics-12.0.1-linux.jar:?]
+	at com.sun.glass.ui.gtk.GtkApplication.lambda$runLoop$11(GtkApplication.java:277) [javafx-graphics-12.0.1-linux.jar:?]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Destroyer@5c80fc1e at: [1][5], dir(horizontal): true
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Destroyer@5c80fc1e removed from "shipListAI".
+JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Submarine@689b5ee1 at: [3][1], dir(horizontal): false
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@689b5ee1 removed from "shipListAI".
+JavaFX Application Thread DEBUG sd2.Field - Computer placed ship de.hdm_stuttgart.mi.sd2.Ships.Submarine@6bdebeab at: [8][6], dir(horizontal): false
+JavaFX Application Thread DEBUG sd2.Field - de.hdm_stuttgart.mi.sd2.Ships.Submarine@6bdebeab removed from "shipListAI".
 JavaFX Application Thread INFO  Gui.ShipPlacementController - Ship placement finished. All ships set.
 JavaFX Application Thread DEBUG Gui.GuiDriver - Load FXML file: /fxml/BattlePhase.fxml
 JavaFX Application Thread TRACE Gui.BattlePhaseController - Label[id=coordinatesB, styleClass=label]'1' added to "playerGrid"
@@ -367,44 +475,558 @@ JavaFX Application Thread TRACE Gui.BattlePhaseController - Button[id=9, 9, styl
 JavaFX Application Thread TRACE Gui.BattlePhaseController - Button[id=9, 9, styleClass=button waterButton]'' added to "enemyGrid"
 JavaFX Application Thread DEBUG Gui.BattlePhaseController - Coloring placed ships from ship-placement-scene
 JavaFX Application Thread INFO  Gui.GuiDriver - Scene created: Battle-Phase
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [2][2] (Status: -100)
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [3][3] (Status: 0)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [1][1] (Status: 0)
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
 JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][7] (Status: 0) Shots this round: 0
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [4][4] (Status: 0)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [3][2] (Status: 0)
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [5][7] (Status: 0) Shots this round: 0
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [7][3] (Status: 0) Shots this round: 0
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [5][5] (Status: 0)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][4] (Status: 0)
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][5] (Status: 0) Shots this round: 0
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [4][8] (Status: 0) Shots this round: 0
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][6] (Status: 0)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][2] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [4][8] (Status: 0)
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [9][6] (Status: 0) Shots this round: 0
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [5][6] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][4] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [5][2] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [4][4] (Status: 0) Shots this round: 1
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [4][6] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [1][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [5][3] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][9] (Status: 0) Shots this round: 2
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [4][6] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [4][6] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [4][5] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [4][1] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [7][6] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [2][7] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [8][2] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][4] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [4][2] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [4][9] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][7] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [2][8] (Status: 0) Shots this round: 0
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
 JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [7][7] (Status: 0)
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [3][7] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [9][6] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [8][4] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][2] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [5][8] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [5][3] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][3] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][3] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [3][3] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [9][7] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [4][3] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
 JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [1][5] (Status: 0) Shots this round: 0
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][7] (Status: 0)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [5][4] (Status: 0)
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [5][4] (Status: 0) Shots this round: 0
-JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [6][2] (Status: -100)
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][1] (Status: 0)
-JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [2][1] (Status: 0) Shots this round: 0
-JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][3] (Status: 0)
-JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][9] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [3][3] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
 JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [7][1] (Status: -100)
 JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][8] (Status: 0) Shots this round: 1
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [5][7] (Status: 0) Shots this round: 2
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [4][7] (Status: 0)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [5][5] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][5] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][5] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [5][2] (Status: 0)
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
-JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [9][9] (Status: 0) Shots this round: 0
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [8][9] (Status: 0) Shots this round: 0
 JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [6][3] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [6][3] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [6][3] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][5] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [7][4] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer destroyed a ship. "playerFleet" reduced by 1 -> New state: 6
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [9][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [8][2] (Status: 0) Shots this round: 1
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [7][3] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [7][3] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [7][3] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [7][5] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [3][4] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [8][3] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed a ship by shooting at [8][3] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed an enemies ship. "computerFleet" reduced by 1 -> New state: 6
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [8][3] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [8][3] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [5][7] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][7] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][7] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][7] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [5][6] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed a ship by shooting at [5][6] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed an enemies ship. "computerFleet" reduced by 1 -> New state: 5
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][6] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [5][6] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [5][8] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [8][5] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [5][9] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][1] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [9][3] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [4][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [3][3] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [2][7] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [2][4] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [8][5] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [8][8] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [8][7] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][3] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [8][9] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [9][5] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][5] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][8] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [1][6] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][6] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [1][3] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][2] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [1][7] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [3][3] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [5][8] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [1][3] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [4][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [9][9] (Status: 0) Shots this round: 1
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [1][5] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed a ship by shooting at [1][5] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed an enemies ship. "computerFleet" reduced by 1 -> New state: 4
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][5] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][5] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][6] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [7][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [8][6] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [3][7] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][7] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][7] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][9] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [2][3] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [3][6] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [4][8] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [5][4] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [3][8] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][8] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][8] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [8][6] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [9][9] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [1][8] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [3][9] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed a ship by shooting at [3][9] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed an enemies ship. "computerFleet" reduced by 1 -> New state: 3
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][9] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][9] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][9] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][9] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][9] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [3][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed a ship by shooting at [3][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed an enemies ship. "computerFleet" reduced by 1 -> New state: 2
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [3][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [4][1] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [9][3] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [5][1] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [5][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer destroyed a ship. "playerFleet" reduced by 1 -> New state: 5
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [7][5] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][1] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [3][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [2][9] (Status: 0) Shots this round: 1
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [7][1] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][8] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][4] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [8][3] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [9][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [9][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [9][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [9][4] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [2][9] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [1][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [9][5] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [8][3] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][4] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [8][2] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [9][7] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [5][9] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [8][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed a ship by shooting at [8][1] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed an enemies ship. "computerFleet" reduced by 1 -> New state: 1
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [8][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [9][2] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [5][5] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [9][8] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [7][7] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [8][8] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [4][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [1][7] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][8] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [7][8] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [6][7] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [3][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [9][6] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [7][9] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][2] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [9][5] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [1][4] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer shots again!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [5][8] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [3][2] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer destroyed a ship. "playerFleet" reduced by 1 -> New state: 4
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][9] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [3][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [5][7] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [1][3] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][3] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [2][4] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [1][7] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [4][8] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [4][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [1][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [1][4] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [7][7] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [6][6] (Status: 0) Shots this round: 1
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][2] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [8][7] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][3] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][8] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [9][9] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [9][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [7][9] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [2][1] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [9][7] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [5][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [4][5] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [1][2] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [4][2] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [3][4] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [4][2] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [7][9] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [4][6] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [9][9] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [3][4] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [8][3] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [2][3] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [5][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [1][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [8][2] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [5][6] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [3][9] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player already shot at [1][1] (Status: -99 )
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player shot at [9][7] (Status: 0)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Computer's attack phase
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [6][2] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [5][1] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [4][4] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has already shot at [3][7] (Status: -99) and shoots again.
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer has hit a ship at [7][2] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer destroyed a ship. "playerFleet" reduced by 1 -> New state: 3
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Computer missed! Position: [4][7] (Status: 0) Shots this round: 0
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Players turn to attack!
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player hit a ship at [8][6] (Status: -100)
+JavaFX Application Thread DEBUG Gui.BattlePhaseController - Player destroyed a ship by shooting at [8][6] (Status: -100)
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Player won the game
+JavaFX Application Thread DEBUG Gui.GuiDriver - Load FXML file: /fxml/Menu.fxml
+JavaFX Application Thread INFO  Gui.GuiDriver - Scene created: Menu
+JavaFX Application Thread INFO  Gui.BattlePhaseController - Returned to Menu, after game finished.
+JavaFX Application Thread DEBUG Gui.GuiDriver - Load FXML file: /fxml/ShipPlacement.fxml
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Thread "shipListCreator" created.
+JavaFX Application Thread DEBUG Gui.ShipPlacementController - Thread "shipListAICreator" created.
+Thread-4 DEBUG Threads.ShipListCreator - Thread for creation of shipList started
+Thread-4 DEBUG Threads.ShipListCreator - Assigned value of "shipList" to copy in "ShipPlacementController"
+Thread-5 DEBUG Threads.ShipListAICreator - Thread for creation of shipListAI started
+Thread-4 DEBUG Threads.ShipListCreator - Thread for creation of shipList finished
+Thread-5 DEBUG Threads.ShipListAICreator - Assigned value of "shipListAI" to copy in "ShipPlacementController"
+Thread-5 DEBUG Threads.ShipListAICreator - Thread for creation of shipListAI finished
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'1' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'2' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'3' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'4' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'5' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'6' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'7' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'8' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'9' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'1' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'2' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'3' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'4' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'5' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'6' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'7' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'8' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Label[id=coordinates, styleClass=label]'9' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=1,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=2,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=3,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=4,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=5,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=6,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=7,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=8,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,1, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,2, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,3, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,4, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,5, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,6, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,7, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,8, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread TRACE Gui.ShipPlacementController - Button[id=9,9, styleClass=button waterButton]'' added to "playerGrid"
+JavaFX Application Thread INFO  Gui.GuiDriver - Scene created: Ship-Placement
 main INFO  Gui.GuiDriver - Application closed

@@ -65,7 +65,7 @@ public class Field {
      *         HIT: Position was shot and hit a ship
      *         WATER: Water on the position (unaffected state)
      */
-    public int getStatus(int row, int col) {
+    public synchronized int getStatus(int row, int col) {
         if (field[row - 1][col - 1] == SHIP) {
             return SHIP;
         } else if (field[row - 1][col - 1] == SHOT) {

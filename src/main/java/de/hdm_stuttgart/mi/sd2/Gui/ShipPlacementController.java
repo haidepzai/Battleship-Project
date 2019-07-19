@@ -267,8 +267,8 @@ public class ShipPlacementController {
                     computerMap.setShipAI(shipListAI.get(0), aiRandom.randNumber(MAPSIZE), aiRandom.randNumber(MAPSIZE), aiRandom.randDir());
                 }
                 break;
-            } catch (ArrayIndexOutOfBoundsException ignore) {
-                //catches Exception but ignores it to continue after not possible (random) ship-placements by computer
+            } catch (ArrayIndexOutOfBoundsException err) {
+                log.error("Computer's try to place ship crossing the border of the gamefield", err);
             }
         }
     }
