@@ -16,12 +16,15 @@ Each player has to set their ships. You have five ships to set:
 Players take turns firing shots to attack enemy ships.
 The goal of the game is to sink all of the opponent's ships by correctly guessing their location on the grid.
 
+<<<<<<< HEAD
 ## Screenshots
 
 | [![Hai](https://i.ibb.co/dLqmVvV/1.png)](https://gitlab.com/haidepzai/battleship-project)
 
 | [![Hai](https://i.ibb.co/gjrTNFH/2.png)](https://gitlab.com/haidepzai/battleship-project)
 
+=======
+>>>>>>> 54b51318ce7cf9d38e7c1bfe001e77f57a9a7662
 ## Team
 
 | <a href="https://gitlab.mi.hdm-stuttgart.de/sv048" target="_blank">**Vu Son Hai**</a> | <a href="https://gitlab.mi.hdm-stuttgart.de/lh108" target="_blank">**Heinrich Leon**</a> | <a href="https://gitlab.mi.hdm-stuttgart.de/sd114" target="_blank">**Dubiel Sebastian**</a> |
