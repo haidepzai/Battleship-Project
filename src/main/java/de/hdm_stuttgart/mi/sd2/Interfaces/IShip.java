@@ -6,10 +6,8 @@ public interface IShip {
         DESTROYER,
         SUBMARINE,
         CRUISER,
-        BATTLESHIP;
+        BATTLESHIP
 
-        ShipType() {
-        }
     }
 
     int getLength();

@@ -23,6 +23,7 @@ public class GuiDriver extends Application {
         return application;
     }
 
+
     public static void main(String[] args) {
         log.info("Application started");
         launch(args);

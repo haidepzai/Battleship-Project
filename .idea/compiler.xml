@@ -6,11 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="battleshipproject" />
         <module name="Battleships" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Battleships" target="9" />
-    </bytecodeTargetLevel>
   </component>
 </project>
